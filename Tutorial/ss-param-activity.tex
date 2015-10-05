@@ -1,0 +1,31 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssParamActivity}
+
+\begin{frame}[fragile,label=ss-param-activity] 
+\secframetitle{\ssParamActivity}
+\bluebf{Try the following problem (or make up your own!):}
+  \begin{enumerate}
+  \item run \code{enzo-P} with \code{input/test\_heat.in} (heat equation)
+  \item copy test\_heat.in to test\_heat-unstable.in
+  \item edit and rerun with the following changes:
+    \begin{itemize}
+    \item courant condition of 1.1
+    \item output every 10 cycles instead of every 100
+    \item stopping criteria of cycle = 100 instead of 1000
+    \item output file names e.g.~\code{"heat-unstable-0030.png"} for cycle 30
+    \end{itemize}
+  \item view generated PNG image files
+  \end{enumerate}
+\footnotesize
+\bluebf{Other things to try}:
+  \begin{itemize}
+\item What happens if you try running \code{test\_heat.in} with more than 8 processors?
+\item What can you do to run on 16 processors?
+\item What happens if you change \code{Adapt:max\_level} to 5.0?
+\item What happens if you remove the semicolon after \code{temp \{\ldots \}\redcode{;}}?
+  \end{itemize}
+\end{frame}
+

@@ -1,0 +1,651 @@
+* Enzo Workshop 2015
+** TODO [#A] Review parameters documentation == code
+** TODO [#A] Review cello-design
+** TODO [#A] Review all fig's
+** TODO [#A] Full project review, correct and document as I go
+** TODO [#A] Slides on proposed features, eg alternative solvers
+** TODO [#A] Tp level code run-through
+** DONE [#A] Reread / review [[file:~/Organize/Projects/CelloDoc/index.org][Letting Go of the Words]]
+** TODO [#A] Run Gravity scaling tests on comet
+** TODO [#A] Discuss Cello current issues eg periodic b.c.
+** TODO [#A] Discuss Enzo-P/Cello current ommisions
+   - flux-correction
+   - monotonic/conservative interpolation
+     (details in development section on restrict / prolong)
+** TODO [#A] Discuss 
+   in Charm section
+** TODO [#A] Organize FAQ into Modules
+   Overview
+** TODO [#A] Mine [[http://client64-249.sdsc.edu/cello-dev][Cello Development Trac Site]] for useful stuff
+** TODO [#A] Refactor input files
+   find common input parameters, e.g. method_ppm.incl, adapt_level_5.incl
+** TODO [#A] Find and review current tutorial materials
+   [[file:~/Cello/cello-doc/Talks/1509-enzo/1509.tex][1509.tex]]
+** TODO [#A] Steps for creating cello app
+** TODO [#A] send Matt Cello HDF5 dump
+** TODO [#A] Plan schedule & milestones
+** TODO [#B] Review Enzo Project
+** TODO [#B] Review Enzo code especially if then else.  Riemann, cuda hydro, etc
+** TODO [#B] Read pp 56-74 Leading a Software Development Team
+   Writing Project Plan
+** TODO [#B] Read pp 182-191 Leading a Software Development Team
+   Writing Requirements
+** TODO [#B] Review Enzo website
+** TODO [#B] Review Enzo-P workshop notes
+** TODO [#B] Develop a Project Plan
+   in google docs so other members can edit?
+   at least ask for review
+** TODO [#B] Develop a Requirements Document
+   in google docs so other members can edit?
+   at least ask for review
+** TODO [#B] Add links to slides
+** TODO [#B] Create templates for Initial, Boundary, etc. in Initial?
+   Or just have developers copy existing
+   ? May not know which to copy and which to replace.
+** TODO [#B] Review Bugs
+** TODO [#B] Check out NAMD documentation/tutorials for Enzo-P tutorial ideas
+** TODO [#C] How to contribute? (Expand existing)
+** TODO [#C] [[file:Log/150825/cello-hg-graph.png][cello-hg-graph.png]] and [[file:Log/150825/cello-hg-punchcard.png][cello-hg-punchcard.png]] bitbucket analytics
+** TODO [#C] Workshop particles not implemented, but this is how they will be used more or less
+* TODO UNORDERED TOPICS
+* TODO ORDERED SECTIONS / SLIDES [0/10]
+** TODO [[file:sec-intro.tex][SECTION]] INTRODUCTION [0/4]
+   Welcome
+   Workshop goals
+   Brief summary of Enzo-P / Cello
+   My transitioning from developer to team leader--help!
+*** TODO [[file:faq-purpose.tex][FAQ]]: What is the purpose of this workshop?
+    What I want to tell you:
+
+    Where is Enzo-P now?
+    Where do we want Enzo-P to go?
+    How do we get there?
+
+    What I want to hear from you
+       What changes would be helpful to using Enzo-P?
+           parameter organization / naming
+           functionality prioritization
+	      self-gravity
+              particles
+       What changes would be helpful to developing Enzo-P
+           Fields
+
+    Try to get people excited--need to be excited myself!
+
+*** TODO [[file:faq-motivation.tex][FAQ]]: Why does Enzo-P exist?
+*** TODO [[file:faq-compare.tex][FAQ]]: What are the key differences between Enzo-P and Enzo?
+    Move earlier
+*** TODO [[file:faq-approach.tex][FAQ]]: How does Cello AMR address Enzo's limitations?
+** TODO [[file:sec-present.tex][SECTION]] PRESENT STATE [0/3]
+
+      Enzo-P/Cello status
+
+*** TODO [[file:faq-summary.tex][FAQ]]: What is the current state of Enzo-P?
+    use What are Enzo-P's current and near future capabilities
+    what can Enzo-P do?
+    what can Enzo-P not do?
+*** TODO [[file:faq-current.tex][FAQ]]: What are Enzo-P's current and near future capabilities?
+*** TODO [[file:faq-scaling.tex][FAQ]]: How well does Enzo-P scale?
+    more detailed problem description
+    more detailed performance info
+    Include # blocks--required memory for Enzo
+** TODO [[file:sec-future.tex][SECTION]] FUTURE DIRECTIONS [0/8]
+*** TODO [[file:faq-roadmap.tex][FAQ]]: What is the project roadmap?
+
+    tentative--subject to change from user requests
+    Mike in charge of deciding what
+    I'm in charge of how to do it
+    You guys give us feedback
+
+    Change Month 00 to actual dates (Month 00 == 2014-09-01)
+    make linear top-down
+    Month 00 hydrodynamics
+    move before #6 current and near future capabilities
+
+    include people and summary of what needs to be done
+
+    What needs to be done?
+      Physics: gravity, PP-PM, MHD, chemistry, cosmology, etc.
+      also test problems
+      updating documentation
+      reviewing code/docs
+      parameters
+    What tasks does this correspond to?
+      implement local Method on Fields
+      implement global Method on Fields
+      implement local method on particles(?)
+      implement subcomponents
+    Who is available to do it?
+    Particles
+    Gravity
+    Chemistry
+
+   Imminent functionality within months
+
+   - dynamic load balancing
+      currently static
+      provided automagically by Charm++
+   - checkpoint / restart
+      currently P=1 only
+      provided automagically by Charm++
+   - bug fixes
+      hangs if num procs > num blocks
+      over-refinement at domain boundary
+	 assumes periodic
+      monotonic interpolation (how?)
+     better dlb
+     
+
+   - transition from single-developer to multi-developer
+     "Help, Matt!"
+
+     Initial core Enzo-P developers
+       Brian,Dan,David,Greg,John,Matt,Tom
+
+     What is required?
+     1. Learn to download and run Enzo-P
+     2. Learn to add functionality
+     3. Patience
+    
+   page or two for each person/project and how to proceed
+
+   PLANNED (funding/developer permitting)
+
+   Functionality within months - years
+
+   Prioritized by users (you!)
+
+   local physics (chemistry, cooling, cosmology)
+   Time step: block-adaptive
+
+   PLANNED (funding permitting)
+
+   Physics
+       Enzo Team         Cello Team
+      Chemistry/cosmology Elliptic problems
+      Gravity            Particles
+      PPPM/TreePM        face operations
+      Magnetism          ray data structures
+      Radiation
+   I/O
+      Output single file per k processors
+
+   Particles (plugs directly into existing structure)
+       CommBlock                 Simulation
+	  Block                     FieldDescr
+	  FieldBlock             [ParticleDescr]
+	     [ParticleBlock]
+    Dinosaur particles
+   Self-gravity (Charm++ has FFT, or multigrid)
+   TreePM / PPPM
+   MHD
+
+*** TODO [[file:faq-ver-hydro.tex][FAQ]]: What is needed to complete V1.0 (hydrodynamics)?
+    
+    bug fixes (review bugs)
+       monotonic interpolation
+       lurking AMR synchronization bugs
+       small errors introduced in parallel unigrid
+       I/O incorrect (HDF5 outputs data and block location--needs more tests)    
+       flux-correction
+
+*** TODO [[file:faq-ver-chemistry.tex][FAQ]]: What is needed to complete V2.0 (chemistry)?
+*** TODO [[file:faq-ver-gravity.tex][FAQ]]: What is needed to complete V3.0 (gravity)?
+*** TODO [[file:faq-ver-particles.tex][FAQ]]: What is needed to complete V4.0 (particles)?
+*** TODO [[file:faq-ver-magnetism.tex][FAQ]]: What is needed to complete V5.0 (magnetism)?
+*** TODO [[file:faq-ver-radiation.tex][FAQ]]: What is needed to complete V6.0 (radiation)?
+*** TODO [[file:faq-contribute.tex][FAQ]]: How can I contribute?
+    
+    download and play with as beta tester
+       feedback is crucial
+       I'm not a user of the code
+    add methods
+    add refinement criteria
+    clean parameters
+    review code
+
+    functionality requests
+** TODO [[file:sec-project.tex][SECTION]] PROJECT ORGANIZATION [0/7]
+*** TODO [[file:faq-project.tex][FAQ]]: How is the Enzo-P project currently organized?
+
+   Documentation: http://cello-project.org/doc/
+
+   top-level of following FAQ's
+
+*** TODO [[file:faq-documentation.tex][FAQ]]: What documentation is available?
+    website documentation
+    papers
+
+       PP12
+
+       NSF proposals (first and second)
+
+*** TODO [[file:faq-bugs.tex][FAQ]]: What are some of the known bugs?
+    bug site via project site
+    highlight major
+*** TODO [[file:faq-testing.tex][FAQ]]: How is testing done?
+*** TODO [[file:faq-source.tex][FAQ]]: Where is the source code hosted?
+*** TODO [[file:faq-browse.tex][FAQ]]: How can I browse the source code?
+*** TODO [[file:faq-communicate.tex][FAQ]]: How do Enzo-P developers communicate?
+    Team leader: poorly
+    mailing list
+
+    add #cello? or use #enzo?
+    (Enzo 3.0?)
+    Remove Development trac site?
+** TODO [[file:sec-starting.tex][SECTION]] GETTING STARTED [0/7]
+     DOWNLOAD/CONFIGURE/COMPILE CHARM++
+     DOWNLOAD/CONFIGURE/COMPILE ENZO-P/CELLO
+     RUN 
+*** TODO [[file:faq-install-charm.tex][FAQ]]: How do I download and install Charm++?
+*** TODO [[file:faq-install-enzop.tex][FAQ]]: How do I download and install Enzo-P?
+*** TODO [[file:faq-compile.tex][FAQ]]: How do I configure and compile Enzo-P?
+    generates
+       ./bin/enzo-p
+       ./errors.org
+*** TODO [[file:faq-running.tex][FAQ]]: How do I run an example problem?
+*** TODO [[file:faq-restart.tex][FAQ]]: How do I restart from a checkpoint?
+*** TODO [[file:faq-load-balance.tex][FAQ]]: How do run with dynamic load balancing?
+*** TODO [[file:faq-tools.tex][FAQ]]: What tools does Cello provide?
+    ./build.sh
+
+    org-diff.sh
+    org-log.sh
+    ch-swf.sh
+    plot_mesh.py
+       example: 
+       bin/enzo-p input/adapt-L5-P1.in
+        (Ctrl-C after adapt-0.h5, or edit input to add Schedule { cycle = 0; } (or wait))
+           h5ls adapt-0.h5 | head
+          B0:000_0:100             Group
+          B0:000_0:101             Group
+          B0:000_0:110             Group
+          B0:000_0:111             Group
+          B0:000_1:000             Group
+          B0:000_1:001             Group
+          B0:001_0:100             Group
+          B0:001_0:101             Group
+          B0:001_0:110             Group
+          B0:001_0:111             Group
+       h5ls adapt-0.h5 | tools/plot_mesh.py
+          explain e.g. B0:001_0:110
+    parse_error.awk
+
+    ch-mem.py
+    ch-mem.sh
+    ch-perf.py
+    ch-perf.sh
+    diff-org.awk
+    parse_ls.sh
+    parse_warning.awk
+
+** TODO [[file:sec-parameters.tex][SECTION]] PARAMETER FILES [0/7]
+*** TODO [[file:faq-parameters.tex][FAQ]]: How do I write an Enzo-P parameter file?
+*** TODO [[file:faq-param-problem.tex][FAQ]]: What parameters are available for defining problems?
+*** TODO [[file:faq-param-refine.tex][FAQ]]: What parameters are available for controling mesh refinement?
+*** TODO [[file:faq-param-data.tex][FAQ]]: What parameters are available for defining data structures?
+*** TODO [[file:faq-param-method.tex][FAQ]]: What parameters are available for specifying numerical methods?
+*** TODO [[file:faq-param-io.tex][FAQ]]: What parameters are available for controling I/O?
+*** TODO [[file:faq-param-other.tex][FAQ]]: What other parameters are available?
+** TODO [[file:sec-charm.tex][SECTION]] CHARM++ SYSTEM [0/3]
+*** TODO [[file:faq-charm.tex][FAQ]]: What is Charm++?
+    Add How do I use Charm++ in practice
+    Include code
+    Main
+    Chare -> CommBlock -> EnzoBlock
+
+*** TODO [[file:faq-charm-code.tex][FAQ]]: How do I write a simple Charm program?
+*** TODO [[file:faq-charm-cello.tex][FAQ]]: How is Charm++ used in Cello?
+    Simulation: chare group
+    EnzoBlock/CommBlock: chare array
+    Charm counters for synchronization (control component)
+    Need pup() functions
+    ci files
+** TODO SECTION CODE PHASES
+*** TODO [[file:faq-amr.tex][FAQ]]: How does Cello implement AMR?
+    Show figure
+    Compare with Enzo-p
+    forest of octrees
+    "Block" sequential component
+    each Block contains Fields (later particles)
+    If Block A is adjacent to Block B, then | level(A) - level(B)| <= 1
+    Methods associated with "Refresh" objects that control how ghost zones are filled
+        which fields?
+	what depth?
+   How are Blocks refined or coarsened?
+
+    src/Cello/control_adapt.cpp
+
+    Reference LaLi12.pdf
+
+  How are field data communicated between neighboring Blocks?
+
+  *send*pdf *recv*pdf
+
+    FieldFace
+    class Prolong
+    class Restrict
+     include image from proposal
+
+*** TODO [[file:faq-exchange.tex][FAQ]]: How does Cello exchange data between blocks?
+    class Refresh
+
+** TODO [[file:sec-design.tex][SECTION]] CODE DESIGN [0/13]
+*** TODO [[file:faq-oop.tex][FAQ]]: How is object-oriented programming used in Enzo-P?
+    Mine [[file:~/Courses/Physics-244/oop/oop.pdf][Physics-244 OOP]] slides
+*** TODO [[file:faq-components.tex][FAQ]]: What is Enzo-P's high-level design?
+
+*** TODO [[file:faq-classes.tex][FAQ]]: How are class hierarchies represented in the code
+    class Base
+    class BaseKind : public Base
+
+    Examples
+
+       EnzoInitialSedov -> Initial
+       
+*** TODO [[file:faq-classes-org.tex][FAQ]]: How are Enzo-P's classes organized?
+*** TODO [[file:faq-problems.tex][FAQ]]: How are problems represented in Enzo-P/Cello?
+*** TODO [[file:faq-control.tex][FAQ]]: How are phases of the computation controlled?
+*** TODO [[file:faq-data.tex][FAQ]]: What data types are available?
+*** TODO [[file:faq-fields.tex][FAQ]]: How are fields used in the code?
+*** TODO [[file:faq-boundary.tex][FAQ]]: What boundary conditions are supported?
+*** TODO [[file:faq-initial.tex][FAQ]]: What initial conditions are supported?
+*** TODO [[file:faq-refine.tex][FAQ]]: What refinement criteria are supported?
+    class Refine
+*** TODO [[file:faq-stopping.tex][FAQ]]: What stopping criteria are supported?
+    class Stopping
+*** TODO [[file:faq-methods.tex][FAQ]]: What numerical methods are available?
+** TODO [[file:sec-developing.tex][SECTION]] DEVELOPING ENZO-P [0/6]
+*** TODO [[file:faq-coding.tex][FAQ]]: What are some coding guidelines for Enzo-P developers?
+*** TODO [[file:faq-add-parameter.tex][FAQ]]: How do I add a new input parameter to Enzo-P?
+*** TODO [[file:faq-method.tex][FAQ]]: How do I add a new method to Enzo-P?
+*** TODO [[file:faq-add-initial.tex][FAQ]]: How do I add initial conditions to Enzo-P?
+*** TODO [[file:faq-add-boundary.tex][FAQ]]: How do I add new boundary conditions to Enzo-P?
+*** TODO [[file:faq-add-refine.tex][FAQ]]: How do I add a new refinement criterium to Enzo-P?
+* TODO SCHEDULE
+** 150118 DAY 1. Using Enzo-P
+
+   Download Charm++
+      Configure
+      Compile
+      Run test problem
+   Download Enzo-P/Cello
+      Configure
+      Compile
+   Run test problem
+      start running problem
+      go through parameter file while running
+      view output
+         HDF5
+	 PNG
+   Create test problem [#13]
+      describe problem (implosion)
+      create input file from template
+      # Boundary
+      # Initial
+      # Method
+      # Mesh 
+      ...
+
+  Morning:   Talking
+  Afternoon: Hacking
+  Invite others to talk?
+  Desired feedback?
+
+  0.5 Opening Remarks
+  0.5 Status Update
+  0.5 Current Open Issues
+      interpolation (?)
+      boundary conditions (?)
+  1.0 Project Tour
+      website
+      cello-src: source code 
+	 bitbucket
+	 basic structure
+	   input/ files
+	   src/Cello source
+	   src/Enzo source
+	   src/External source
+	   bin
+	   tools
+      cello-doc: documentation
+	 parameters list
+      cello-bug:
+      cello-run:
+  1.5 Enzo-P/Cello Design I
+     Charm - Cello - Enzo
+     Object Oriented Approach
+     Methods
+	 class EnzoMethodFoo : public Method
+     Initial Conditions
+	 class EnzoInitialFoo : public Initial
+     Boundary Conditions
+	 class EnzoBoundaryFoo : public Boundary
+     Interpolation
+  0.5 Getting Started
+   Running Enzo-P
+  4.0 Afternoon: Running Enzo-P
+** 150119 DAY 2  Developing Enzo-P
+
+ DAY 2.  Developing with Enzo-P / Cello (#14)
+
+   1. Create an EnzoMethodHeat class
+   2. Include the enzo_EnzoMethodHeat.hpp file
+   3. Call the ENzoMethodHeat constructor
+   4. Declare any EnzoMethodHeat parameters
+   5. Read in the EnzoMethodHeat parameters
+   6. Update the Charm++ control file enzo.ci
+   7. Create a test_heat.in test problem
+   8. Run the test and verify test results
+
+ Schedule
+
+ 0.5 Opening Remarks
+ 1.5 Enzo-P/Cello Design II
+ 4.0 Afternoon: Developing Enzo-P
+     suggested 
+
+* TODO HANDOUT
+
+ one-page Enzo-P / Cello essentials
+
+ User Reference
+
+   websites
+   download / install Charm
+   download / install Enzo-P / Cello
+   configuration / porting
+   compiling
+   running sample test problem
+   parameter file outline
+
+ Developer Reference
+
+   bitbucket.org
+
+
+   how to contribute
+* TODO [#A] Enzo-P/Cello Software Survey
+ Software Evaluation Template
+1. How easy was it to install our software?
+   Extremely easy
+   Very easy
+   Moderately easy
+   Slightly easy
+   Not at all easy
+2. How user-friendly is our software's interface?
+   Extremely user-friendly
+   Very user-friendly
+   Moderately user-friendly
+   Slightly user-friendly
+   Not at all user-friendly
+3. How often does our software freeze or crash?
+   Extremely often
+   Very often
+   Moderately often
+   Slightly often
+   Not at all often
+4. How successful is our software in performing its intended task?
+   Extremely successful
+   Very successful
+   Moderately successful
+   Slightly successful
+   Not at all successful
+5. How useful is the included documentation for our software?
+   Extremely useful
+   Quite useful
+   Moderately useful
+   Slightly useful
+   Not at all useful
+6. How helpful is the customer support for our software?
+   Extremely helpful
+   Very helpful
+   Moderately helpful
+   Slightly helpful
+   Not at all helpful
+7. Was the shipping time of our product reasonable?
+   Extremely reasonable
+   Quite reasonable
+   Moderately reasonable
+   Slightly reasonable
+   Not at all reasonable
+8. How can we improve our software?
+9. Overall, are you satisfied with our service, dissatisfied with it, or neither satisfied nor dissatisfied with it?
+   Extremely satisfied
+   Quite satisfied
+   Somewhat satisfied
+   Neither satisfied nor dissatisfied
+   Somewhat dissatisfied
+   Quite dissatisfied
+   Extremely dissatisfied
+10. How likely is it that you would recommend our software to a friend or colleague?
+   Not at all likely 0
+   Extremely likely  10
+* TODO [29/64] FAQ include review
+** DONE faq-add-boundary.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** DONE faq-add-initial.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** DONE faq-add-parameter.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** DONE faq-add-refine.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** DONE faq-amr.tex
+   [[file:sec-phases.tex][sec-phases.tex]]
+** DONE faq-approach.tex
+   [[file:sec-intro.tex][sec-intro.tex]]
+** DONE faq-boundary.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-browse.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** DONE faq-bugs.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** DONE faq-charm-cello.tex
+   [[file:sec-charm.tex][sec-charm.tex]]
+** DONE faq-charm-code.tex
+   [[file:sec-charm.tex][sec-charm.tex]]
+** DONE faq-charm.tex
+   1509.tex
+   [[file:sec-charm.tex][sec-charm.tex]]
+** DONE faq-classes-org.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-classes.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-coding.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** DONE faq-communicate.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** DONE faq-compare.tex
+   [[file:sec-intro.tex][sec-intro.tex]]
+** DONE faq-compile.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** DONE faq-components.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-contribute.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** DONE faq-control.tex
+   [[file:sec-phases.tex][sec-phases.tex]]
+** DONE faq-current.tex
+   [[file:sec-present.tex][sec-present.tex]]
+** DONE faq-data.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-documentation.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** TODO faq-doublemach.tex
+   [[file:1509.tex][1509.tex]]
+** DONE faq-exchange.tex
+   [[file:sec-phases.tex][sec-phases.tex]]
+** DONE faq-fields.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-initial.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** DONE faq-install-charm.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** DONE faq-install-enzop.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** TODO faq-issues.tex
+   [[file:1509.tex][1509.tex]]
+** TODO faq-load-balance.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** TODO faq-methods.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** TODO faq-add-method.tex
+   [[file:sec-developing.tex][sec-developing.tex]]
+** TODO faq-motivation.tex
+   [[file:sec-intro.tex][sec-intro.tex]]
+** TODO faq-oop.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** TODO faq-param-data.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-parameters.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-param-io.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-param-method.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-param-other.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-param-problem.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-param-refine.tex
+   [[file:sec-parameters.tex][sec-parameters.tex]]
+** TODO faq-problems.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** TODO faq-project.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** TODO faq-purpose.tex
+   [[file:sec-intro.tex][sec-intro.tex]]
+** TODO faq-refine.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** TODO faq-requests.tex
+** TODO faq-restart.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** TODO faq-roadmap.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-running.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** TODO faq-scaling.tex
+   [[file:sec-present.tex][sec-present.tex]]
+** TODO faq-source.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** TODO faq-stopping.tex
+   [[file:sec-design.tex][sec-design.tex]]
+** TODO faq-summary.tex
+   [[file:sec-present.tex][sec-present.tex]]
+** TODO faq-TEMPLATE.tex
+** TODO faq-testing.tex
+   [[file:sec-project.tex][sec-project.tex]]
+** TODO faq-tools.tex
+   [[file:sec-starting.tex][sec-starting.tex]]
+** TODO faq-ver-chemistry.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-ver-gravity.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-ver-hydro.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-ver-magnetism.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-ver-particles.tex
+   [[file:sec-future.tex][sec-future.tex]]
+** TODO faq-ver-radiation.tex
+   [[file:sec-future.tex][sec-future.tex]]

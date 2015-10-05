@@ -1,0 +1,108 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssRoadmap}
+
+\begin{frame}[fragile,label=ss-roadmap] 
+\secframetitle{\ssRoadmap}
+%\framesubtitle{(Contingent on funding)}
+\scriptsize
+%\newcommand{\alignbox}[2]{\makebox[1.75in][l]{#2: \textbf{#1}}}
+\newcommand{\alignbox}[2]{}
+\blockblue
+\textbf{\ \\ This preliminary roadmap may change based on \enzo\ community requests}
+\begin{center}
+\begin{minipage}{4.5in}
+\begin{minipage}{2.0in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+\begin{block}<1->{\textbf{Month 00:} Version 1.0 (\textit{hydro})}
+\scriptsize
+\textcolor{enzop}{(10\%) beta testing} \\
+\textcolor{cello}{(80\%) fix bugs, optimize performance}
+\end{block}
+\end{minipage} \ 
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{minipage}{2.0in}
+\begin{block}<4->{\textbf{Month 18:} Version 4.0 (\textit{particles})}
+\scriptsize
+\textcolor{enzop}{ migrate PM, implement P$^3$M / TreePM} \\
+\textcolor{cello}{ ``face-methods'' for MHD}
+\end{block}
+\end{minipage}
+\end{minipage} \\
+\begin{minipage}{4.5in}
+\begin{minipage}{2.0in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+\begin{block}<2->{\textbf{Month 06:} Version 2.0 (\textit{chemistry})}
+\scriptsize
+\textcolor{enzop}{(70\%) chemistry solvers} \\
+\textcolor{cello}{(70\%) linear solvers, adaptive time steps}
+\end{block}
+\end{minipage} \ 
+%\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{minipage}{2.0in}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{block}<5->{\textbf{Month 24:} Version 5.0 (\textit{magnetism})}
+\scriptsize
+\textcolor{enzop}{migrate \enzo\ MHD methods to \enzop} \\
+\textcolor{cello}{adaptive ray tracing support}
+\end{block}
+\end{minipage}
+\end{minipage} \\
+\begin{minipage}{4.5in}
+\begin{minipage}{2.0in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+\begin{block}<3->{\textbf{Month 12:} Version 3.0 (\textit{gravity})}
+\scriptsize
+\textcolor{enzop}{(50\%) cosmological self-gravity, coupled-implicit FLD RT} \\
+\textcolor{cello}{(20\%) particles, optimize linear solvers}
+\end{block}
+\end{minipage} \ 
+\begin{minipage}{2.0in}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{block}<6->{\textbf{Month 36:} Version  6.0 (\textit{radiation})}
+\scriptsize
+\textcolor{enzop}{\enzo+Moray RHD} \\
+\textcolor{cello}{optimize performance and scalability} \\
+\end{block}
+\end{minipage}
+\end{minipage}
+\ \\
+\ \\
+\centerline{\textcolor{enzop}{Red: Enzo-P}}
+\centerline{ \textcolor{cello}{Green: Cello}}
+\end{center}
+
+%\end{quotation}
+
+% Weeks
+% \begin{itemize}
+%   \item Dynamic load balancing via \charm
+%   \item Parallel checkpoint/restart
+%   \item Grackle chemistry/cooling
+%   \item MHD
+% \end{itemize}
+% Few Months
+% \begin{itemize}
+% \item self-gravity
+% \item particles
+% \item 
+% \end{itemize}
+% Many Months
+% 
+% 
+% Ray tracing
+% 
+% 
+% Methods: chemistry/cooling, cosmology, gravity, MHD, radiation
+% Block Data: particles
+% Initial conditions: problem generator, specified with masks
+% Boundary conditions: inflow,outflow,reflecting,periodic with masks
+% Refinement: slope
+% Parallelism: Charm++, Simulation processor group, CommBlock chare array
+% I/O
+%    PNG, HDF5
+%    Checkpoint / Restart: P>1
+\end{frame}
+

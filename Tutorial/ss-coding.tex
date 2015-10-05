@@ -1,0 +1,98 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssCoding}
+
+\begin{frame}[fragile,label=ss-coding] 
+\secframetitle{\ssCoding}
+\framesubtitle{Naming things}
+%\footnotesize
+
+\begin{itemize}
+
+\item {\bluebf{Naming classes}}
+%
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxx\=\kill
+\> \greenit{methods} \' \ \redcode{Enzo}\redcode{Method}\redit{Name} \\
+\> \greenit{initial conditions} \'  \ \redcode{Enzo}\redcode{Initial}\redit{Name} \\
+\> \greenit{boundary conditions} \'  \ \redcode{Enzo}\redcode{Boundary}\redit{Name}
+\end{tabbing}
+%
+\item {\normalsize\bluebf{Naming files}}
+%
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxx\=\kill
+\> \greenit{methods} \' \ \redcode{enzo\_Enzo}\redcode{Method}\redit{Name}\redcode{.[hc]pp} \\
+\> \greenit{initial conditions} \'  \ \redcode{enzo\_Enzo}\redcode{Initial}\redit{Name}\redcode{.[hc]pp} \\
+\> \greenit{boundary conditions} \'  \ \redcode{enzo\_Enzo}\redcode{Boundary}\redit{Name}\redcode{.[hc]pp}
+\end{tabbing}
+\end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------    
+
+\begin{frame}[fragile] 
+\secframetitle{\ssCoding}
+\framesubtitle{Naming things}
+%
+\begin{itemize}
+%
+\item {\normalsize\bluebf{Naming class methods}}
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
+\> \greenit{public methods} \' \ \bluecode{thing\_1}\code{()} \\
+\> \greenit{private methods} \' \ \bluecode{thing\_2}\redcode{\_}\code{()} \\
+\> \greenit{entry methods} \' \ \redcode{p\_}\bluecode{blah}\code{()} \\
+\> \greenit{reduction entry methods} \' \ \redcode{r\_}\bluecode{reduce}\code{()}
+\end{tabbing}
+%
+\item {\normalsize\bluebf{Naming variables}}
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
+\> \greenit{Array dimensions} \'  \   \bluecode{mx},\bluecode{my},\bluecode{mz} \\
+\> \greenit{Active region size} \' \ \bluecode{nx},\bluecode{ny},\bluecode{nz} \\
+\> \greenit{Ghost zone depth} \' \ \bluecode{gx},\bluecode{gy},\bluecode{gz} \\
+\> \greenit{Loop variables} \'   \ \bluecode{ix},\bluecode{iy},\bluecode{iz} 
+\end{tabbing}
+
+\end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------    
+
+\begin{frame}[fragile,label=field-access] 
+\secframetitle{\ssCoding}
+\framesubtitle{Accessing field data}
+\bluebf{Accessing field data is relatively easy}
+\scriptsize
+\newcommand{\gc}[1]{\greencode{#1}}
+\newcommand{\bc}[1]{\bluecode{#1}}
+\newcommand{\rc}[1]{\redcode{#1}}
+\newcommand{\oc}[1]{\orangecode{#1}}
+\newcommand{\mc}[1]{\magentacode{#1}}
+
+\begin{semiverbatim}
+     \gc{Field} \oc{field} = block->data()->field();
+
+     id = field.field_id(\redcode{"density"});
+
+     field.dimensions(id, &mx, &my, &mz);
+     field.size          (&nx, &ny, &nz);
+     field.ghost_depth(id &gx, &gy, &gz);
+
+     \gc{double} * \oc{d} = (\gc{double} *) field.values(id);
+
+     \mc{for} (\gc{int} \oc{iz}=gz; iz<gz+nz; iz++) \{
+        \mc{for} (\gc{int} \oc{iy}=gy; iy<gy+ny; iy++) \{
+           \mc{for} (\gc{int} \oc{ix}=gx; ix<gx+nx; ix++) \{
+              \gc{int} \oc{i} = ix + mx*(iy + my*iz);
+              d[i] = tiny ;
+           \}
+        \}
+     \}
+\end{semiverbatim}
+\end{frame}

@@ -1,0 +1,36 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssBlocks}
+
+\begin{frame}[fragile,label=ss-blocks] 
+\secframetitle{\ssBlocks}
+\greenbf{Block classes represent blocks in the octree forest}
+
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxx\=\kill
+\> \greencode{Data} \> \redit{Block data} \\
+\> \greencode{Sync} \> \redit{Synchronization counters} \\
+\> \greentext{state data} \> \redit{cycle, time, dt, etc.} \\
+\> \greentext{face data} \> \redit{neighbor refinement levels} \\
+\> \ \ \ \ \greenit{etc.}
+\end{tabbing}
+\vspace{-0.2in}
+\begin{itemize}
+\item Implemented as a \redit{chare array}
+  \begin{itemize}
+  \item One \bluecode{EnzoBlock} object per octree forest node
+  \end{itemize}
+\end{itemize}
+
+\greenbf{The \code{Data} class stores numerical data associated with a \code{Block}}
+
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxxxx\=\kill
+\> \greencode{FieldBlock} \> \redit{Field (array) block data} \\
+\> \greencode{ParticleBlock} \> \redit{Particle block data}
+\end{tabbing}
+
+\end{frame}
+

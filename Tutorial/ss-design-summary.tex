@@ -1,0 +1,30 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssDesignSummary}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile,label=ss-design-summary] 
+\secframetitle{\ssDesignSummary}
+
+\begin{itemize}
+\item Enzo-P / Cello has an \bluetext{object-oriented design}
+\item Related classes grouped into \bluetext{components}
+\item Classes are kept relatively simple
+\item Field and (soon) Particle classes simplify implementing Methods
+\item Enzo-P is implemented by inheriting from Cello classes
+  \begin{tabbing}
+xxxx\=xxxxxxxxxx\=\kill    
+\> \greencode{Method} \> \redit{Numerical methods} \\
+\> \greencode{Initial} \>  \redit{Initial conditions} \\
+\> \greencode{Boundary} \>  \redit{Boundary conditions} \\
+\> \greencode{Refine} \>  \redit{Refinement criteria} \\
+\> \ \ \ \ \ \vdots  \> \ \ \ \ \ \vdots 
+  \end{tabbing}
+\end{itemize}
+\vfill
+\centerline{$\qed$}
+\end{frame}
+

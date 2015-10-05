@@ -1,0 +1,526 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssAddMethod}
+
+\begin{frame}[fragile,label=ss-add-method] 
+\secframetitle{\ssAddMethod}
+\textbf{Suppose we wish to add a FE heat equation solver to \enzop.} \\ \ \\
+\centerline{\Large \greentext{$u_t - \alpha \nabla^2 u = 0$}}
+\begin{center}
+\rowcolors[]{1}{blue!5}{blue!10}
+  \begin{tabular}{l}
+  \uncover<2->{\addclass{1.~\textbf{Create \code{EnzoMethodHeat} class}}} \\
+  \uncover<3->{\addclass{2.~Include \code{enzo\_EnzoMethodHeat.hpp} file}} \\
+  \uncover<4->{\addconstruct{3.~Call \code{EnzoMethodHeat} constructor}} \\
+  \uncover<5->{\addparam{4.~Declare \code{EnzoMethodHeat} parameters}} \\
+  \uncover<6->{\addparam{5.~Read in \code{EnzoMethodHeat} parameters}}  \\
+  \uncover<7->{\addcharm{6.~Update \charm\ control file \code{enzo.ci}}} \\
+  \uncover<8->{\addtest{7.~Create \code{test\_heat.in} test problem}} \\
+%  \uncover<8->{\orow{Add \code{test\_heat} to the other regression tests}} \\
+%  \uncover<9->{\erow{Display the \code{test\_heat} test results in \code{index.php}}} \\
+  \uncover<9->{\addtest{8.~Run the test and verify test results}}
+  \end{tabular}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
+
+\addclassbf{Create header and source code files}
+      \begin{itemize}
+      
+         \item \textcolor{red!50!black}
+             {\code{src/Enzo/enzo\_EnzoMethodHeat.hpp}}
+         \item \textcolor{red!50!black}
+             {\code{src/Enzo/enzo\_EnzoMethodHeat.cpp}}
+      \end{itemize}
+      \pause
+      \bluebf{Implement virtual functions}
+      \begin{itemize}
+      
+          \item \textcolor{blue!50!black}
+              {\code{EnzoMethodHeat::EnzoMethodHeat} ()}
+          \item \textcolor{blue!50!black}
+              {\code{EnzoMethodHeat::compute} ()}
+          \item \textcolor{blue!50!black}
+              {\code{EnzoMethodHeat::timestep} ()}
+          \item \textcolor{blue!50!black}
+              {\code{EnzoMethodHeat::pup} ()}
+      \end{itemize}
+\end{frame}
+
+\definecolor{kcol}{rgb}{0.5,0.0,0.5}
+\definecolor{ccol}{rgb}{0.0,0.5,0.0}
+\definecolor{mcol}{rgb}{0.8,0.0,0.0}
+\definecolor{fcol}{rgb}{0.0,0.0,0.8}
+\definecolor{tcol}{rgb}{0.0,0.8,0.0}
+\definecolor{vcol}{rgb}{0.8,0.3,0.0}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
+\addclassbf{Create the \code{src/Enzo/EnzoMethodHeat.hpp} header file}
+\footnotesize
+\begin{tabbing}
+xxxxxxx\=xxxxxx\=\kill
+\textbf<2>{\code{
+\color<1,2>{kcol} class
+\color<1,2>{ccol} EnzoMethodHeat
+\color<1,2>{black}:\ \color<1,2>{kcol}public
+\color<1,2>{ccol} Method
+\color<1,2>{black}     \{ 
+}}  \\
+ \\[-2ex]
+\code{
+\color<1>{kcol} public:
+\color<1>{mcol} // interface
+} \\
+\> \textbf<3>{\code{
+\color<1,3>{fcol}  EnzoMethodHeat 
+\color<1,3>{black} ( 
+\color<1,3>{tcol} double 
+\color<1,3>{vcol} alpha 
+\color<1,3>{black} ,  
+\color<1,3>{tcol} double 
+\color<1,3>{vcol}  courant 
+\color<1,3>{black} );
+ }} \\
+\> \textbf<4>{\code{
+\color<1,4>{kcol} virtual 
+\color<1,4>{kcol} void  
+\color<1,4>{fcol} compute 
+\color<1,4>{black} ( 
+\color<1,4>{tcol} Block  
+\color<1,4>{black} * 
+\color<1,4>{vcol} block
+\color<1,4>{black}) 
+\color<1,4>{kcol}  throw 
+\color<1,4>{black}();
+}} \\
+\> \textbf<4>{\code{
+\color<1,4>{kcol}  virtual 
+\color<1,4>{kcol}  double 
+\color<1,4>{fcol}  timestep 
+\color<1,4>{black}    ( 
+\color<1,4>{tcol}  Block  
+\color<1,4>{black}  * 
+\color<1,4>{vcol}  block 
+\color<1,4>{black}   )  
+\color<1,4>{kcol}    throw 
+\color<1,4>{black}    ();
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol}EnzoMethodHeat
+\color<1,5>{black} () \{\};
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol} EnzoMethodHeat
+\color<1,5>{black} (
+\color<1,5>{tcol} CkMigrateMessage
+\color<1,5>{black}  *
+\color<1,5>{vcol} m
+\color<1,5>{black} ) \{\}
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol}PUPable\_decl\color<1,5>{black}(\color<1,5>{tcol}EnzoMethodHeat\color<1,5>{black} );
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{kcol} void
+\color<1,5>{fcol} pup
+\color<1,5>{black} (
+\color<1,5>{tcol}PUP::er 
+\color<1,5>{black}\&
+\color<1,5>{vcol}p
+\color<1,5>{black} )
+}}
+ \\
+\> \textbf<5>{\code{
+\color<1,5>{black} \{ 
+\color<1,5>{tcol}Method\color<1,5>{black}::pup(
+\color<1,5>{vcol}p
+\color<1,5>{black} ); 
+\color<1,5>{vcol}p
+\color<1,5>{black} |
+\color<1,5>{vcol} alpha\_
+\color<1,5>{black} ;
+\color<1,5>{vcol} p
+\color<1,5>{black} |
+\color<1,5>{vcol}courant\_
+\color<1,5>{black} ;  \};
+}} \\
+\\[-2ex]
+\textbf<6>{\code{
+\color<1,6>{kcol} protected
+\color<1,6>{black}:
+\color<1,6>{mcol} // methods
+}} \\
+\> \textbf<6>{\code{
+\color<1,6>{kcol} template 
+\color<1,6>{black} $<$
+\color<1,6>{kcol} class
+\color<1,6>{tcol}  T
+\color<1,6>{black} $>$ 
+\color<1,6>{kcol} void
+\color<1,6>{fcol}  compute\_ 
+\color<1,6>{black} (
+\color<1,6>{tcol} Block
+\color<1,6>{black} * 
+\color<1,6>{vcol} block
+\color<1,6>{black} ,
+\color<1,6>{tcol} T
+\color<1,6>{black} * 
+\color<1,6>{vcol} Unew
+\color<1,6>{black} );
+%\color<1,6>{kcol} const throw
+%\color<1,6>{black} ();
+}} \\
+\\[-2ex]
+\textbf<3>{\code{
+\color<1,3>{kcol} protected
+\color<1,3>{black} :
+\color<1,3>{mcol}  // attributes
+}} \\
+\> \textbf<3>{\code{
+\color<1,3>{tcol} double
+\color<1,3>{vcol}  alpha\_
+\color<1,3>{black} ;
+}} \\
+\> \textbf<3>{\code{
+\color<1,3>{tcol} double
+\color<1,3>{vcol}  courant\_
+\color<1,3>{black} ;
+}} \\
+\textbf<2>{\code{
+\color<1,2>{black} \};
+}} \\
+\end{tabbing}
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
+\addclassbf{Implement the \code{EnzoMethodHeat::compute()} method}
+\scriptsize
+\begin{semiverbatim}
+\keyword{void} \type{EnzoMethodHeat}::\function{compute} ( \type{Block} * \variable{block}) throw()
+\{
+  \keyword{if} (\variable{block}->\function{is_leaf}()) \{
+
+     \type{Field} \variable{field} = \variable{block}->\function{data}()->\function{field}();
+
+     \keyword{const} \type{int} \variable{id_temp} = \variable{field}.\function{field_id} (\valuetext{"temperature"});
+
+     \type{void} *    \variable{t} = \variable{field}.\function{values} (\variable{id_temp});
+     \keyword{const} \type{int} \variable{p} = \variable{field}.\function{precision} (\variable{id_temp});
+
+     \keyword{if}      (\variable{p} == \valuetext{precision_single})    \function{compute_} (\variable{block},(\keyword{float} *)\variable{t});
+     \keyword{else if} (\variable{p} == \valuetext{precision_double})    \function{compute_} (\variable{block},(\keyword{double}*)\variable{t});
+     \keyword{else if} (\variable{p} == \valuetext{precision_quadruple}) \function{compute_} (\variable{block},(\keyword{long double}*) \variable{t});
+     \keyword{else} 
+       \function{ERROR1}(\valuetext{"EnzoMethodHeat()"}, \valuetext{"precision %d not recognized"}, \variable{p});
+  \}
+  \variable{block}->\function{compute_done}();
+\}
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
+\addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
+\scriptsize
+\begin{semiverbatim}
+\keyword{template} <\keyword{class} \type{T}>
+\type{void} \type{EnzoMethodHeat}::\function{compute_} (\type{T} * \variable{Unew}) \keyword{const throw}()
+\{
+   \type{Field} \variable{field}  = \variable{block}->\function{data}()->\function{field}();
+
+   \keyword{const} \type{int} \variable{id_temp} = \type{field}.\function{field_id} (\valuetext{"temperature"});
+
+   \type{field}.\function{dimensions}  (\variable{id_temp},&\variable{mx},&\variable{my},&\variable{mz});
+   \type{field}.\function{size}                (&\variable{nx},&\variable{ny},&\variable{nz});
+   \type{field}.\function{ghost_depth} (\variable{id_temp},&\variable{gx},&\variable{gy},&\variable{gz});
+        \vdots
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
+\addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
+\begin{semiverbatim}\scriptsize
+        \vdots
+   \keyword{for} (\type{int} \variable{iz}=\variable{gz}; \variable{iz}<\variable{gz}+\variable{nz}; \variable{iz}++) \{
+      \keyword{for} (\type{int} \variable{\variable{iy}}=\variable{gy}; \variable{iy}<\variable{gy}+\variable{ny}; \variable{iy}++) \{
+         \keyword{for} (\type{int} \variable{ix}=\variable{gx}; \variable{ix}<\variable{gx}+\variable{\variable{nx}}; \variable{ix}++) \{
+
+            \type{int} \variable{i} = \variable{ix} + \variable{mx}*(\variable{\variable{iy}} + \variable{my}*\variable{iz});
+
+            \type{double} \variable{Uxx} = \variable{dxi}*(\variable{U}[\variable{i}-\variable{idx}] - \valuetext{2}*\variable{U}[\variable{i}] + \variable{U}[\variable{i}+\variable{idx}]);
+            \type{double} \variable{Uyy} = \variable{dyi}*(\variable{U}[\variable{i}-\variable{idy}] - \valuetext{2}*\variable{U}[\variable{i}] + \variable{U}[\variable{i}+\variable{idy}]);
+            \type{double} \variable{Uzz} = \variable{dzi}*(\variable{U}[\variable{i}-\variable{idz}] - \valuetext{2}*\variable{U}[\variable{i}] + \variable{U}[\variable{i}+\variable{idz}]);
+
+            \variable{Unew}[\variable{i}] = \variable{U}[\variable{i}] + \variable{alpha}_*\variable{dt}*(\variable{Uxx} + \variable{Uyy} + \variable{Uzz});
+         \}
+      \}
+   \}
+\}
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{2.~Include the \code{enzo\_EnzoMethodHeat.hpp} file}
+\addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
+%
+\begin{semiverbatim}
+       \vdots
+   #include "enzo_EnzoMethodPpm.hpp"
+   #include "enzo_EnzoMethodPpml.hpp"
+   #\keyword{include} \valuetext{"enzo_EnzoMethodHeat.hpp"}
+
+   #include "enzo_EnzoProlong.hpp"
+       \vdots
+\end{semiverbatim}
+
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{3.~Call the \code{EnzoMethodHeat} constructor}
+
+\addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
+\footnotesize
+\begin{semiverbatim}
+   Method * EnzoProblem::create_method_ (\dots)
+   \{
+         \vdots
+      if (type == "ppm") \{
+          method = new EnzoMethodPpm;
+      \} else if (type == "ppml") \{
+          method = new EnzoMethodPpml;
+      \} \keyword{else if} (\variable{type} == \valuetext{"heat"}) \{
+          \variable{method} = \keyword{new} \type{EnzoMethodHeat}
+             (\variable{enzo_config->method_heat_alpha,}
+              \variable{enzo_config->field_courant});
+      \} else if
+         \vdots
+   \}
+\end{semiverbatim}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile, label=sss-add-parameters] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{4.~Declare any \code{EnzoMethodHeat} parameters}
+
+\addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.hpp}}
+\footnotesize
+\begin{semiverbatim}
+   class EnzoConfig : public Config \{
+        \vdots 
+   public: // attributes
+        \vdots
+     std::string      interpolation_method;
+
+     \comment{// EnzoMethodHeat}
+     \keyword{double}           \variable{method_heat_alpha};
+        \vdots 
+   \};
+\end{semiverbatim}
+
+\end{frame}
+
+%======================================================================
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{5.~Read in the \code{EnzoMethodHeat} parameters}
+
+\addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.cpp}}
+\footnotesize
+\begin{semiverbatim}
+   void EnzoConfig::read(\dots)
+   \{
+        \vdots
+      interpolation_method = p->value_string 
+        ("Field:interpolation_method","SecondOrderA");
+
+      \variable{method_heat_alpha} = \variable{p}->\function{value_float}
+        (\valuetext{"Method:heat:alpha"},\valuetext{1.0});
+
+      method_null_dt = p->value_float 
+        ("Method:null:dt",std::numeric_limits<double>::max());
+        \vdots
+   \}
+\end{semiverbatim}
+
+\end{frame}
+
+%======================================================================
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{6.~Update the \charm\ control file \code{enzo.ci}}
+
+\addcharmbf{Update \code{src/Enzo/enzo.ci}}
+\footnotesize
+\begin{semiverbatim}
+   module enzo \{
+       \vdots
+     PUPable EnzoInitialImplosion2;
+     PUPable EnzoInitialSedovArray2;
+     PUPable EnzoInitialSedovArray3;
+     PUPable EnzoMethodPpm;
+     PUPable EnzoMethodPpml;
+     \type{PUPable} \variable{EnzoMethodHeat};
+     PUPable EnzoProblem;
+       \vdots
+   \};
+\end{semiverbatim}
+\end{frame}
+
+
+%======================================================================
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{7.~Create a \code{test\_heat.in} test problem}
+\addtestbf{Create \code{input/test\_heat.in}}
+\scriptsize
+\vspace{-0.15in}
+\begin{semiverbatim}
+      \vdots
+   \group{Method} \{
+     \parameter{list} = [\valuetext{"heat"}]; 
+     \subgroup{heat} \{ \parameter{alpha} = \valuetext{1.0}; \} 
+   \}
+\pause
+   \group{Field} \{
+      \parameter{list} = [\valuetext{"temperature"}];
+      \parameter{courant} = \valuetext{0.5};
+   \}
+\pause
+   \group{Adapt} \{
+      \parameter{list} = [\valuetext{"slope"}];
+      \subgroup{slope} \{
+         \parameter{type} = \valuetext{"slope"};
+         \parameter{field_list} = [\valuetext{"temperature"}];
+      \}
+   \}
+\end{semiverbatim}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssAddMethod}
+% \framesubtitle{Add \code{test\_heat} to the other regression tests}
+% 
+% \code{test/SConscript}
+% 
+% \begin{center}
+% \begin{minipage}{3.0in}
+% \blockblue
+% \begin{block}<+->{\textbf{\code{src/Enzo/enzo\_EnzoProblem.cpp}}}
+% \footnotesize
+% \begin{semiverbatim}
+% 
+% test/SConscript:# MethodHeat tests
+% test/SConscript:Clean(env\_mv\_out.RunSerial ('test\_method\_heat-1.unit',bin% \_path + '/enzo-p', 
+% test/SConscript:		ARGS='input/method\_heat-1.in'),
+% test/SConscript:      [Glob('#/' + test\_path + '/method\_heat-1*.png'),
+% test/SConscript:       Glob('#/' + test\_path + '/method\_heat-1*.h5'),
+% test/SConscript:        '#/input/method\_heat-1.in.out'])
+% test/SConscript:env.MakeMovie ("method\_heat-1.swf", "test\_method\_heat-1.unit", \
+% test/SConscript:                ARGS= test\_path + "/method\_heat-1*.png");
+% test/SConscript:Clean(env\_mv\_out.RunParallel ('test\_method\_heat-8.unit',bin\_path + '/enzo-p', 
+% test/SConscript:		ARGS='input/method\_heat-8.in'),
+% test/SConscript:      [Glob('#/' + test\_path + '/method\_heat-8*.png'),
+% test/SConscript:      Glob('#/' + test\_path + '/method\_heat-8*.h5'),
+% test/SConscript:      '#/input/method\_heat-8.in.out'])
+% test/SConscript:env.MakeMovie ("method\_heat-8.swf", "test\_method\_heat-8.unit", \
+% test/SConscript:                ARGS= test\_path + "/method\_heat-8-*.png");
+% \end{semiverbatim}
+% \end{block}
+% \end{minipage}
+% \end{center}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssAddMethod}
+% \framesubtitle{Display the \code{test\_heat} test results in \code{index.php}}
+     
+% \code{test/index.php}
+
+
+% \begin{center}
+% \begin{minipage}{3.0in}
+% \blockblue
+% \begin{block}<+->{\textbf{\code{src/Enzo/enzo\_EnzoProblem.cpp}}}
+% \footnotesize
+% \begin{semiverbatim}
+% test/index.php:test\_summary("Method-heat",
+% test/index.php:	     array("method\_heat-1",
+% test/index.php:		   "method\_heat-8"),
+% test/index.php:test\_group("Method-heat");
+% test/index.php:Method-heat tests serve to test basic functionality of the "heat" method
+% test/index.php:  echo "<h3>HEAT (serial) </h3>";
+% test/index.php:tests("Enzo","enzo-p","test\_method\_heat-1","HEAT 1 block");
+% test/index.php:test\_table ("method\_heat-1",
+% test/index.php:  echo "<h3>HEAT (parallel) </h3>";
+% test/index.php:tests("Enzo","enzo-p","test\_method\_heat-8","HEAT 8 block");
+% test/index.php:test\_table ("method\_heat-8",
+% \end{semiverbatim}
+% \end{block}
+% \end{minipage}
+% \end{center}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{8.~Run the test and verify test results}
+%     Call test problem in \code{test/}
+\begin{center}
+  \ANIMATEGRAPHICS{controls,width=3.5in}{20}{Images/HeatAmr/heat-}{000}{300}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddMethod}
+\framesubtitle{8.~Run the test and verify test results}
+   \addtestbf{Lets make it unstable and see what happens! (bwahaha)}\\
+   \centerline{\code{\group{Field} \{ \parameter{courant} = \valuetext{1.1}; \} }}
+\begin{center}
+  \ANIMATEGRAPHICS{controls,width=3.5in}{5}{Images/HeatUnstable/heat-00}{000}{100}
+\end{center}
+\end{frame}
+

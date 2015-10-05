@@ -1,0 +1,34 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssMethods}
+
+\begin{frame}[fragile,label=ss-methods] 
+\secframetitle{\ssMethods}
+\greenbf{Method classes implement numerical methods on \code{Block}s}
+\ \\
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxx\=\kill
+\> \greencode{compute()} \> \redit{Apply the method to a} \greencode{block} \\
+\> \greencode{name()}    \> \redit{Return the method name (e.g.} \redcode{"ppm"}) \\
+\> \greencode{timestep()} \> \redit{Return maximum allowed timestep}
+\end{tabbing}
+
+\greentext{Current methods include}
+\footnotesize
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+\> \bluecode{EnzoMethodPpm} \> \redit{PPM hydrodynamics (Greg Bryan et al)} \\
+\> \bluecode{EnzoMethodPpml} \> \redit{PPML ideal MHD (Sergey Ustyugov)} \\
+\> \bluecode{EnzoMethodHeat} \> \redit{Forward Euler heat equation } \\
+\> \bluecode{EnzoMethodGravityBiCGStab} \> \redit{BiCG-STAB gravity solver (Dan Reynolds)} \\
+\> \bluecode{EnzoMethodGravityCg} \> \redit{CG gravity solver } \\
+\> \bluecode{EnzoMethodGravityMg0} \> \redit{MG root-grid gravity solver  (incomplete)} \\
+\> \bluecode{EnzoMethodGravityMlat} \> \redit{MG gravity solver  (incomplete)} \\
+\> \bluecode{EnzoMethodGrackle} \> \redit{Grackle chemistry (Britton Smith) (incomplete)} \\
+\> \bluecode{EnzoMethodTurbulence} \> \redit{Turbulent mixing (Alexei Kritsuk)}
+\end{tabbing}
+\end{frame}
+
+

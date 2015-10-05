@@ -1,0 +1,88 @@
+\input{1509-BEGIN}
+
+
+\includeonly{
+  ss-purpose,
+%  s-intro,
+%  s-present,
+%  s-future,
+%  s-project,
+%  s-starting,
+%  s-parameters,
+  s-charm,
+  s-design,
+  s-control,
+  s-developing
+ }
+
+\begin{document}
+
+\TITLE{Using and Developing Enzo-P/Cello}{ \ \\
+ Scalable Adaptive Mesh Refinement \\
+ for Astrophysics and Cosmology \\
+\ \\
+  PART II: Developing with Cello \\
+\ \\
+%\tiny{National Science Foundation} \\
+\tiny{NSF SI2-SSE-1440709 PHY-1104819 AST-0808184}}
+
+
+
+\frame[label=titlepage]{ \titlepage }
+
+%\setbeamertemplate{frametitle}{%
+%\begin{beamercolorbox}[wd=\textwidth, ht=0.5cm, dp=0.2cm]{frametitle}
+%\usebeamerfont{frametitle}\insertframetitle
+%\end{beamercolorbox}}
+
+\newcommand{\modframetitle}[1]{\frametitle{(\arabic{ModuleCounter}) #1 }}
+\newcommand{\secframetitle}[1]{\frametitle{(\arabic{ModuleCounter}.\arabic{SectionCounter}) #1 }}
+
+\newcounter{ModuleCounter}
+\newcommand{\NEWMOD}{\stepcounter{ModuleCounter}\setcounter{SectionCounter}{0}}
+\newcounter{SectionCounter}
+\newcommand{\NEWSEC}{\stepcounter{SectionCounter}}
+
+\include{ss-purpose}
+
+\begin{frame}[fragile,label=outline] 
+\frametitle{Modules}
+\begin{center}
+\begin{minipage}{3.25in}
+%\rowcolors[]{1}{blue!5}{blue!10}
+%\begin{tabular}{l}
+\begin{enumerate}
+%--------------------------------------------------
+%\item  \hyperlink{s-intro<1>}      {\BUTTON {\orow{\sIntro}}} \\
+%\item  \hyperlink{s-present<1>}    {\BUTTON {\erow{\sPresent}}} \\
+%\item  \hyperlink{s-future<1>}     {\BUTTON {\orow{\sFuture}}} \\
+%\item  \hyperlink{s-project<1>}    {\BUTTON {\erow{\sProject}}} \\
+%\item  \hyperlink{s-starting<1>}   {\BUTTON {\orow{\sStarting}}} \\
+%\item  \hyperlink{s-parameters<1>} {\BUTTON {\erow{\sParameters}}} \\
+\item  \hyperlink{s-charm<1>}      {\BUTTON {\orow{\sCharm}}} \\
+\item \hyperlink{s-design<1>}      {\BUTTON {\erow{\sDesign}}} \\
+\item \hyperlink{s-control<1>}      {\BUTTON {\orow{\sControl}}} \\
+\item  \hyperlink{s-developing<1>} {\BUTTON {\erow{\sDeveloping}}}
+%\end{tabular}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+
+  \include{s-intro}
+  \include{s-present}
+  \include{s-future}
+  \include{s-project}
+
+  \include{s-starting}
+  \include{s-parameters}
+  \include{s-charm}
+
+  \include{s-design}
+  \include{s-control}
+
+  \include{s-developing}
+  
+\input{1509-END}
+

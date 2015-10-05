@@ -1,0 +1,134 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssRunning}
+
+\begin{frame}[fragile,label=ss-running] 
+\secframetitle{\ssRunning}
+\framesubtitle{Enzo-P output: header text}
+\tiny
+\begin{semiverbatim}
+\uncover<1->{\prompt \redcode{charmrun +p4 bin/enzo-p input/test_implosion.in}}\cursor{1}
+\uncover<2->{Charmrun> started all node programs in 1.298 seconds.
+Converse/Charm++ Commit ID: 
+Charm++> scheduler running in netpoll mode.
+CharmLB> Load balancer assumes all CPUs are same.
+Charm++> Running on 1 unique compute nodes (8-way SMP).
+Charm++> cpu topology info is gathered in 0.002 seconds.
+UNIT TEST BEGIN
+0 00001.06  ==============================================
+0 00001.06  
+0 00001.06    .oooooo.             oooo  oooo            
+0 00001.06   d8P'  `Y8b            `888  `888            
+0 00001.06  888           .ooooo.   888   888   .ooooo.  
+0 00001.06  888          d88' `88b  888   888  d88' `88b 
+0 00001.06  888          888ooo888  888   888  888   888 
+0 00001.06  `88b    ooo  888    .o  888   888  888   888 
+0 00001.06   `Y8bood8P'  `Y8bod8P' o888o o888o `Y8bod8P' 
+0 00001.06  
+0 00001.06  A Parallel Adaptive Mesh Refinement Framework
+0 00001.06  
+0 00001.06    Laboratory for Computational Astrophysics
+0 00001.06          San Diego Supercomputer Center
+0 00001.06       University of California, San Diego
+0 00001.06  See 'LICENSE_CELLO' for software license information}
+\end{semiverbatim}
+\end{frame}
+\begin{frame}[fragile]
+\secframetitle{\ssRunning}
+\framesubtitle{Enzo-P output: configuration settings}
+\tiny
+\begin{semiverbatim}
+0 00001.06  BEGIN CELLO: Sep 19 14:37:45
+0 00001.06 Define Simulation processors 4
+0 00001.06 Define CELLO_ARCH linux_gnu
+0 00001.06 Define CELLO_PREC double
+0 00001.06 Define CC            gcc 
+0 00001.06 Define CFLAGS        -Wall -O3 -g   
+0 00001.06 Define CPPDEFINES    CONFIG_PRECISION_DOUBLE SMALL_INTS H5_USE_16_API NO_FREETYPE CONFIG_USE_PAPI 
+PAPI3 CONFIG_USE_MEMORY CONFIG_HAVE_MERCURIAL CONFIG_USE_CHARM CONFIG_USE_CELLO
+0 00001.06 Define CPPPATH       #/include /usr/local/include /usr/include
+0 00001.06 Define CXX           /home/bordner/Charm/charm/bin/charmc -language charm++  
+0 00001.06 Define CXXFLAGS      -Wall -O3 -g     -balancer GreedyCommLB -balancer GreedyLB -balancer HybridLB
+ -balancer NeighborLB -balancer RandCentLB -balancer RefineCommLB -balancer RefineLB -balancer RotateLB
+0 00001.06 Define FORTRANFLAGS  -Wall -O3 -g    -fdefault-real-8 -fdefault-double-8
+0 00001.06 Define FORTRAN       gfortran
+0 00001.06 Define FORTRANLIBS   gfortran
+0 00001.06 Define FORTRANPATH   #/include
+0 00001.06 Define LIBPATH       #/lib /usr/local/lib /usr/lib /lib/x86_64-linux-gnu/lib .
+0 00001.06 Define LINKFLAGS     -Wall -O3 -g     -module GreedyCommLB -module GreedyLB -module HybridLB -modu
+le NeighborLB -module RandCentLB -module RefineCommLB -module RefineLB -module RotateLB
+0 00001.06 Define BUILD HOST    gedeckt
+0 00001.06 Define BUILD DIR     /home/bordner/Cello/cello-src
+0 00001.06 Define BUILD DATE    2015-09-19
+0 00001.06 Define BUILD TIME    21:36:02
+0 00001.06 Define CHARM_VERSION 60500
+0 00001.06 Define CHANGESET     3841+
+\end{semiverbatim}
+\end{frame}
+\begin{frame}[fragile]
+\secframetitle{\ssRunning}
+\framesubtitle{Enzo-P output: parameters accessed}
+\tiny
+\begin{semiverbatim}
+0 00001.06  BEGIN ENZO-P
+0 00001.06 Memory bytes 1013270 bytes_high 1013301
+0 00001.06 Parameters read in input/test_implosion.in
+0 00001.06 Parameters accessed Adapt:interval 1 [default]
+0 00001.06 Parameters accessed Adapt:list[0] "SLOPE"
+0 00001.06 Parameters accessed Adapt:SLOPE:type "slope"
+0 00001.06 Parameters accessed Adapt:min_face_rank 0 [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:field_list[0] "density"
+0 00001.06 Parameters accessed Adapt:SLOPE:min_refine 0.30000000000000 [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:max_coarsen 0.15000000000000 [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:max_level 2147483647 [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:level_exponent 0.0000000000000 [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:output  [default]
+0 00001.06 Parameters accessed Adapt:SLOPE:include_ghosts false [default]
+0 00001.06 Parameters accessed Boundary:type "reflecting"
+0 00001.06 Parameters accessed Boundary:axis all [default]
+0 00001.06 Parameters accessed Boundary:face all [default]
+0 00001.06 Parameters accessed Domain:lower[0] 0.0000000000000
+0 00001.06 Parameters accessed Domain:upper[0] 0.30000000000000
+\vdots
+\end{semiverbatim}
+\end{frame}
+\begin{frame}[fragile]
+\secframetitle{\ssRunning}
+\framesubtitle{Enzo-P output: simulation cycles}
+\tiny
+\begin{semiverbatim}
+0 00002.07  -------------------------------------
+0 00002.07 Simulation cycle 0000
+0 00002.07 Simulation time-sim 0.000000000000e+00
+0 00002.07 Simulation dt 0.000000000000e+00
+0 00002.07 Performance unknown time-usec 0
+0 00002.07 Performance simulation time-usec 3927213
+0 00002.07 Performance cycle time-usec 0
+0 00002.07 Performance cycle bytes-curr 0
+0 00002.07 Performance cycle bytes-high 0
+0 00002.07 Performance cycle bytes-highest 0
+0 00002.07 Performance initial time-usec 971452
+0 00002.07 Performance adapt time-usec 1326831
+0 00002.07 Performance refresh time-usec 0
+0 00002.07 Performance compute time-usec 0
+0 00002.07 Performance output time-usec 1608215
+0 00002.07 Performance stopping time-usec 0
+0 00002.07 Performance simulation num-blocks 184
+0 00002.07  -------------------------------------
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\secframetitle{\ssRunning}
+\begin{minipage}{2.5in}
+\only<1->{\ANIMATEGRAPHICS{width=2.5in}{20}{Images/Implosion/d-}{000}{200}}
+\end{minipage}
+%\begin{minipage}{2in}
+%\only<2->{\ANIMATEGRAPHICS{width=2.0in}{20}{Images/Implosion/implosion-mesh-}{000}{200}}
+%\end{minipage}
+\end{frame}
+

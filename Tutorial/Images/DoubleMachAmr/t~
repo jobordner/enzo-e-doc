@@ -1,0 +1,10 @@
+#!/bin/tcsh -f
+
+set i = 0
+
+while ($i <= 272)
+   set j = `printf "%04d" $i`
+echo    convert doublemach-de-$j.png doublemach-mesh-$j.png -append doublemach-$j.png
+   @ i = $i + 1
+end
+

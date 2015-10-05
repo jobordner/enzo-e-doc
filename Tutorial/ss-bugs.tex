@@ -1,0 +1,66 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssBugs}
+
+\begin{frame}[fragile,label=ss-bugs] 
+\secframetitle{\ssBugs}
+\framesubtitle{\url{http://cello-project.org/bug/}}
+\rowcolors[]{1}{blue!5}{blue!10}
+\begin{center}
+\vspace{-0.1in}
+\begin{minipage}{4.00in}
+\footnotesize
+\begin{tabular}{rll}
+% (As of 2015-09-03)
+% 2	2013-06-18 	Excessive syncronization during mesh adaptation 
+% 3	2013-06-18 	Multiple refresh steps are performed 
+% 4	2013-06-18 	ProlongLinear requires ghost depth of four 
+% 12	2013-09-10 	Parallel runs may crash in inteuler with numerical errors 
+% 13	2014-08-19 	I/O is incorrect for ip stride != 1 
+% 19	2015-03-26 	method_ppm-1 and method_ppm-8 produce slightly different results
+% 21	2014-03-17 	Small errors near corners of just-refined blocks 
+% 31	2014-01-22 	Refresh errors in larger-scale parallel runs 
+% 34	2014-02-21 	Several components seem to have memory leaks 
+% 36	2014-03-17 	Adapt crashes (surprise) in sdsc-demo.in 
+% 40	2014-04-29 	adapt-L5 problem fails sometimes 
+% 45	2014-05-11 	Performance output for components seems incorrect 
+% 46	2015-05-06 	Adapt seems to not be coarsening some blocks that should coarsen 
+% 51	2014-06-27 	Parameter file syntax error messages display incorrect line number 
+% 56	2014-08-21 	Restart fails when number of processors is changed 
+% 57	2014-09-25 	stale Charm++ array messages in double mach problem cycle 846 
+% 59	2014-11-20 	Occasional segmentation faults in file output from dereferencing null file_ pointer 
+% 60	2015-07-06 	Load balancing unit tests occasionally hang 
+% 68	2015-03-10 	Gravity solver still diverges sometimes 
+% 72	2015-05-08 	RefineSlope does not work correctly sometimes 
+% 73	2015-06-12 	New implementation of Refresh sometimes hangs sometimes crashes 
+% 74	2015-06-16 	Enzo-P crashes in parse.l with Charm version 6.6.1 with P > 1 
+% 75	2015-06-18 	method_heat-8 regression test failed 
+% 76	2015-07-07 	Refresh add_fields() does not work as expected 
+% 78	2015-07-15 	Mg0 solver has grid-effects 
+% 79  	2015-07-27      Synchronization in Refresh is incorrect for Mg0
+\uncover<1->{ID} & Date & \centerline{\uncover<1->{Summary}} \\
+\hline 
+{\orow{2}} & 13-06-18 & \orow{Excessive syncronization during mesh adaptation} \\
+{\orow{3}} &13-06-18 & \orow{Multiple refresh steps are performed} \\
+{\orow{4}} &13-06-18 & \orow{ProlongLinear requires ghost depth of four} \\
+{\orow{13}} &14-08-19 & \orow{I/O is incorrect for ip stride $\ne$ 1} \\
+{\orow{19}} &15-03-26 & \orow{method\_ppm-1 and method\_ppm-8 differ slightly} \\
+{\orow{21}} & 14-03-17 & \orow{Small errors near corners of just-refined blocks} \\
+{\orow{31}} & 14-01-22 & \orow{Refresh errors in larger-scale parallel runs} \\
+{\orow{34}} & 14-02-21 & \orow{Several components seem to have memory leaks} \\
+{\orow{36}} & 14-03-17 & \orow{Adapt crashes (surprise) in sdsc-demo.in} \\
+{\orow{40}} & 14-04-29 & \orow{adapt-L5 problem fails sometimes} \\
+{\orow{45}} & 14-05-11 & \orow{Performance output for components seems incorrect} \\
+{\orow{46}} & 15-05-06 & \orow{Adapt doesn't always coarsen when is seems it should} \\
+{\orow{51}} & 14-06-27 & \orow{Parameter file error messages show wrong line number} \\
+{\orow{56}} & 14-08-21 & \orow{Restart fails when number of processors is changed} \\
+{\orow{60}} & 15-09-03 & \orow{Load balancing unit tests occasionally hang} \\
+{\orow{74}} & 15-06-16 & \orow{Enzo-P crashes with Charm version 6.6.1 with P $>$ 1} \\
+{\orow{76}} & 15-07-07 & \orow{Refresh add\_fields() does not work as expected}
+\end{tabular}
+\end{minipage}
+\end{center}
+\end{frame}
+

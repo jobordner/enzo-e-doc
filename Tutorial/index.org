@@ -1,0 +1,549 @@
+* Enzo Workshop 2015
+** TODO [#A] section on "do something" after parameters
+** TODO [#A] finish and email slides ASAP
+** TODO [#A] blast or similar, maybe collapse
+** TODO [#A] Mike: color key for slide 14 table
+** TODO [#A] Mike: explain roadmap colors
+** TODO [#A] tutorial: Section summary
+** TODO [#A] tutorial: talk summary
+** TODO [#A] tutorial: discussion topics, parameters, particles.  Eg riemann solvers
+   find who promised what in proposal
+   meet with them to pre-plan how to proceed
+
+   particles: Wise? Bryan?
+   gravity:   (Reynolds)
+   chemistry: Smith
+   radiation: Wise
+   mhd:       Collins
+
+** TODO [#A] tutorial data: Field objects--more slides?
+ 
+
+int 	insert_permanent (const std::string &name)
+ 	Insert a new field. 
+ 
+int 	insert_temporary (const std::string &name)
+ 	Insert a new field. 
+ 
+ 
+double 	courant () const
+ 	courant number for fields 
+ 
+int 	bytes_per_element (id) const
+ 	Number of bytes per element required by the given field. 
+ 
+bool 	is_permanent (id_field) const
+ 	Whether the field is permanent or temporary. 
+ 
+int 	num_permanent () const
+ 	Return the number of permanent fields. 
+ 
+ 
+int 	field_size (id, *nx=0, *ny=0, *nz=0) const
+
+ 
+ 
+const char * permanent () const
+ 
+void 	cell_width (double xm, double xp, double *hx, double ym=0, double yp=0, double *hy=0, double zm=0, double zp=0, double *hz=0) const
+ 	Return width of cells along each dimension. 
+ 
+void 	clear (float value=0.0, id_first=-1, id_last=-1)
+ 	Clear specified array(s) to specified value. 
+ 
+void 	allocate_permanent (bool ghosts_allocated=false)
+ 	Allocate storage for the field data. 
+ 
+void 	allocate_temporary (id)
+ 	Allocate storage for the temporary fields. 
+
+void 	deallocate_temporary (id)
+ 	Deallocate storage for the temporary fields. 
+ 
+bool 	permanent_allocated () const
+ 	Return whether array is allocated or not. 
+ 
+void 	reallocate_permanent (bool ghosts_allocated=false)
+ 
+void 	deallocate_permanent ()
+ 	Deallocate storage for the field data. 
+
+size_t 	permanent_size () const
+ 	Return whether array is allocated or not. 
+ 
+ 
+bool 	ghosts_allocated () const
+ 	Return whether ghost cells are allocated or not. 
+ 
+void 	print (const char *message, bool use_file=false) const
+ 	Print basic field characteristics for debugging. 
+** TODO [#A] tutorial data: groups
+
+   void add (std::string item, std::string group)
+   Add an item to a group. More...
+ 
+   bool is_in (std::string item, std::string group) const
+   Return whether the item is in the given group. More...
+ 
+   int size (std::string item) const
+   Return the number of items in the group. More...
+ 
+   std::string item (std::string group, int index)
+
+   Parameter file
+   --------------
+
+   source code
+   -----------
+
+** TODO [#A] tutorial data: proposed Particles class
+
+   parameter file
+   --------------
+
+   Particle {
+      list = ["dark", "star_1", "star_2"];
+      dark {
+         basic_attributes = ["mass", "velocity", ... ];
+      };
+
+      star_1 {
+         basic_attributes = ["mass", "velocity", ... ];
+         extra_attributes = ["age", "float",
+                             "type", "int"];
+         groups = ["star"];
+      };
+
+      star_2 {
+         basic_attributes = ["mass", "velocity", ... ];
+         extra_attributes = ["age", "float",
+                             "type", "int"];
+         groups = ["star"];
+      }
+    }
+
+    source code
+    -----------
+
+    Particle particle = block()->data()->particle();
+
+    int id_star1 = particle.id("star_1");
+    int id_star2 = particle.id("star_1");
+    int id_dark  = particle.id("dark");
+
+    particle.kick(id_dark);  // update momentum of all DM particles in the block
+    particle.drift(id_dark); // move all DM particles in the block
+
+    [refresh();]  // update particles, moving off or on grid, with ghost zone
+
+    for (int id=0; id < particle.num_types(); id++) {
+       // loop through star particle groups
+       if (particle.groups()->is_in(id,"star")) {
+          int np = particle.num_particles(id);
+	  for (int ip=0; ip<np; ip++) {
+	     // mass of the ip'th particle in the list of type id in the block
+	     double mass = (double) particle.mass(id,ip);
+	     float age = (float) particle.attribute(id,ip,"age");
+          }
+       }
+    }
+
+** TODO [#A] tutorial charm: contribute()
+** TODO [#A] tutorial charm: what other charm stuff, eg bugs, control_sync, pup, strucured daggar, etc
+** TODO [#A] tutorial devel: Purpose: transition from single developer to multi-developer
+   already started: Dan Reynolds has written the main AMR gravity solver BiCG-Stab
+   and we are collaborating on writing a MG preconditioner and adaptive MG solvers
+** TODO [#A] tutorial  physics: polish cosmology todo to Hydro / gravity etc.
+   do what needs to be done to do X
+   chemistry
+   cosmology
+** TODO [#A] review: Review parameters documentation == code
+** TODO [#A] review: Review cello-design
+** TODO [#A] tutorial; Review all fig's
+** TODO [#A] review: Full project review, correct and document as I go
+** TODO [#A] propose: Slides on proposed features, eg alternative solvers
+** TODO [#A] design: Top level code run-through
+** DONE [#A] read: Reread / review [[file:~/Organize/Projects/CelloDoc/index.org][Letting Go of the Words]]
+** TODO [#A] gravity: Run Gravity scaling tests on comet
+** TODO [#A] Discuss Cello current issues eg periodic b.c.
+** TODO [#A] Discuss Enzo-P/Cello current ommisions
+   - flux-correction
+   - monotonic/conservative interpolation
+     (details in development section on restrict / prolong)
+** TODO [#A] Discuss 
+   in Charm section
+** TODO [#A] Organize FAQ into Modules
+   Overview
+** TODO [#A] Mine [[http://client64-249.sdsc.edu/cello-dev][Cello Development Trac Site]] for useful stuff
+** TODO [#A] Refactor input files
+   find common input parameters, e.g. method_ppm.incl, adapt_level_5.incl
+** TODO [#A] Find and review current tutorial materials
+   [[file:~/Cello/cello-doc/Talks/1509-enzo/1509.tex][1509.tex]]
+** TODO [#A] Steps for creating cello app
+** TODO [#A] send Matt Cello HDF5 dump
+** TODO [#A] Plan schedule & milestones
+** TODO [#B] Record talk
+** TODO [#B] Cs writing for physicists-- need feedback
+** TODO [#B] Code developed by group betterthan single dwvwloper
+** TODO [#B] Everything you ever wanted to know about enzo-p ...
+** TODO [#B] Review Enzo Project
+** TODO [#B] Review Enzo code especially if then else.  Riemann, cuda hydro, etc
+** TODO [#B] Read pp 56-74 Leading a Software Development Team
+   Writing Project Plan
+** TODO [#B] Read pp 182-191 Leading a Software Development Team
+   Writing Requirements
+** TODO [#B] Review Enzo website
+** TODO [#B] Review Enzo-P workshop notes
+** TODO [#B] Develop a Project Plan
+   in google docs so other members can edit?
+   at least ask for review
+** TODO [#B] Develop a Requirements Document
+   in google docs so other members can edit?
+   at least ask for review
+** TODO [#B] Add links to slides
+** TODO [#B] Create templates for Initial, Boundary, etc. in Initial?
+   Or just have developers copy existing
+   ? May not know which to copy and which to replace.
+** TODO [#B] Review Bugs
+** TODO [#B] Check out NAMD documentation/tutorials for Enzo-P tutorial ideas
+** TODO [#C] Add templates for Boundary, Method, etc.
+   enzo_EnzoMethodTEMPLATE.cpp
+** TODO [#C] Chicken lady desktop
+** TODO [#C] Finalize questionaire(s)
+** TODO [#C] Print questionaire(s)
+** TODO [#C] How to contribute? (Expand existing)
+** TODO [#C] [[file:Log/150825/cello-hg-graph.png][cello-hg-graph.png]] and [[file:Log/150825/cello-hg-punchcard.png][cello-hg-punchcard.png]] bitbucket analytics
+** TODO [#C] Workshop particles not implemented, but this is how they will be used more or less
+* TODO UNORDERED TOPICS
+* TODO SCHEDULE
+** 150930 DAY 1. Using Enzo-P
+
+   Download Charm++
+      Configure
+      Compile
+      Run test problem
+   Download Enzo-P/Cello
+      Configure
+      Compile
+   Run test problem
+      start running problem
+      go through parameter file while running
+      view output
+         HDF5
+	 PNG
+   Create test problem [#13]
+      describe problem (implosion)
+      create input file from template
+      # Boundary
+      # Initial
+      # Method
+      # Mesh 
+      ...
+
+  2.0 hours talk
+  2.0 hours hack
+
+  0.25 Opening Remarks
+  0.25 Status Update
+  0.25 Current Open Issues
+      interpolation (?)
+      boundary conditions (?)
+      
+  1.0 Project Tour
+      website
+      cello-src: source code 
+	 bitbucket
+	 basic structure
+	   input/ files
+	   src/Cello source
+	   src/Enzo source
+	   src/External source
+	   bin
+	   tools
+      cello-doc: documentation
+	 parameters list
+      cello-bug:
+      cello-run:
+  1.5 Enzo-P/Cello Design I
+     Charm - Cello - Enzo
+     Object Oriented Approach
+     Methods
+	 class EnzoMethodFoo : public Method
+     Initial Conditions
+	 class EnzoInitialFoo : public Initial
+     Boundary Conditions
+	 class EnzoBoundaryFoo : public Boundary
+     Interpolation
+  0.5 Getting Started
+   Running Enzo-P
+  4.0 Afternoon: Running Enzo-P
+** 151001 DAY 2  Developing Enzo-P
+
+ DAY 2.  Developing with Enzo-P / Cello (#14)
+
+   1. Create a test_heat.in test problem
+   2. Create an EnzoMethodHeat class
+   3. Include the enzo_EnzoMethodHeat.hpp file
+   4. Call the EnzoMethodHeat constructor
+   5. Declare any EnzoMethodHeat parameters
+   6. Read in the EnzoMethodHeat parameters
+   7. Update the Charm++ control file enzo.ci
+   8. Run the test and verify test results
+
+ Schedule
+
+ 0.5 Opening Remarks
+ 1.5 Enzo-P/Cello Design II
+ 4.0 Afternoon: Developing Enzo-P
+     suggested 
+
+* TODO HANDOUT
+
+ one-page Enzo-P / Cello essentials
+
+ User Reference
+
+   websites
+   download / install Charm
+   download / install Enzo-P / Cello
+   configuration / porting
+   compiling
+   running sample test problem
+   parameter file outline
+
+ Developer Reference
+
+   bitbucket.org
+
+
+   how to contribute
+* TODO [#A] Enzo-P/Cello Software Survey
+** Software Evaluation Template 1
+1. How easy was it to install our software?
+   Extremely easy
+   Very easy
+   Moderately easy
+   Slightly easy
+   Not at all easy
+2. How user-friendly is our software's interface?
+   Extremely user-friendly
+   Very user-friendly
+   Moderately user-friendly
+   Slightly user-friendly
+   Not at all user-friendly
+3. How often does our software freeze or crash?
+   Extremely often
+   Very often
+   Moderately often
+   Slightly often
+   Not at all often
+4. How successful is our software in performing its intended task?
+   Extremely successful
+   Very successful
+   Moderately successful
+   Slightly successful
+   Not at all successful
+5. How useful is the included documentation for our software?
+   Extremely useful
+   Quite useful
+   Moderately useful
+   Slightly useful
+   Not at all useful
+6. How helpful is the customer support for our software?
+   Extremely helpful
+   Very helpful
+   Moderately helpful
+   Slightly helpful
+   Not at all helpful
+7. Was the shipping time of our product reasonable?
+   Extremely reasonable
+   Quite reasonable
+   Moderately reasonable
+   Slightly reasonable
+   Not at all reasonable
+8. How can we improve our software?
+9. Overall, are you satisfied with our service, dissatisfied with it, or neither satisfied nor dissatisfied with it?
+   Extremely satisfied
+   Quite satisfied
+   Somewhat satisfied
+   Neither satisfied nor dissatisfied
+   Somewhat dissatisfied
+   Quite dissatisfied
+   Extremely dissatisfied
+10. How likely is it that you would recommend our software to a friend or colleague?
+   Not at all likely 0
+   Extremely likely  10
+** Evaluation template 2
+                                                Evaluation Form
+
+Event:
+
+Date:
+
+1 = Awful. I wouldn't do this again.
+2 = Not very good. Definitely needs work.
+3 = Average. I've been to/seen better, but I've sat through worse.
+4 = Good. I definitely learned something.
+5 = Outstanding. This was fantastic! Can I come again?
+
+On a scale of 1-5 (see the key above), how relevant was today's session to your needs?
+1   	2   	3  	4  	5 
+
+On a scale of 1-5 (see the key above), how would you rate today's trainer?
+1  	2   	3   	4   	5  
+
+On a scale of 1-5 (see the key above), how would you rate today's session?
+1  	2  	3  	4  	5 
+
+What did you like best about today's session?
+
+ 
+
+What did you like least?
+
+
+
+Please use this space to make additional comments.
+
+* TODO [1/1] PRESENTATION
+
+   #A   0%  no content
+   #B  25% incomplete content
+   #C  50% some editing needed
+   #D  75% mostly done, incomplete formatting
+   #E 100% essentially done awaiting final draft
+
+** TODO [#D] [4/13] [[file:1509.tex][1509.tex]]
+   Full presentation
+   Title page
+   Start with purpose, then show top-level index
+
+*** DONE [#E] [[file:ss-purpose.tex][ss-purpose]]
+*** DONE [#E] [4/4] [[file:s-intro.tex][s-intro.tex]]
+**** DONE [#E] [[file:ss-motivation.tex][ss-motivation]]
+**** DONE [#E] [[file:ss-amr.tex][ss-amr]]
+**** DONE [#E] [[file:ss-compare.tex][ss-compare]]
+**** DONE [#E] [[file:ss-approach.tex][ss-approach]]
+**** TODO [#A] [[file:ss-intro-summary.tex][ss-intro-summary]]
+*** DONE [#D] [4/4] [[file:s-present.tex][s-present.tex]]
+**** DONE [#E] [[file:ss-state.tex][ss-state]]
+     needs updated simulation: collapse of Enzo Workshop 2015?
+     could use longer problems
+     want to add mesh to 2015
+**** DONE [#E] [[file:ss-current.tex][ss-current]]
+     need to update
+**** DONE [#E] [[file:ss-scaling.tex][ss-scaling]]
+**** DONE [#D] [[file:ss-issues.tex][ss-issues]]
+**** TODO [#A] [[file:ss-present-summary.tex][ss-present-summary]]
+*** TODO [#C] [8/8] [[file:s-future.tex][s-future.tex]]
+**** TODO [#E] [[file:ss-roadmap.tex][ss-roadmap]]
+**** TODO [#E] [[file:ss-ver-hydro.tex][ss-ver-hydro]]
+**** TODO [#D] [[file:ss-ver-gravity.tex][ss-ver-gravity]]
+**** TODO [#D] [[file:ss-ver-chemistry.tex][ss-ver-chemistry]]
+**** TODO [#D] [[file:ss-ver-particles.tex][ss-ver-particles]]
+**** TODO [#C] [[file:ss-ver-magnetism.tex][ss-ver-magnetism]]
+**** TODO [#C] [[file:ss-ver-radiation.tex][ss-ver-radiation]]
+**** TODO [#E] [[file:ss-contribute.tex][ss-contribute]]
+     less hokey.  interact with audience to get
+     idea of what people are interested in.  Plan this
+     out ahead of time.
+
+     running tests (porter) (beta testing)
+
+     implement physics
+
+         particle methods
+
+         cosmology
+
+     documentation
+
+     performance optimization
+
+     project planning
+
+     refactoring
+
+**** TODO [#A] [[file:ss-future-summary.tex][ss-future-summary]]
+*** TODO [#C] [6/6] [[file:s-project.tex][s-project.tex]]
+    External web links don't work
+**** TODO [#E] [[file:ss-project.tex][ss-project]]
+     go through each and show on website
+     remove development; add mailing list
+     reformat, and add links to slides
+**** TODO [#D] [[file:ss-source.tex][ss-source]]
+**** TODO [#E] [[file:ss-browse.tex][ss-browse]]
+**** TODO [#E] [[file:ss-documentation.tex][ss-documentation]]
+**** TODO [#D] [[file:ss-testing.tex][ss-testing]]
+**** TODO [#C] [[file:ss-bugs.tex][ss-bugs]]
+**** TODO [#A] [[file:ss-project-summary.tex][ss-project-summary]]
+*** TODO [#C] [9/9] [[file:s-starting.tex][s-starting.tex]]
+**** TODO [#E] [[file:ss-starting.tex][ss-starting]]
+**** TODO [#E] [[file:ss-install-charm.tex][ss-install-charm]]
+**** TODO [#E] [[file:ss-install-enzop.tex][ss-install-enzop]]
+**** TODO [#E] [[file:ss-configure.tex][ss-configure]]
+**** TODO [#E] [[file:ss-compile.tex][ss-compile]]
+**** TODO [#D] [[file:ss-running.tex][ss-running]]
+**** TODO [#E] [[file:ss-restart.tex][ss-restart]]
+**** TODO [#E] [[file:ss-load-balance.tex][ss-load-balance]]
+**** TODO [#C] [[file:ss-tools.tex][ss-tools]]
+**** TODO [#A] [[file:ss-starting-summary.tex][ss-starting-summary]]
+*** TODO [#D] [3/3] [[file:s-parameters.tex][s-parameters.tex]]
+**** TODO [#E] [[file:ss-param-intro.tex][ss-param-intro]]
+**** TODO [#D] [[file:ss-parameters.tex][ss-parameters]]
+**** TODO [#D] [[file:ss-doublemach.tex][ss-doublemach]]
+**** TODO [#A] [[file:ss-parameters-summary.tex][ss-parameters-summary]]
+*** TODO [#C] [2/2] [[file:s-charm.tex][s-charm.tex]]
+    Some content but need more slides.
+    Look at Phil's Charm++ tutorial
+    Read [[file:~/Papers/Sorted/ArBh11.pdf][ArBh11]]
+**** TODO [#C] [[file:ss-charm.tex][ss-charm]]
+     more slides
+**** TODO [#C] [[file:ss-charm-cello.tex][ss-charm-cello]]
+**** TODO [#A] [[file:ss-summary-summary.tex][ss-summary-summary]]
+*** TODO [#D] [12/12] [[file:s-design.tex][s-design.tex]]
+**** TODO [#D] [[file:ss-oop.tex][ss-oop]]
+**** TODO [#D] [[file:ss-components.tex][ss-components]]
+**** TODO [#D] [[file:ss-classes.tex][ss-classes]]
+**** TODO [#D] [[file:ss-simulation.tex][ss-simulation]]
+**** TODO [#D] [[file:ss-problems.tex][ss-problems]]
+**** TODO [#D] [[file:ss-blocks.tex][ss-blocks]]
+**** TODO [#D] [[file:ss-fields.tex][ss-fields]]
+**** TODO [#D] [[file:ss-methods.tex][ss-methods]]
+**** TODO [#D] [[file:ss-initial.tex][ss-initial]]
+**** TODO [#D] [[file:ss-boundary.tex][ss-boundary]]
+**** TODO [#D] [[file:ss-refine.tex][ss-refine]]
+    
+**** TODO [#D] [[file:ss-design-summary.tex][ss-design-summary]]
+*** TODO [#C] [3/3] [[file:s-control.tex][s-control.tex]]
+**** TODO [#C] [[file:ss-control.tex][ss-control]]
+**** TODO [#C] [[file:ss-adapt.tex][ss-adapt]]
+     more detail
+**** TODO [#C] [[file:ss-refresh.tex][ss-refresh]]
+**** TODO [#A] [[file:ss-control-summary.tex][ss-control-summary]]
+*** TODO [#A] [5/6] [[file:s-developing.tex][s-developing.tex]]
+**** TODO [#C] [[file:ss-coding.tex][ss-coding]]
+**** TODO [#D] [[file:ss-add-parameter.tex][ss-add-parameter]]
+**** TODO [#E] [[file:ss-add-method.tex][ss-add-method]]
+**** TODO [#E] [[file:ss-add-initial.tex][ss-add-initial]]
+**** TODO [#D] [[file:ss-add-boundary.tex][ss-add-boundary]]
+**** TODO [#A] [[file:ss-add-refine.tex][ss-add-refine]]
+
+**** TODO [#A] [[file:ss-develop-summary.tex][ss-develop-summary]]
+*** TODO [0/0] [[file:s-TEMPLATE.tex][s-TEMPLATE.tex]]
+*** DONE Obsolete
+**** TODO [#C] [[file:ss-param-problem.tex][ss-param-problem]]
+**** TODO [#B] [[file:ss-param-refine.tex][ss-param-refine]]
+     rename mesh / adapt
+**** TODO [#B] [[file:ss-param-data.tex][ss-param-data]]
+**** TODO [#B] [[file:ss-param-method.tex][ss-param-method]]
+**** TODO [#B] [[file:ss-param-io.tex][ss-param-io]]
+**** TODO [#B] [[file:ss-param-other.tex][ss-param-other]]
+**** TODO [#A] [[file:ss-communicate.tex][ss-communicate]]
+**** TODO [#A] [[file:ss-classes-org.tex][ss-classes-org]]
+**** TODO [#A] [[file:ss-data.tex][ss-data]]
+**** TODO [#A] [[file:ss-stopping.tex][ss-stopping]]
+**** TODO [#A] [[file:ss-charm-code.tex][ss-charm-code]]
+
+
+

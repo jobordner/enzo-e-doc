@@ -1,0 +1,38 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssOop}
+
+\begin{frame}[fragile,label=ss-oop] 
+\secframetitle{\ssOop}
+\bluebf{Enzo-P/Cello's design is \blueit{object-oriented}}
+
+\begin{itemize}
+\item Package-level design
+\begin{itemize}
+\item \bluecode{Enzo-P} \bluetext{application} implemented using \greencode{Cello} \greentext{AMR framework}
+\item \greencode{Cello} implemented using \redcode{Charm++} \redtext{parallel programming system}
+\end{itemize}
+\item Component-level design
+\begin{itemize}
+\item \code{Cello} is decomposed into high-level \greenit{components}
+\item Components are comprised of one or more \greenit{classes}
+\end{itemize}
+\item Source code is organized by package, component, and class
+\begin{itemize}
+\footnotesize
+\item \bluecode{Enzo-P}:
+\bluecode{cello-src/src/Enzo/}\blueit{enzo\_<class>}\bluecode{.[ch]pp}
+\item \greentext{Cello}:
+\greencode{cello-src/src/Cello/}\greenit{<component>\_<class>}\greencode{.[ch]pp}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+%\begin{frame}[fragile] 
+%\secframetitle{\ssOop}
+%\end{frame}

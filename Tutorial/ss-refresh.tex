@@ -1,0 +1,118 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssRefresh}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile,label=ss-refresh] 
+\secframetitle{\ssRefresh}
+\framesubtitle{Neighbor in same refinement level}
+%\blockblue
+\begin{minipage}{2.0in}
+\begin{center}
+   \includegraphics[width=2.0in]{refresh-same.pdf} \ \\
+\end{center}
+\end{minipage} \ 
+\begin{minipage}{2.1in}
+\begin{enumerate}
+\item Face data copied to array
+\begin{itemize}
+\item \bluecode{FieldFace} object
+\end{itemize}
+\item Array sent to neighbor
+\begin{itemize}
+\item chare entry method
+\item array sent as message
+\end{itemize}
+\item Array copied to ghost zones
+\end{enumerate}
+\end{minipage}
+\vspace{0.2in}
+\ \\
+\ \\
+\bluetext{Refresh ends when arrays from all neighbors have been received.}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\secframetitle{\ssRefresh}
+\framesubtitle{Neighbor in coarser refinement level}
+%\blockblue
+\begin{minipage}{2.0in}
+\begin{center}
+   \includegraphics[width=2.0in]{refresh-coarse.pdf} \ \\
+\end{center}
+\end{minipage} \ 
+\begin{minipage}{2.1in}
+\begin{enumerate}
+\item Face data coarsened to array
+\begin{itemize}
+\item \code{Restrict} object
+\item \code{FieldFace} array
+\end{itemize}
+\item Array sent to neighbor
+\item Array copied to ghost zones
+\end{enumerate}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\secframetitle{\ssRefresh}
+\framesubtitle{Neighbor in finer refinement level}
+%\blockblue
+\begin{minipage}{2.0in}
+\begin{center}
+   \includegraphics[width=2.0in]{refresh-fine.pdf} \ \\
+\end{center}
+\end{minipage}
+\begin{minipage}{2.1in}
+\begin{enumerate}
+\item Face data copied to array
+\item Array sent to neighbor
+\item Data interpolated to ghost zones
+\begin{itemize}
+\item \code{Prolong} object
+\end{itemize}
+\end{enumerate}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+%\secframetitle{\ssRefresh}
+%%\blockblue
+%\begin{center}
+%\begin{tabular}{|c|c|c|} \hline
+%\begin{minipage}{1.0in}
+%\onslide<1-> \vspace{0.1in} $\boldsymbol{L}$ \textcolor{red}{$\Rightarrow L$} \vspace{0.1in} \hfill  \ \\
+%   \includegraphics<1->[height=0.8in]{n-send-same.pdf} \ \\
+%\end{minipage} \pause &
+%\begin{minipage}{1.0in}
+%\onslide<2-> \vspace{0.1in} $\boldsymbol{L}$ \textcolor{red}{$\Rightarrow L-1$} \vspace{0.1in} \hfill  \ \\ 
+%   \includegraphics<2->[height=0.8in]{n-send-coarse.pdf} \ \\
+%\end{minipage} \pause  &
+%\begin{minipage}{1.0in}
+%\onslide<3->  \vspace{0.1in} $\boldsymbol{L}$ \textcolor{red}{$\Rightarrow L+1$}\vspace{0.1in} \hfill \ \\ 
+%   \includegraphics<3->[height=0.8in]{n-send-fine.pdf} \ \\
+%\end{minipage} \pause \\ \hline
+%\begin{minipage}{1.0in}
+%\onslide<4->  \vspace{0.1in} \hfill \textcolor{blue}{$L \Rightarrow$} $ \boldsymbol{L}$ \vspace{0.1in}  \ \\
+%   \includegraphics<4->[height=0.8in]{n-recv-same.pdf} \ \\
+%\end{minipage}  &
+%\begin{minipage}{1.0in}
+%\onslide<5->  \vspace{0.1in} \hfill \textcolor{blue}{$L+1 \Rightarrow$} $ \boldsymbol{L}$\vspace{0.1in}  \ \\
+%   \includegraphics<5->[height=0.8in]{n-recv-fine.pdf} \ \\
+%\end{minipage}  &
+%\begin{minipage}{1.0in}
+%\onslide<6->   \vspace{0.1in} \hfill \textcolor{blue}{$L-1 \Rightarrow$} $ \boldsymbol{L}$\vspace{0.1in}  \ \\  
+%   \includegraphics<6->[height=0.8in]{n-recv-coarse.pdf} \ \\
+%\end{minipage} \\ \hline
+%\end{tabular}
+%\end{center}
+%\end{frame}
+

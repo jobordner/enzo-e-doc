@@ -1,0 +1,27 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssProblems}
+
+\begin{frame}[fragile,label=ss-problems] 
+\secframetitle{\ssProblems}
+\greenbf{Problem classes represents a numerical problem}
+
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxx\=\kill
+\> \greencode{Method} \>   \redit{Numerical methods} \\
+\> \greencode{Initial} \>  \redit{Initial conditions} \\
+\> \greencode{Boundary} \> \redit{Boundary conditions} \\
+\> \greencode{Refine} \>   \redit{Mesh refinement criteria} \\
+\> \greencode{Stopping} \> \redit{Stopping criteria} \\
+\> \greencode{Output} \>   \redit{Disk Output} \\
+\> \greencode{Prolong} \>  \redit{Interpolation scheme} \\
+\> \greencode{Restrict} \> \redit{Coarsening scheme}
+\end{tabbing}
+\begin{itemize}
+\item  Base class \greencode{Problem} initializes Cello \code{Problem} objects
+\item Subclass \bluecode{EnzoProblem} initializes Enzo \code{Problem} objects
+\end{itemize}
+\end{frame}
+

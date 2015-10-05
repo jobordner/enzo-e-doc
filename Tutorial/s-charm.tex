@@ -1,0 +1,60 @@
+%======================================================================
+\NEWMOD
+%======================================================================
+
+\section{\sCharm}
+
+%----------------------------------------------------------------------
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-charm] 
+\modframetitle{\sCharm}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-charm<1>}      {\BUTTON {\ssCharm}}
+%\item \hyperlink{ss-charm-code<1>} {\BUTTON {\ssCharmCode}}
+\item \hyperlink{ss-charm-cello<1>}{\BUTTON {\ssCharmCello}}
+\item \hyperlink{ss-charm-summary<1>}{\BUTTON {\ssCharmSummary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-charm<1>}{\icon}}
+
+\input{ss-charm} % What is Charm++?
+%\input{ss-charm-code} % How do I write a simple Charm program?
+\input{ss-charm-cello} % How is Charm++ used in Cello?
+\input{ss-charm-summary}
+
+% 
+% CONCEPTS
+%  Chare program
+%    chare objects
+%    Messages
+%    Entry Methods
+%    Proxies
+%  Chare collections
+%    chare arrays
+%    chare groups
+%    chare node groups
+%  Charm runtime system
+%    Mapping Chare Objects to Physical Processors
+%    Load-Balancing Chare Objects
+%    Routing of Messages:
+%    Checkpointing
+%    Fault-Tolerance
+%    Dynamic Re-Allocation of Physical Resources
+%  A Simple Charm++ Program
+%    charmc
+%    interface file: ``.ci''
+%    charmc generates ``decl.h'' and ``def.h'' files
+%    ``hooks'' to programmers application code to runtime system
+%  Running a Charm++ program
+%    charmrun
+%  Where to find more information
+%     Charm group is very active and 
+%    

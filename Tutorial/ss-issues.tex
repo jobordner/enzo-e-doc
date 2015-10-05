@@ -1,0 +1,58 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssIssues}
+
+\begin{frame}[fragile,label=ss-issues] 
+\secframetitle{\ssIssues}
+\framesubtitle{Parameter file issues}
+% Review ss-bugs.tex / http://client64-249.sdsc.edu/cello-bug
+
+\begin{itemize}
+  \item Semicolon ';' required between subgroups
+  \begin{verbatim}
+Initial
+   density      { value = 1.0; };
+   total_energy { value = 0.1; }
+}
+   \end{verbatim}\vspace{-0.1in}
+   \item Floats and ints cannot be mixed
+   \cornersize{0.9}
+   \begin{itemize}
+     \item[\frownie] \textcolor{red}{\code{velocity\_x = 8.0 + 2*x }}
+     \item[\smiley] \textcolor{green!50!black}{\code{velocity\_x = 8.0 + 2.0*x}}
+   \end{itemize}
+
+   \item Need space after subtraction minus sign
+   \begin{itemize}
+     \item[\frownie] \textcolor{red}{\code{density = x -2.0;}}
+     \item[\smiley] \textcolor{green!50!black}{\code{density = x - 2.0;}}
+   \end{itemize}
+\end{itemize}
+\end{frame}
+
+%======================================================================
+
+\begin{frame}[fragile]
+\secframetitle{\ssIssues}
+
+% Review ss-bugs.tex / http://client64-249.sdsc.edu/cello-bug
+
+\begin{itemize}
+  \item \enzopcello\ does not compile with \charm\ version $\ge$ 6.6.0
+  \begin{itemize}
+  \item \footnotesize Try \href{http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}{\greentext{\url{http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}}}
+  \end{itemize}
+  \item Need at least as many root blocks as processors $P$
+  \begin{itemize}
+    \item \code{Mesh \{ root\_blocks = [4,4,4]; \} }
+    \item[\frownie] \textcolor{red}{\code{\$ charmrun +p72} \code{bin/enzo-p \ldots}}
+    \item[\smiley]\textcolor{green!50!black}{\code{\$ charmrun +p64} \code{bin/enzo-p \ldots}}
+  \end{itemize}
+  \item AMR requires ghost zone depth of $\ge 4$
+\end{itemize}
+
+\link{ss-bugs}{Other issues: see bug tracking website}
+
+\end{frame}

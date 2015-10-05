@@ -1,0 +1,93 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssTools}
+
+\begin{frame}[fragile,label=ss-tools] 
+\secframetitle{\ssTools}
+
+% ch-perf.py
+% ch-perf.sh
+% ch-swf.sh
+% diff-org.sh
+% grep-org.sh
+% log-org.sh
+% ls-org.sh
+% plot_mesh.py
+\begin{description}
+\pause
+\item[\code{./build.sh}] \ \\ compile \enzop, compile and/or run regression tests
+\pause
+\item[\code{./tools/org-diff.sh}] \ \\ Create \bluecode{diff.org} \code{org-mode} file from \bluecode{hg diff}
+\pause
+\item[\code{./tools/org-log.sh}] \ \\ Create \bluecode{log.org} \code{org-mode} file from \bluecode{hg log}
+\pause
+\item[\code{./tools/plot\_mesh.py}] \ \\ Plot octree forest given block id's (e.g. \textit{B0:000\_1:001})
+\pause
+\item[\code{./tools/ch-swf.sh}] \ \\ Generate SWF (flash) file given a sequence of PNG files
+\end{description}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssTools}
+% \framesubtitle{\code{build.sh}}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssTools}
+% \framesubtitle{\code{org-diff.sh}}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssTools}
+% \framesubtitle{\code{org-log.sh}}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssTools}
+% \framesubtitle{\code{plot\_mesh.py}}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssTools}
+% \framesubtitle{\code{ch-swf.sh}}
+% \end{frame}
+
+%       example: 
+%       bin/enzo-p input/adapt-L5-P1.in
+%        (Ctrl-C after adapt-0.h5, or edit input to add Schedule { cycle = 0; } (or wait))
+%           h5ls adapt-0.h5 | head
+%          B0:000_0:100             Group
+%          B0:000_0:101             Group
+%          B0:000_0:110             Group
+%          B0:000_0:111             Group
+%          B0:000_1:000             Group
+%          B0:000_1:001             Group
+%          B0:001_0:100             Group
+%          B0:001_0:101             Group
+%          B0:001_0:110             Group
+%          B0:001_0:111             Group
+%       h5ls adapt-0.h5 | tools/plot_mesh.py
+%          explain e.g. B0:001_0:110
+%    parse_error.awk
+
+%    ch-mem.py
+%    ch-mem.sh
+%    ch-perf.py
+%    ch-perf.sh
+%    diff-org.awk
+%    parse_ls.sh
+%    parse_warning.awk
+
+

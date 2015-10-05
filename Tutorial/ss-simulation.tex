@@ -1,0 +1,29 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssSimulation}
+\begin{frame}[fragile,label=ss-simulation] 
+\secframetitle{\ssSimulation}
+\greenbf{\textit{Simulation} classes represents a numerical simulation}
+
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxx\=\kill
+\> \greencode{Problem} \> \redit{A numerical problem} \\
+\> \greencode{Config} \> \redit{Parameter values} \\
+\> \greencode{Hierarchy} \> \redit{Mesh hierarchy} \\
+\> \greencode{Performance} \> \redit{Performance measurements} \\ 
+\> \greencode{Monitor} \> \redit{Monitor output} \\ 
+\> \greentext{state data} \> \redit{cycle, time, dt, etc.}
+\end{tabbing}
+
+\begin{itemize}
+  \item Implemented as a \redit{chare group}
+    \begin{itemize}
+  \item One \bluecode{EnzoSimulation} object per process
+    \end{itemize}
+  \item Stores simulation ``global'' data
+\end{itemize}
+
+\end{frame}
+

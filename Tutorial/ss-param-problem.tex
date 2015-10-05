@@ -1,0 +1,76 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssParamProblem}
+
+%======================================================================
+
+\subsection{\ssParamProblem}
+
+\begin{frame}[fragile,label=ss-param-problem] 
+\secframetitle{\ssParamProblem}
+\framesubtitle{\bluecode{Domain}, \bluecode{Boundary}, \bluecode{Initial}, and \bluecode{Stopping}}
+
+ \newcommand{\DUspan}[2]{\bluetext{#2}}
+
+\footnotesize
+
+\only<1>{\begin{quote}\begin{description}
+\item[{Parameter}] \leavevmode
+\DUspan{p}{Domain} : \DUspan{p}{lower}
+\item[{Summary}] \leavevmode
+\DUspan{s}{Lower domain extent}
+\item[{Type}] \leavevmode
+\DUspan{t}{list} ( \DUspan{t}{float} )
+\item[{Default}] \leavevmode
+\DUspan{d}{{[}0.0, 0.0, 0.0{]}}
+\item[{Scope}] \leavevmode
+Cello
+\end{description}\end{quote}
+%
+\DUspan{e}{Lower extent of the computational domain,} {[}x$_{\text{min}}${]}, {[} x$_{\text{min}}$, y$_{\text{min}}${]}, \DUspan{e}{or} {[} x$_{\text{min}}$, y$_{\text{min}}$, z$_{\text{min}}${]}.}
+
+\only<2>{\begin{quote}\begin{description}
+\item[{Parameter}] \leavevmode
+\DUspan{p}{Domain} : \DUspan{p}{upper}
+\item[{Summary}] \leavevmode
+\DUspan{s}{Upper domain extent}
+\item[{Type}] \leavevmode
+\DUspan{t}{list} ( \DUspan{t}{float} )
+\item[{Default}] \leavevmode
+\DUspan{d}{{[}1.0, 1.0, 1.0{]}}
+\item[{Scope}] \leavevmode
+Cello
+\end{description}\end{quote}
+%
+\DUspan{e}{Upper extent of the computational domain,} {[}x$_{\text{max}}${]}, {[} x$_{\text{max}}$, y$_{\text{max}}${]}, \DUspan{e}{or} {[} x$_{\text{max}}$, y$_{\text{max}}$, z$_{\text{max}}${]}.}
+
+    
+%    Boundary : list
+%    Boundary : <condition> : type
+%    Boundary : <condition> : axis
+%    Boundary : <condition> : face
+%    Boundary : <condition> : mask
+%    Boundary : <condition> : value
+%    Boundary : <condition> : field_list
+
+%    Initial : cycle
+%    Initial : type
+%    Initial : time
+%    Initial : <field> : value
+%    Initial : sedov : array
+%    Initial : sedov : radius_relative
+%    Initial : sedov : pressure_in
+%    Initial : sedov : pressure_out
+%    Initial : sedov : density
+%    Initial : turbulence : density
+%    Initial : turbulence : pressure
+%    Initial : turbulence : temperature
+
+%    Stopping : cycle
+%    Stopping : time
+%    Stopping : interval
+
+\end{frame}
+

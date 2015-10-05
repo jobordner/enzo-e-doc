@@ -1,0 +1,130 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssParamIntro}
+
+\begin{frame}[fragile,label=ss-param-intro] 
+\secframetitle{\ssParamIntro}
+\framesubtitle{Introduction to Enzo-P/Cello parameter files}
+\textbf{Enzo-P uses \textit{structured} parameter files}
+\footnotesize
+\pause
+\begin{itemize}
+\item \parameter{parameters} are organized into \group{Groups} and \subgroup{subgroups}
+\pause
+\begin{minipage}{3in}
+\vspace{0.1in}
+\begin{semiverbatim}
+\group{Initial} \{
+    \subgroup{velocity_x} \{
+       \parameter{value = 0.0};
+   \}
+\}
+\end{semiverbatim}
+\end{minipage}
+\pause
+\item parameters have a variety of types
+\pause
+\begin{minipage}{3in}
+\vspace{0.1in}
+  \begin{tabbing}
+xxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
+\>  \uncover<5->{\textit{floating-point}:} \' \uncover<5->{\parameter{value} \texttt{=} \valuetext{1.0};} \\
+\>  \uncover<6->{\textit{integers}:} \' \uncover<6->{\parameter{cycle} \texttt{=} \valuetext{100};} \\
+\>  \uncover<7->{\textit{logical}:} \' \uncover<7->{\parameter{crash} \texttt{=} \valuetext{false};} \\
+\>  \uncover<8->{\textit{string}:} \' \uncover<8->{\parameter{type} \texttt{=} \valuetext{"dinosaur"};} \\
+\>  \uncover<9->{\textit{lists}:} \' \uncover<9->{\parameter{list} \texttt{=} \valuetext{["density", "gravity"]};} \\
+\>  \uncover<10->{\textit{FP-expressions}:} \'  \uncover<10->{\parameter{value} \texttt{=} \valuetext{1.0 + 3.0*sin(x)};} \\
+\>  \uncover<11->{\textit{logical-expressions}:} \' \uncover<11->{\parameter{mask} \texttt{=} \valuetext{(x >= 4.0) || (y >= 1.0)};}
+\end{tabbing}
+\end{minipage}
+\end{itemize}
+\end{frame}
+
+%======================================================================
+
+\begin{frame}[fragile]
+\secframetitle{\ssParamIntro}
+\framesubtitle{Introduction to Enzo-P/Cello parameter files}
+\footnotesize
+\begin{itemize}
+\item Groups can be disjoint
+\pause
+\begin{semiverbatim}
+\uncover<+->{\group{Method} \{
+   \parameter{list} = \valuetext{["ppm"]};
+\}}
+\uncover<+->{\group{Method} \{
+   \subgroup{ppm} \{
+       \parameter{dual_energy} = \valuetext{true};
+    \}
+\}}
+\end{semiverbatim}
+\uncover<+->{\item Multiple parameter assignments use last value}
+\begin{semiverbatim}
+\uncover<+->{\parameter{list} = \valuetext{["ppm", "gravity_cg"];}}
+\uncover<+->{\parameter{list} = \valuetext{["gravity_cg","ppm"];} \textsf{\comment{\# this value used}}}
+\end{semiverbatim}
+\uncover<+->{\item \comment{\# P.S. I'm a comment!}}
+\end{itemize}
+\end{frame}
+
+%======================================================================
+
+
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParamIntro}
+\framesubtitle{Introduction to Enzo-P/Cello parameter files}
+
+\begin{itemize}
+\uncover<+->{\item Files can be \bluecode{included}}
+\begin{semiverbatim}
+\uncover<+->{\group{Output \{ }
+   \subgroup{density} \{
+      \bluecode{include} \valuetext{"input/schedule_cycle_100.incl"}
+   \}
+\}}
+\end{semiverbatim}
+\uncover<+->{\item Complicated ``including'' of files can be confusing}
+\uncover<+->{\item Cello outputs a \greencode{parameters.out} file}
+\begin{itemize}
+\uncover<+->{\item contains all parameters}
+\uncover<+->{\item organized alphabetically}
+\uncover<+->{\item can be used as an input parameter file}
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%======================================================================
+
+
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParamIntro}
+\framesubtitle{Parameter syntax peculiarities}
+\footnotesize
+\begin{itemize}
+  \item Semicolon \redcode{';'} required between subgroups
+\begin{semiverbatim}
+\group{Initial} \{
+   \subgroup{density}      \{ \parameter{value} = 1.0; \};
+   \subgroup{total_energy} \{ \parameter{value} = 0.1; \}
+\}
+\end{semiverbatim}\vspace{-0.1in}
+   \item Cannot mix floating-point and integers
+   \cornersize{0.9}
+   \begin{itemize}
+     \item[\bad] \parameter{velocity\_x} \code{= 8.0 + 2*x; }  \comment{\# WRONG!}
+     \item[\good] \parameter{velocity\_x} \code{= 8.0 + 2.0*x;}\comment{\# good.}
+   \end{itemize}
+
+   \item Need space after subtraction minus sign
+   \begin{itemize}
+     \item[\bad] \parameter{density} \code{ = x -2.0;}  \comment{\# WRONG!}
+     \item[\good] \parameter{density} \code{ = x - 2.0;} \comment{\# good.}
+   \end{itemize}
+\end{itemize}
+\end{frame}
+

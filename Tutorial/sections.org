@@ -1,0 +1,314 @@
+* TODO ORDERED SECTIONS / SLIDES [0/10]
+** TODO [0/5] [[file:s-intro.tex][s-intro]] INTRODUCTION [0/5]
+   Welcome
+   Workshop goals
+   Brief summary of Enzo-P / Cello
+   My transitioning from developer to team leader--help!
+*** TODO [[file:ss-purpose.tex][ss-purpose]]: What is the purpose of this workshop?
+    What I want to tell you:
+
+    Where is Enzo-P now?
+    Where do we want Enzo-P to go?
+    How do we get there?
+
+    What I want to hear from you
+       What changes would be helpful to using Enzo-P?
+           parameter organization / naming
+           functionality prioritization
+	      self-gravity
+              particles
+       What changes would be helpful to developing Enzo-P
+           Fields
+
+    Try to get people excited--need to be excited myself!
+
+*** TODO [[file:ss-motivation.tex][ss-motivation]]: Why does Enzo-P exist?
+*** TODO [[file:ss-compare.tex][ss-compare]]: What are the key differences between Enzo-P and Enzo?
+    Move earlier
+*** TODO [[file:ss-approach.tex][ss-approach]]: How does Cello AMR address Enzo's limitations?
+*** TODO [[file:ss-issues.tex][ss-issues]]: What are some of Enzo-P's known issues?
+** TODO [0/3] [[file:s-present.tex][s-present]] PRESENT STATE [0/3]
+
+      Enzo-P/Cello status
+
+*** TODO [[file:ss-summary.tex][ss-summary]]: What is the current state of Enzo-P?
+    use What are Enzo-P's current and near future capabilities
+    what can Enzo-P do?
+    what can Enzo-P not do?
+*** TODO [[file:ss-current.tex][ss-current]]: What are Enzo-P's current and near future capabilities?
+*** TODO [[file:ss-scaling.tex][ss-scaling]]: How well does Enzo-P scale?
+    more detailed problem description
+    more detailed performance info
+    Include # blocks--required memory for Enzo
+** TODO [0/8] [[file:s-future.tex][s-future]] FUTURE DIRECTIONS [0/8]
+*** TODO [[file:ss-roadmap.tex][ss-roadmap]]: What is the project roadmap?
+
+    tentative--subject to change from user requests
+    Mike in charge of deciding what
+    I'm in charge of how to do it
+    You guys give us feedback
+
+    Change Month 00 to actual dates (Month 00 == 2014-09-01)
+    make linear top-down
+    Month 00 hydrodynamics
+    move before #6 current and near future capabilities
+
+    include people and summary of what needs to be done
+
+    What needs to be done?
+      Physics: gravity, PP-PM, MHD, chemistry, cosmology, etc.
+      also test problems
+      updating documentation
+      reviewing code/docs
+      parameters
+    What tasks does this correspond to?
+      implement local Method on Fields
+      implement global Method on Fields
+      implement local method on particles(?)
+      implement subcomponents
+    Who is available to do it?
+    Particles
+    Gravity
+    Chemistry
+
+   Imminent functionality within months
+
+   - dynamic load balancing
+      currently static
+      provided automagically by Charm++
+   - checkpoint / restart
+      currently P=1 only
+      provided automagically by Charm++
+   - bug fixes
+      hangs if num procs > num blocks
+      over-refinement at domain boundary
+	 assumes periodic
+      monotonic interpolation (how?)
+     better dlb
+     
+
+   - transition from single-developer to multi-developer
+     "Help, Matt!"
+
+     Initial core Enzo-P developers
+       Brian,Dan,David,Greg,John,Matt,Tom
+
+     What is required?
+     1. Learn to download and run Enzo-P
+     2. Learn to add functionality
+     3. Patience
+    
+   page or two for each person/project and how to proceed
+
+   PLANNED (funding/developer permitting)
+
+   Functionality within months - years
+
+   Prioritized by users (you!)
+
+   local physics (chemistry, cooling, cosmology)
+   Time step: block-adaptive
+
+   PLANNED (funding permitting)
+
+   Physics
+       Enzo Team         Cello Team
+      Chemistry/cosmology Elliptic problems
+      Gravity            Particles
+      PPPM/TreePM        face operations
+      Magnetism          ray data structures
+      Radiation
+   I/O
+      Output single file per k processors
+
+   Particles (plugs directly into existing structure)
+       CommBlock                 Simulation
+	  Block                     FieldDescr
+	  FieldBlock             [ParticleDescr]
+	     [ParticleBlock]
+    Dinosaur particles
+   Self-gravity (Charm++ has FFT, or multigrid)
+   TreePM / PPPM
+   MHD
+
+*** TODO [[file:ss-ver-hydro.tex][ss-ver-hydro]]: What is needed to complete V1.0 (hydrodynamics)?
+    
+    bug fixes (review bugs)
+       monotonic interpolation
+       lurking AMR synchronization bugs
+       small errors introduced in parallel unigrid
+       I/O incorrect (HDF5 outputs data and block location--needs more tests)    
+       flux-correction
+
+*** TODO [[file:ss-ver-chemistry.tex][ss-ver-chemistry]]: What is needed to complete V2.0 (chemistry)?
+*** TODO [[file:ss-ver-gravity.tex][ss-ver-gravity]]: What is needed to complete V3.0 (gravity)?
+*** TODO [[file:ss-ver-particles.tex][ss-ver-particles]]: What is needed to complete V4.0 (particles)?
+*** TODO [[file:ss-ver-magnetism.tex][ss-magnetism]]: What is needed to complete V5.0 (magnetism)?
+*** TODO [[file:ss-ver-radiation.tex][ss-radiation]]: What is needed to complete V6.0 (radiation)?
+*** TODO [[file:ss-contribute.tex][ss-contribute]]: How can I contribute?
+    
+    download and play with as beta tester
+       feedback is crucial
+       I'm not a user of the code
+    add methods
+    add refinement criteria
+    clean parameters
+    review code
+
+    functionality requests
+** TODO [0/7] [[file:s-project.tex][s-project]] PROJECT ORGANIZATION [0/7]
+*** TODO [[file:ss-project.tex][ss-project]]: How is the Enzo-P project currently organized?
+
+   Documentation: http://cello-project.org/doc/
+
+   top-level of following FAQ's
+
+*** TODO [[file:ss-documentation.tex][ss-documentation]]: What documentation is available?
+    website documentation
+    papers
+
+       PP12
+
+       NSF proposals (first and second)
+
+*** TODO [[file:ss-bugs.tex][ss-bugs]]: What are some of the known bugs?
+    bug site via project site
+    highlight major
+*** TODO [[file:ss-testing.tex][ss-testing]]: How is testing done?
+*** TODO [[file:ss-source.tex][ss-source]]: Where is the source code hosted?
+*** TODO [[file:ss-browse.tex][ss-browse]]: How can I browse the source code?
+*** TODO [[file:ss-communicate.tex][ss-communicate]]: How do Enzo-P developers communicate?
+    Team leader: poorly
+    mailing list
+
+    add #cello? or use #enzo?
+    (Enzo 3.0?)
+    Remove Development trac site?
+** TODO [0/8] [[file:s-starting.tex][s-starting]] GETTING STARTED [0/8]
+     DOWNLOAD/CONFIGURE/COMPILE CHARM++
+     DOWNLOAD/CONFIGURE/COMPILE ENZO-P/CELLO
+     RUN 
+*** TODO [[file:ss-install-charm.tex][ss-install-charm]]: How do I download and install Charm++?
+*** TODO [[file:ss-install-enzop.tex][ss-install-enzop]]: How do I download and install Enzo-P?
+*** TODO [[file:ss-configure.tex][ss-configure]]: How do I configure Enzo-P?
+*** TODO [[file:ss-compile.tex][ss-compile]]: How do I configure and compile Enzo-P?
+*** TODO [[file:ss-running.tex][ss-running]]: How do I run an example problem?
+*** TODO [[file:ss-doublemach.tex][ss-doublemach]]: Double Mach Reflection
+*** TODO [[file:ss-restart.tex][ss-restart]]: How do I restart from a checkpoint?
+*** TODO [[file:ss-load-balance.tex][ss-load-balance]]: How do run with dynamic load balancing?
+*** TODO [[file:ss-tools.tex][ss-tools]]: What tools does Cello provide?
+    ./build.sh
+
+    org-diff.sh
+    org-log.sh
+    ch-swf.sh
+    plot_mesh.py
+       example: 
+       bin/enzo-p input/adapt-L5-P1.in
+        (Ctrl-C after adapt-0.h5, or edit input to add Schedule { cycle = 0; } (or wait))
+           h5ls adapt-0.h5 | head
+          B0:000_0:100             Group
+          B0:000_0:101             Group
+          B0:000_0:110             Group
+          B0:000_0:111             Group
+          B0:000_1:000             Group
+          B0:000_1:001             Group
+          B0:001_0:100             Group
+          B0:001_0:101             Group
+          B0:001_0:110             Group
+          B0:001_0:111             Group
+       h5ls adapt-0.h5 | tools/plot_mesh.py
+          explain e.g. B0:001_0:110
+    parse_error.awk
+
+    ch-mem.py
+    ch-mem.sh
+    ch-perf.py
+    ch-perf.sh
+    diff-org.awk
+    parse_ls.sh
+    parse_warning.awk
+
+** TODO [0/7] [[file:s-parameters.tex][s-parameters]] PARAMETER FILES [0/7]
+*** TODO [[file:ss-parameters.tex][ss-parameters]]: How do I write an Enzo-P parameter file?
+*** TODO [[file:ss-param-problem.tex][ss-param-problem]]: What parameters are available for defining problems?
+*** TODO [[file:ss-param-refine.tex][ss-param-refine]]: What parameters are available for controling mesh refinement?
+*** TODO [[file:ss-param-data.tex][ss-param-data]]: What parameters are available for defining data structures?
+*** TODO [[file:ss-param-method.tex][ss-param-method]]: What parameters are available for specifying numerical methods?
+*** TODO [[file:ss-param-io.tex][ss-param-io]]: What parameters are available for controling I/O?
+*** TODO [[file:ss-param-other.tex][ss-param-other]]: What other parameters are available?
+** TODO [0/3] [[file:s-charm.tex][s-charm]] CHARM++ SYSTEM [0/3]
+*** TODO [[file:ss-charm.tex][ss-charm]]: What is Charm++?
+    Add How do I use Charm++ in practice
+    Include code
+    Main
+    Chare -> CommBlock -> EnzoBlock
+
+*** TODO [[file:ss-charm-code.tex][ss-charm-code]]: How do I write a simple Charm program?
+*** TODO [[file:ss-charm-cello.tex][ss-charm-cello]]: How is Charm++ used in Cello?
+    Simulation: chare group
+    EnzoBlock/CommBlock: chare array
+    Charm counters for synchronization (control component)
+    Need pup() functions
+    ci files
+** TODO [0/3] [[file:s-phases.tex][s-phases]] SECTION CODE PHASES
+*** TODO [[file:ss-control.tex][ss-control]]: How are phases of the computation controlled?
+*** TODO [[file:ss-amr.tex][ss-amr]]: How does Cello implement AMR?
+    Show figure
+    Compare with Enzo-p
+    forest of octrees
+    "Block" sequential component
+    each Block contains Fields (later particles)
+    If Block A is adjacent to Block B, then | level(A) - level(B)| <= 1
+    Methods associated with "Refresh" objects that control how ghost zones are filled
+        which fields?
+	what depth?
+   How are Blocks refined or coarsened?
+
+    src/Cello/control_adapt.cpp
+
+    Reference LaLi12.pdf
+
+  How are field data communicated between neighboring Blocks?
+
+  *send*pdf *recv*pdf
+
+    FieldFace
+    class Prolong
+    class Restrict
+     include image from proposal
+
+*** TODO [[file:ss-exchange.tex][ss-exchange]]: How does Cello exchange data between blocks?
+    class Refresh
+
+** TODO [0/12] [[file:s-design.tex][s-design]] CODE DESIGN [0/12]
+*** TODO [[file:ss-oop.tex][ss-oop]]: How is object-oriented programming used in Enzo-P?
+    Mine [[file:~/Courses/Physics-244/oop/oop.pdf][Physics-244 OOP]] slides
+*** TODO [[file:ss-components.tex][ss-components]]: What is Enzo-P's high-level design?
+
+*** TODO [[file:ss-classes.tex][ss-classes]]: How are class hierarchies represented in the code
+    class Base
+    class BaseKind : public Base
+
+    Examples
+
+       EnzoInitialSedov -> Initial
+       
+*** TODO [[file:ss-classes-org.tex][ss-classes-org]]: How are Enzo-P's classes organized?
+*** TODO [[file:ss-problems.tex][ss-problems]]: How are problems represented in Enzo-P/Cello?
+*** TODO [[file:ss-data.tex][ss-data]]: What data types are available?
+*** TODO [[file:ss-fields.tex][ss-fields]]: How are fields used in the code?
+*** TODO [[file:ss-boundary.tex][ss-boundary]]: What boundary conditions are supported?
+*** TODO [[file:ss-initial.tex][ss-initial]]: What initial conditions are supported?
+*** TODO [[file:ss-refine.tex][ss-refine]]: What refinement criteria are supported?
+    class Refine
+*** TODO [[file:ss-stopping.tex][ss-stopping]]: What stopping criteria are supported?
+    class Stopping
+*** TODO [[file:ss-methods.tex][ss-methods]]: What numerical methods are available?
+** TODO [0/6] [[file:s-developing.tex][s-developing]] DEVELOPING ENZO-P [0/6]
+*** TODO [[file:ss-coding.tex][ss-coding]]: What are some coding guidelines for Enzo-P developers?
+*** TODO [[file:ss-add-parameter.tex][ss-add-parameter]]: How do I add a new input parameter to Enzo-P?
+*** TODO [[file:ss-add-method.tex][ss-add-method]]: How do I add a new method to Enzo-P?
+*** TODO [[file:ss-add-initial.tex][ss-add-initial]]: How do I add initial conditions to Enzo-P?
+*** TODO [[file:ss-add-boundary.tex][ss-add-boundary]]: How do I add new boundary conditions to Enzo-P?
+*** TODO [[file:ss-add-refine.tex][ss-add-refine]]: How do I add a new refinement criterium to Enzo-P?

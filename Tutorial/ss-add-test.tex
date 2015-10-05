@@ -1,0 +1,21 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssAddTest}
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile,label=ss-add-test] 
+\secframetitle{\ssAddTest}
+\framesubtitle{Writing Enzo-P/Cello Tests}
+\bluetext{Test drivers:} \redcode{src/Cello/test\_*.cpp} \\
+\ \\
+\begin{tabular}{ll}
+\redcode{unit\_init()}     & \bluetext{Initialize unit testing} \\
+\redcode{unit\_class()}    & \bluetext{Declare current class} \\
+\redcode{unit\_func()}     & \bluetext{Declare current method} \\
+\redcode{unit\_assert()}   & \bluetext{Test a result} \\
+\redcode{unit\_finalize()} & \bluetext{Finalize unit testing}
+\end{tabular}
+
+\end{frame}

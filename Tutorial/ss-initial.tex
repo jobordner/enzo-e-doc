@@ -1,0 +1,31 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssInitial}
+
+\begin{frame}[fragile,label=ss-initial] 
+\secframetitle{\ssInitial}
+\greenbf{Initial classes implement initial conditions}
+\ \\
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxxxxxxxx\=\kill
+\> \greencode{enforce\_block()} \> \redit{Apply the initial conditions on a} \greencode{block}
+\end{tabbing}
+
+\greentext{Current initial conditions include}
+\footnotesize
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+\> \bluecode{InitialValue} \> \redit{Initialize from parameter file} \\
+\> \bluecode{EnzoInitialImplosion2} \> \redit{Implosion test problem} \\
+\> \bluecode{EnzoInitialSedovArray2} \> \redit{2D array of Sedov blasts  } \\
+\> \bluecode{EnzoInitialSedovArray3} \> \redit{3D array of Sedov blasts} \\
+\> \bluecode{EnzoInitialTurbulence} \> \redit{Turbulence initial conditions (Kritusk)  } \\
+\> \bluecode{EnzoInitialGrackleTest} \> \redit{Grackle test problem (Britton) (incomplete)} \\
+\> \bluecode{InitialFile} \> \redit{Initialize from a file (incomplete)  }
+\end{tabbing}
+\end{frame}
+
+

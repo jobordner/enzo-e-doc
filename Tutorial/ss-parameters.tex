@@ -1,0 +1,646 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssParameters}
+
+\begin{frame}[fragile,label=ss-parameters] 
+\secframetitle{\ssParameters}
+\framesubtitle{Writing parameter files by \group{Group}}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item 
+\textcolor{blue}{Problem definition}
+  \begin{itemize}
+\pause
+\item
+\begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+  \textcolor{blue}{\code{Domain}} \> \blueit{domain extents}
+\end{tabbing}
+\item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+  \textcolor{blue}{\code{Initial}} \> \blueit{initial conditions}
+\end{tabbing}
+\item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+  \textcolor{blue}{\code{Boundary}} \> \blueit{boundary conditions}
+\end{tabbing}
+\pause
+  \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{blue}{\code{Stopping}} \> \blueit{stopping criteria}
+\end{tabbing}
+  \end{itemize}
+\pause
+\item \textcolor{green!50!black}{Discretization}
+  \begin{itemize}
+  \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{green!50!black}{\code{Mesh}} \> \greenit{root mesh blocking}
+  \end{tabbing}  
+  \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{green!50!black}{\code{Adapt}} \> \greenit{adaptive mesh refinement}
+   \end{tabbing}
+\pause
+  \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{green!50!black}{\code{Field}} \> \greenit{field data}
+   \end{tabbing}
+  \end{itemize}
+\pause
+\item \textcolor{red!50!black}{Parallel computation}
+  \begin{itemize}
+\pause
+  \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{red!50!black}{\code{Method}} \> \redit{computational methods}
+  \end{tabbing}
+  \end{itemize}
+\pause
+\item \textcolor{cyan!50!black}{Output}
+  \begin{itemize}
+\pause
+    \item \begin{tabbing}
+xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
+ \textcolor{cyan!50!black}{\code{Output}} \> \cyanit{disk output}
+    \end{tabbing}
+  \end{itemize}
+\end{itemize}
+\end{minipage}
+\end{frame}
+
+%======================================================================
+% \secframetitle{\ssParameters}
+% \framesubtitle{\ }
+% \begin{minipage}[t]{1.7in}
+% \begin{itemize}
+% \item \textcolor{blue}{Problem definition}
+%   \begin{itemize}
+%   \item \textcolor{blue}{\code{Domain}}
+%   \item \textcolor{blue}{\code{Initial}}
+%   \item \textcolor{blue}{\code{Boundary}}
+%   \item \textcolor{blue}{\code{Stopping}}
+%   \end{itemize}
+% \item \textcolor<1>{green!50!black}{Discretization}
+%   \begin{itemize}
+%   \item \textcolor<1>{green!50!black}{\code{Mesh}}
+%   \item \textcolor<1>{green!50!black}{\code{Adapt}}
+%   \item \textcolor<1>{green!50!black}{\code{Field}}
+%   \end{itemize}
+% \item \textcolor<1>{red!50!black}{Parallel computation}
+%   \begin{itemize}
+%   \item \textcolor<1>{red!50!black}{\code{Method}}
+%   \end{itemize}
+% \item \textcolor<1>{cyan!50!black}{Output}
+%   \begin{itemize}
+%     \item \textcolor<1>{cyan!50!black}{\code{Output}}
+%   \end{itemize}
+% \end{itemize}
+% \end{minipage}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Problem parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item \bfat{1}{\textcolor{blue}{Problem definition}}
+  \begin{itemize}
+  \item \bfat{1}{\textcolor{blue}{\code{Domain}}}
+  \item \textcolor{blue}{\code{Initial}}
+  \item \textcolor{blue}{\code{Boundary}}
+  \item \textcolor{blue}{\code{Stopping}}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{block}{\textbf{Domain definition}}
+\footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Domain} \{
+   \variable{lower} = [\valuetext{0.0}, \valuetext{0.0}];
+   \variable{upper} = [\valuetext{0.3}, \valuetext{0.3}];
+\} 
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Problem parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item \bfat{1}{\textcolor{blue}{Problem definition}}
+  \begin{itemize}
+  \item \textcolor{blue}{\code{Domain}}
+  \item \bfat{1}{\textcolor{blue}{\code{Initial}}}
+  \item \textcolor{blue}{\code{Boundary}}
+  \item \textcolor{blue}{\code{Stopping}}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+\begin{block}{\textbf{Initial Conditions}}
+\footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Initial} \{
+   \variable{type} = \valuetext{"value"};
+   \subgroup{density} \{
+      \variable{value} = [ \valuetext{0.125},   \variable{x} +  \variable{y} <  \valuetext{0.15}, 
+                \valuetext{1.0} ];
+   \};
+   \subgroup{total_energy} \{
+        \variable{value} = [  \valuetext{0.14} / ( \valuetext{0.4} *  \valuetext{0.125}),
+                     \variable{x} +  \variable{y} <  \valuetext{0.15},
+                  \valuetext{1.00} / ( \valuetext{0.4} *  \valuetext{1.000}) ];
+   \};
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Problem parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item \bfat{1}{\textcolor{blue}{Problem definition}}
+  \begin{itemize}
+  \item \textcolor{blue}{\code{Domain}}
+  \item \textcolor{blue}{\code{Initial}}
+  \item \bfat{1}{\textcolor{blue}{\code{Boundary}}}
+  \item \bfat{2}{\textcolor{blue}{\code{Stopping}}}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=blue!30,fg=black}
+ \begin{block}<+->{\textbf{Boundary conditions}}
+ \footnotesize \vspace{-0.1in}
+ \begin{semiverbatim}
+\group{Boundary} \{
+   \variable{list} = [\valuetext{"x_bc"}, \valuetext{"y_bc"}];
+   \subgroup{x_bc} \{ \variable{axis} = \valuetext{"x"}; \variable{type} = \valuetext{"reflecting"}; \};
+   \subgroup{y_bc} \{ \variable{axis} = \valuetext{"y"}; \variable{type} = \valuetext{"periodic"}; \};
+\}
+ \end{semiverbatim}
+ \end{block}
+ \begin{block}<+->{\textbf{Stopping criteria}}
+ \footnotesize \vspace{-0.1in}
+ \begin{semiverbatim}
+ \group{Stopping} \{ \variable{cycle} = \valuetext{100}; \}
+ \end{semiverbatim}
+ \end{block}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Discretization parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item \bfat{1-2}{\textcolor{green!50!black}{Discretization}}
+  \begin{itemize}
+  \item \bfat{1}{\textcolor{green!50!black}{\code{Mesh}}}
+  \item \bfat{2}{\textcolor{green!50!black}{\code{Adapt}}}
+  \item \textcolor{green!50!black}{\code{Field}}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+\begin{block}<+->{\textbf{Mesh hierarchy control}}
+  \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Mesh} \{ 
+   \variable{root_rank}   = \valuetext{2};
+   \variable{root_size}   = [\valuetext{400},\valuetext{400}];
+   \variable{root_blocks} = [\valuetext{4},\valuetext{4}];
+\}
+\end{semiverbatim}
+\begin{semiverbatim}
+\uncover<2->{\group{Adapt} \{
+   \variable{max_level} = \valuetext{5};
+   \variable{list} = [\valuetext{"SLOPE"}];
+   \subgroup{SLOPE} \{
+      \variable{type} = \valuetext{"slope"};
+      \variable{field_list} = [\valuetext{"density"}];
+   \}
+\}
+}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Discretization parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item \bfat{1}{\textcolor{green!50!black}{Discretization}}
+  \begin{itemize}
+  \item \textcolor{green!50!black}{\code{Mesh}}
+  \item \textcolor{green!50!black}{\code{Adapt}}
+  \item \bfat{1}{\textcolor{green!50!black}{\code{Field}}}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+  \begin{block}<+->{\textbf{Field variables}}
+  \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Field} \{
+   \variable{list} = [\valuetext{"density"},
+           \valuetext{"velocity_x"},
+           \valuetext{"velocity_y"},
+           \valuetext{"total_energy"},
+           \valuetext{"pressure"}];
+   \variable{courant}   = \valuetext{0.8};
+   \variable{ghosts}    = \valuetext{3};
+   \variable{alignment} = \valuetext{8};    
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+  
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+ \framesubtitle{Parallel computation parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.80in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item \bfat{1}{\textcolor{red!50!black}{Parallel computation}}
+  \begin{itemize}
+  \item \bfat{1}{\textcolor{red!50!black}{\code{Method}}}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.50in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=red!30,fg=black}
+ \begin{block}<+->{\textbf{Method list}}
+ \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Method} \{
+   \variable{list} = [\valuetext{"ppm"},\valuetext{"gravity_bicgstab"}];
+   \subgroup{ppm} \{
+      \variable{diffusion}   = \valuetext{true};
+      \variable{steepening}  = \valuetext{true};
+   \};
+   \subgroup{gravity_bicgstab} \{
+      \variable{iter_max} = \valuetext{100};
+      \variable{res_tol}  = \valuetext{0.001};
+   \}
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssParameters}
+%  \framesubtitle{Parallel computation parameters}
+% \vspace{-0.2in}
+% \begin{minipage}[t]{1.80in}
+% \begin{itemize}
+% \item Problem definition
+%   \begin{itemize}
+%   \item \code{Domain}
+%   \item \code{Initial}
+%   \item \code{Boundary}
+%   \item \code{Stopping}
+%   \end{itemize}
+% \item Discretization
+%   \begin{itemize}
+%   \item \code{Mesh}
+%   \item \code{Adapt}
+%   \item \code{Field}
+%   \end{itemize}
+% \item \bfat{1}{\textcolor{red!50!black}{Parallel computation}}
+%   \begin{itemize}
+%   \item \code{Method}
+%   \end{itemize}
+% \item Output
+%   \begin{itemize}
+%     \item \code{Output}
+%   \end{itemize}
+% \end{itemize}
+% \end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+% \begin{minipage}[t]{2.50in}
+% \vspace{-0.2in}
+% \setbeamercolor{block title}{bg=red!30,fg=black}
+%  \begin{block}<+->{\textbf{Refresh list}}
+%  \footnotesize \vspace{-0.1in}
+% \begin{verbatim}
+% Refresh {
+%    list = ["ppm_refresh"];
+%    ppm_refresh { 
+%       field_face_rank = 0;
+%       field_ghosts = 4;
+%    }
+% }
+% \end{verbatim}
+% \end{block}
+% \end{minipage}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Output parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item \bfat{1}{\textcolor{cyan!50!black}{Output}}
+  \begin{itemize}
+    \item \bfat{1}{\textcolor{cyan!50!black}{\code{Output}}}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=cyan!50,fg=black}
+ \begin{block}<+->{\textbf{Output files}}
+ \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Output} \{
+   \variable{list} = [ \valuetext{"de_hdf5"}, \valuetext{"de_png"} ];
+   \subgroup{de_hdf5} \{
+      \comment{\# HDF5 data file group}
+   \};
+   \subgroup{de_png} \{
+      \comment{\# PNG image file group}
+   \}
+\}
+\end{semiverbatim}
+ \end{block}
+ \end{minipage}
+\end{frame}
+ 
+%----------------------------------------------------------------------
+ 
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Output parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item \bfat{1}{\textcolor{cyan!50!black}{Output}}
+  \begin{itemize}
+    \item \bfat{1}{\textcolor{cyan!50!black}{\code{Output}}}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=cyan!50,fg=black}
+ \begin{block}<+->{\textbf{Output files}}
+ \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Output} \{
+   \subgroup{de_hdf5} \{
+      \variable{type} = \valuetext{"data"};
+      \variable{name} = [\valuetext{"implosion-%5.2f.png"},
+              \valuetext{"time"}];
+      \variable{field_list} = [\valuetext{"density"}];
+      \subgroup{schedule} \{
+         \variable{var}  = \valuetext{"time"};
+         \variable{step} = \valuetext{0.02};
+      \}
+   \}
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+
+%----------------------------------------------------------------------
+ 
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+\framesubtitle{Output parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \end{itemize}
+\item Parallel computation
+  \begin{itemize}
+  \item \code{Method}
+  \end{itemize}
+\item \bfat{1}{\textcolor{cyan!50!black}{Output}}
+  \begin{itemize}
+    \item \bfat{1}{\textcolor{cyan!50!black}{\code{Output}}}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=cyan!50,fg=black}
+ \begin{block}<+->{\textbf{Output files}}
+ \footnotesize \vspace{-0.1in}
+ \begin{semiverbatim}
+\group{Output} \{
+   \subgroup{de_png} \{
+      \variable{type} = \valuetext{"image"};
+      \variable{name} = [ \valuetext{"implosion-%05d.png"},
+               \valuetext{"cycle"} ];
+      \variable{image_type} = \valuetext{"data"};
+      \variable{colormap} = [\valuetext{0.0},\valuetext{0.0},\valuetext{0.0},
+                  \valuetext{1.0},\valuetext{1.0},\valuetext{1.0}];
+      \variable{field_list} = [ \valuetext{"density"} ];
+      \subgroup{schedule} \{
+         \variable{var} = \valuetext{"cycle"};
+         \variable{step} = \valuetext{10};
+      \}
+   \}
+\}
+\end{semiverbatim}
+ \end{block}
+ \end{minipage}
+\end{frame}
+

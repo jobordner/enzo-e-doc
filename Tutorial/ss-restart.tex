@@ -1,0 +1,83 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssRestart}
+
+\begin{frame}[fragile,label=ss-restart] 
+\secframetitle{\ssRestart}
+\framesubtitle{Checkpointing to disk}
+\footnotesize
+\begin{tabbing}
+xxxxxx\=xxxxxx\=xxxxxx\=\kill
+\bluecode{Output \{} \\
+\\
+\>  \code{list = [}\bluecode{"check"}\code{];} \\
+ \\
+\>  \bluecode{check} \code{\{} \\
+\>\>     \bluecode{type  = "checkpoint"}\code{;} \\
+\>\>     \bluecode{dir   = ["checkpoint-\%d","count"];} \\
+\>\>     \code{schedule \{} \\
+\>\>\>   \code{var = }\bluecode{"seconds"}\code{;}\\
+\>\>\>   \bluecode{start = 3600.0;} \\
+\>\>\>   \bluecode{step  = 3600.0;} \\
+\>\> \} \\
+\>  \} \\
+\}
+\end{tabbing}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\secframetitle{\ssRestart}
+\framesubtitle{Checkpointing to disk}
+\tiny
+\begin{semiverbatim}
+\uncover<1->{\prompt \redcode{charmrun +p4 bin/enzo-p input/checkpoint_ppm-8.in}}\cursor{1}  
+\vdots\uncover<2->{0 00001.75  -------------------------------------
+0 00001.75 Simulation \bluetext{cycle 0000}
+0 00001.75 Simulation time-sim 0.000000000000e+00
+0 00001.75 Simulation dt 0.000000000000e+00
+\vdots[0] \bluetext{Checkpoint starting in checkpoint_ppm-8-10}
+0 00004.08 WARNING main.hpp:76
+0 00004.08 WARNING Main::pup
+0 00004.08 WARNING skipping monitor_
+0 00004.08 WARNING parameters_Parameters.cpp:69
+\vdots\bluetext{Checkpoint to disk finished in 0.854617s, sending out the cb...}
+0 00006.37  -------------------------------------
+0 00006.37 Simulation \bluetext{cycle 0010}
+0 00006.37 Simulation time-sim 3.438861817873e-03
+0 00006.37 Simulation dt 3.035398776372e-04
+\vdots
+}
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+\secframetitle{\ssRestart}
+\framesubtitle{Restarting from checkpoint}
+\tiny
+\begin{semiverbatim}
+\uncover<1->{\prompt \redcode{ls checkpoint_ppm-8-10}}\cursor{1}
+\uncover<2->{\bluecode{arr_0.dat  Chares_0.dat  Groups_0.dat  MainChares.dat	 NodeGroups_3.dat
+arr_1.dat  Chares_1.dat  Groups_1.dat  NodeGroups_0.dat  RO.dat
+arr_2.dat  Chares_2.dat  Groups_2.dat  NodeGroups_1.dat
+arr_3.dat  Chares_3.dat  Groups_3.dat  NodeGroups_2.dat}}
+\uncover<3->{\prompt \redcode{charmrun +p4 bin/enzo-p }\bluecode{+restart checkpoint_ppm-8-10}}\cursor{3}
+\uncover<3->{\vdots0 00001.02 WARNING main.hpp:76
+0 00001.02 WARNING Main::pup
+0 00001.02 WARNING skipping monitor_
+0 00001.02 WARNING parameters_Parameters.cpp:69
+0 00001.02 WARNING Parameters::pup
+\vdots\bluetext{[0]CkRestartMain done. sending out callback.}
+0 00001.36  -------------------------------------
+0 00001.36 Simulation \bluetext{cycle 0010}
+0 00001.36 Simulation time-sim 3.438861817873e-03
+0 00001.36 Simulation dt 3.035398776372e-04}
+\vdots
+\end{semiverbatim}
+\end{frame}
+%   

@@ -1,0 +1,52 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssSource}
+
+\begin{frame}[fragile,label=ss-source] 
+\secframetitle{\ssSource}
+\begin{itemize}
+\item \greentext{\url{https://bitbucket.org/cello-project}}
+\item \bluetext{Current project members} \\
+\footnotesize
+Tom Abel \\
+ James Bordner \\ 
+Greg Bryan \\
+dcollins4096 \\ 
+Alexei Kritsuk \\ 
+Brian O'Shea \\
+Daniel Reynolds \\ 
+Matthew Turk \\ 
+John Wise \\
+\tiny{note to self: add PI Mike Norman} \\
+\normalsize
+\item \bluetext{Repository:} \redcode{cello-src} \\
+\small{\orangecode{hg clone ssh://hg@bitbucket.org/cello-project/cello-src}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] 
+\secframetitle{\ssSource}
+\begin{itemize}
+\item \bluetext{Basic directory structure: \redcode{cello-src/}\ldots} \\
+\begin{tabular}{ll}
+\redcode{src/Enzo} & \bluetext{Enzo-P source} \\
+\redcode{src/Cello} & \bluetext{Cello source} \\
+\redcode{bin/enzo-p} & \bluetext{executable} \\
+\redcode{input} & \bluetext{sample parameter files} \\
+\redcode{test} & \bluetext{tests and results} \\
+\redcode{tools} & \bluetext{convenience utilities}
+\end{tabular}
+\item \bluetext{Some useful files} \\
+\begin{tabular}{ll}
+\redcode{build.sh} & \bluetext{Build script} \\
+\redcode{SContstruct} & \bluetext{Top-level ``make'' file}\\
+\redcode{errors.org} & \bluetext{Generated \code{org-mode} errors / warnings} \\
+\redcode{diff.org} & \bluetext{Generated \code{org-mode} \greencode{hg diff}} \\
+\redcode{log.org} & \bluetext{Generated \code{org-mode} \greencode{hg log}}
+\end{tabular}
+
+\end{itemize}
+\end{frame}
+

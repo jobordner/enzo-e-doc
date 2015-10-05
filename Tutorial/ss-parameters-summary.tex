@@ -1,0 +1,38 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssParametersSummary}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile,label=ss-parameters-summary] 
+\secframetitle{\ssParametersSummary}
+\begin{itemize}
+\item Enzo-P / Cello uses a structured parameter file format
+\item \parameter{Parameters} are organized into \group{Groups} and \subgroup{subgroups}
+\item Suggested procedure for writing parameter files:
+\begin{enumerate}
+\item Problem definition
+\begin{itemize}
+\item \group{Domain}, \group{Initial}, \group{Boundary}, \group{Stopping}
+\end{itemize}
+\item Discretization
+\begin{itemize}
+\item \group{Mesh}, \group{Adapt}
+\end{itemize}
+\item Parallel computation
+\begin{itemize}
+\item \group{Method}
+\end{itemize}
+\item Output
+\begin{itemize}
+\item \group{Output}
+\end{itemize}
+\end{enumerate}
+\item \textit{All} parameters documented here \greentext{\url{http://cello-project.org/doc/parameters-list.html}}
+\end{itemize}
+\vfill
+\centerline{$\qed$}
+\end{frame}
+

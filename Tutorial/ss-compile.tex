@@ -1,0 +1,54 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssCompile}
+
+%----------------------------------------------------------------------
+\begin{frame}[fragile,label=ss-compile] 
+\secframetitle{\ssCompile}
+\framesubtitle{Compiling Enzo-P/Cello}
+\tiny
+\begin{semiverbatim}
+\uncover<1->{\prompt \redcode{make}}\cursor{1}  
+\uncover<2->{./build.sh bin/enzo-p
+Remove bin/enzo-p
+2015-09-19 14:36:00 BEGIN
+BEGIN Enzo-P/Cello ./build.sh
+arch = linux_gnu
+prec = double
+target = bin/enzo-p
+2015-09-19 14:36:00 compiling...                 PAPI installed
+
+    CELLO_ARCH scons arch= linux_gnu
+    CELLO_PREC scons prec= double
+
+scons: warning: Two different environments were specified for target main_enzo.o,
+	but they appear to have the same action: $CXX -o $TARGET -c $CXXFLAGS $CCFLAGS $_CCCOMCOM $SOURCES
+File "/home/bordner/Cello/cello-src/build/Cello/SConscript", line 197, in <module>
+/home/bordner/Charm/charm/bin/charmc -language charm++ -o build/Enzo/enzo-p.o -c -Wall -O3 -g -balancer Greed}
+\uncover<3->{\vdots}
+\uncover<4->{Install file: "build/Enzo/enzo-p" as "bin/enzo-p"
+Success
+done
+END   Enzo-P/Cello ./build.sh: arch = linux_gnu  prec = double  target = bin/enzo-p time = 77s}
+\uncover<5->{\prompt \redcode{charmrun +p4 bin/enzo-p input/test_implosion.in}}\cursor{5}
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+%\begin{frame}[fragile] 
+% \secframetitle{\ssCompile}
+%\framesubtitle{\url{https://bitbucket.org/cello-project/cello-src}}
+%\footnotesize
+%\begin{semiverbatim}
+%% \uncover<1->{\prompt charmrun +p4 bin/enzo-p input/test_implosion.in}\cursor{9}
+
+%\end{semiverbatim}
+%\end{frame}
+
+%   use online user documentation
+%    generates
+%       ./bin/enzo-p
+%       ./errors.org
+

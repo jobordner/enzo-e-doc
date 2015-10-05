@@ -1,0 +1,32 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssRefine}
+
+\begin{frame}[fragile,label=ss-refine] 
+\secframetitle{\ssRefine}
+\greenbf{Refine classes implement refinement criteria}
+\ \\
+\begin{tabbing}
+xxxx\=xxxxxxxxxx\=\kill
+\> \greencode{apply()} \> \redit{Apply the refinement criteria on a} \greencode{block} \\
+\> \greencode{name()} \> \redit{Return the name of the criteria (e.g.~"shock")} \greencode{block}
+\end{tabbing}
+
+\greentext{Current refine conditions include}
+\footnotesize
+\begin{tabbing}
+xxxx\=xxxxxxxxxxxxxxxxxxxxx\=\kill
+\> \bluecode{RefineSlope} \> \redit{refine on relative slope} \\
+% ($\lvert\frac{x_{i+1}- x_{i-1}}{2h \cdot x_i}\rvert$)
+\> \bluecode{RefineDensity} \> \redit{refine on density threshold} \\
+\> \bluecode{RefineMask} \> \redit{refine according to level array} \\
+\> \bluecode{RefineShear} \> \redit{refine on shear} \\
+\> \bluecode{EnzoRefineShock} \> \redit{refine on shocks} \\
+\> \bluecode{RefineMass} \> \redit{refine on minimum mass (not implemented)}
+\end{tabbing}
+\end{frame}
+
+

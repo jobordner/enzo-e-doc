@@ -1,0 +1,469 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssAddRefine}
+
+\begin{frame}[fragile,label=ss-add-refine] 
+\secframetitle{\ssAddRefine}
+\textbf{Suppose we wish to add Jeans length refinement criterion to \enzop.}
+\begin{center}
+\rowcolors[]{1}{blue!5}{blue!10}
+  \begin{tabular}{l}
+  \uncover<2->{\addclass{1.~Create \code{EnzoRefineJeansLength} class}} \\
+  \uncover<3->{\addclass{2.~Include \code{enzo\_EnzoRefineJeansLength.hpp} file}} \\
+  \uncover<4->{\addconstruct{3.~Call \code{EnzoRefineJeansLength} constructor}} \\
+  \uncover<5->{\addparam{4.~Declare any \code{EnzoRefineJeansLength} parameters}} \\
+  \uncover<6->{\addparam{5.~Read in any \code{EnzoRefineJeansLength} parameters}}  \\
+  \uncover<7->{\addcharm{6.~Update \charm\ control file \code{enzo.ci}}} \\
+  \uncover<8->{\addtest{7.~Create \code{test\_outflow.in} test problem}} \\
+  \uncover<9->{\addtest{8.~Run the test and verify test results}}
+  \end{tabular}
+\end{center}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+
+\addclassbf{Create header and source code files}
+      \begin{itemize}
+      
+         \item \textcolor{red!50!black}
+             {\code{src/Enzo/enzo\_EnzoRefineJeansLength.hpp}}
+         \item \textcolor{red!50!black}
+             {\code{src/Enzo/enzo\_EnzoRefineJeansLength.cpp}}
+      \end{itemize}
+      \pause
+      \bluebf{Implement virtual functions}
+      \begin{itemize}
+      
+          \item \textcolor{blue!50!black}
+              {\code{EnzoRefineJeansLength::EnzoRefineJeansLength} ()}
+          \item \textcolor{blue!50!black}
+              {\code{EnzoRefineJeansLength::enforce} ()}
+          \item \textcolor{blue!50!black}
+              {\code{EnzoRefineJeansLength::pup} ()}
+      \end{itemize}
+\end{frame}
+
+\definecolor{kcol}{rgb}{0.5,0.0,0.5}
+\definecolor{ccol}{rgb}{0.0,0.5,0.0}
+\definecolor{mcol}{rgb}{0.8,0.0,0.0}
+\definecolor{fcol}{rgb}{0.0,0.0,0.8}
+\definecolor{tcol}{rgb}{0.0,0.8,0.0}
+\definecolor{vcol}{rgb}{0.8,0.3,0.0}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Create the \code{src/Enzo/EnzoRefineJeansLength.hpp} header file}
+\footnotesize
+\begin{tabbing}
+xxxxxxx\=xxxxxx\=\kill
+\textbf<2>{\code{
+\color<1,2>{kcol} class
+\color<1,2>{ccol} EnzoRefineJeansLength
+\color<1,2>{black}:\ \color<1,2>{kcol}public
+\color<1,2>{ccol} Refine
+\color<1,2>{black}     \{ 
+}}  \\
+ \\[-2ex]
+\code{
+\color<1>{kcol} public:
+\color<1>{mcol} // interface
+} \\
+\> \textbf<3>{\code{
+\color<1,3>{fcol}  EnzoRefineJeansLength 
+}} \\
+\> \> \textbf<4>{\code{
+\color<1,3>{black}   ( 
+\color<1,3>{tcol}  axis\_enum
+\color<1,3>{vcol}  axis 
+\color<1,3>{black}  ,
+\color<1,3>{tcol}  face\_enum
+\color<1,3>{vcol}  face 
+\color<1,3>{black}  ,
+\color<1,3>{tcol}  Mask
+\color<1,3>{black}  * 
+\color<1,3>{vcol}  mask
+\color<1,3>{black} );
+ }} \\
+\> \textbf<4>{\code{
+\color<1,4>{kcol} virtual 
+\color<1,4>{kcol} void  
+\color<1,4>{fcol} enforce
+}} \\
+\> \> \textbf<4>{\code{
+\color<1,4>{black}    ( 
+\color<1,4>{tcol}  Block  
+\color<1,4>{black}  * 
+\color<1,4>{vcol}  block 
+\color<1,4>{black}  ,
+ }} \\
+\> \> \textbf<3>{\code{
+\color<1,4>{tcol} \ \  face\_enum
+\color<1,4>{vcol}  face 
+\color<1,4>{black}  ,
+\color<1,4>{tcol}  axis\_enum
+\color<1,4>{vcol}  axis 
+\color<1,4>{black}   )  
+\color<1,4>{kcol}    throw 
+\color<1,4>{black}    ();
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol}EnzoRefineJeansLength
+\color<1,5>{black} () \{\};
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol} EnzoRefineJeansLength
+\color<1,5>{black} (
+\color<1,5>{tcol} CkMigrateMessage
+\color<1,5>{black}  *
+\color<1,5>{vcol} m
+\color<1,5>{black} ) \{\}
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{fcol}PUPable\_decl\color<1,5>{black}(\color<1,5>{tcol}EnzoRefineJeansLength\color<1,5>{black} );
+}} \\
+\> \textbf<5>{\code{
+\color<1,5>{kcol} void
+\color<1,5>{fcol} pup
+\color<1,5>{black} (
+\color<1,5>{tcol}PUP::er 
+\color<1,5>{black}\&
+\color<1,5>{vcol}p
+\color<1,5>{black} )
+}}
+ \\
+\> \textbf<5>{\code{
+\color<1,5>{black} \{ 
+\color<1,5>{tcol}Refine::pup
+\color<1,5>{black} (
+\color<1,5>{vcol}p
+\color<1,5>{black} ); 
+\color<1,5>{black} \};
+}} \\
+\ \code{\}}
+\end{tabbing}
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Implement the \code{EnzoRefineJeansLength} constructor}
+\begin{semiverbatim}
+   \type{EnzoRefine}::\function{EnzoRefine} 
+   ( \type{axis_enum} \variable{axis},
+     \type{face_enum} \variable{face}, 
+     \type{Mask} * \variable{mask} ) \keyword{throw}()
+     : \type{Refine}(\variable{axis},\variable{face},\variable{mask})
+   \{  \}
+\end{semiverbatim}
+
+
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (1/4)}
+\scriptsize
+\begin{semiverbatim}
+\keyword{void} \type{EnzoRefineJeansLength}::\function{enforce} 
+( \type{Block} * \variable{block}, \type{face_enum} \variable{face}, \type{axis_enum} \variable{axis} ) \keyword{throw}()
+\{
+  \comment{// Skip if not applicable}
+  \keyword{if} ( ! \function{applies_}(\variable{axis}, \variable{face})) \keyword{return};
+
+  \keyword{if} (\variable{face} == \variable{face_all}) \{
+    \function{enforce}(\variable{block}, \variable{face_lower},\variable{axis});
+    \function{enforce}(\variable{block}, \variable{face_upper},\variable{axis});
+  \} \keyword{else if} (\variable{axis} == \variable{axis_all}) \{
+    \function{enforce}(\variable{block}, \variable{face,axis_x});
+    \function{enforce}(\variable{block}, \variable{face,axis_y});
+    \function{enforce}(\variable{block}, \variable{face,axis_z});
+  \} \keyword{else} \{
+      \vdots
+\end{semiverbatim}
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (2/4)}
+\scriptsize
+\vspace{-0.15in}
+\begin{semiverbatim}
+      \vdots
+   \type{Data} * \variable{data} = \variable{block}->\function{data}();
+   \type{Field} \variable{field} = \variable{data}->\function{field}();
+
+   \comment{// Field attributes}
+   \type{int} \variable{nx},\variable{ny},\variable{nz};
+   \variable{field}.\function{size}(&\variable{nx},&\variable{ny},&\variable{nz});
+
+   \comment{// Cell centers if needed for Mask}
+   \type{double} *\variable{x}=\valuetext{0}, *\variable{y}=\valuetext{0}, *\variable{z}=\valuetext{0};
+   \keyword{if} (\variable{mask_}) \{
+      \variable{x} = \type{new} \type{double} [\variable{nx}];
+      \variable{y} = \type{new} \type{double} [\variable{ny}];
+      \variable{z} = \type{new} \type{double} [\variable{nz}];
+      \variable{data}->\function{field_cells}(\variable{x},\variable{y},\variable{z});
+   \}
+      \vdots
+\end{semiverbatim}
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (3/4)}
+\vspace{-0.15in}
+\scriptsize
+\begin{semiverbatim}
+      \vdots
+   \comment{// Coordinates of Block edges}
+   \type{double} \variable{xm},\variable{ym},\variable{zm};
+   \type{double} \variable{xp},\variable{yp},\variable{zp};
+   \variable{data} -> \function{lower}(&\variable{xm},&\variable{ym},&\variable{zm});
+   \variable{data} -> \function{upper}(&\variable{xp},&\variable{yp},&\variable{zp});
+
+   \type{double} t = \variable{block}->\function{time}();
+
+   \comment{// @@@ BUG: loops through all fields!}
+   \keyword{for} (\keyword{int} \variable{index} = 0; \variable{index} < \variable{field}.\function{field_count}(); \variable{index}++) \{
+
+      \variable{field}.\function{dimensions}  (\variable{index},&\variable{mx},&\variable{my},&\variable{mz});
+      \variable{field}.\function{ghost_depth} (\variable{index},&\variable{gx},&\variable{gy},&\variable{gz});
+
+      \type{enzo_float} * \variable{array} = (\type{enzo_float} *) \variable{field}.\function{values}(\variable{index});
+      \vdots
+
+\end{semiverbatim}
+\end{frame}
+
+%-----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
+\addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (4/4)}
+\vspace{-0.15in}
+\scriptsize
+\begin{semiverbatim}
+      \vdots
+      \keyword{if} (\variable{face} == \variable{face_lower} && \variable{axis} == \variable{axis_x}) \{
+         \keyword{if} (\variable{nx} > \valuetext{1}) \{
+            \keyword{for} (\variable{iz}=\variable{0}; \variable{iz}<\variable{mz}; \variable{iz}++) \{
+               \keyword{for} (\variable{iy}=\variable{0}; \variable{iy}<\variable{my}; \variable{iy}++) \{
+                  \keyword{for} (\variable{ix}=\variable{0}; \variable{ix}<\variable{gx}; \variable{ix}++) \{
+                     \keyword{int} \variable{i_internal} = \variable{gx}      + \variable{mx}*(\variable{iy} + \variable{my}*\variable{iz});
+                     \keyword{int} \variable{i_external} = \variable{gx}-\variable{ix}-\valuetext{1} + \variable{mx}*(\variable{iy} + \variable{my}*\variable{iz});
+                     \keyword{if} (! \variable{mask_} || \variable{mask_}->\function{evaluate}(\variable{t},\variable{xm},\variable{y}[\variable{iy}],\variable{z}[\variable{iz}]))
+                        \variable{array}[\variable{i_external}] = \variable{array}[\variable{i_internal}];
+              \}
+           \}
+        \}
+     \}
+      \vdots
+\end{semiverbatim}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{2.~Include the \code{enzo\_EnzoRefineJeansLength.hpp} file}
+\addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
+%
+\begin{semiverbatim}
+       \vdots
+   #\keyword{include} \valuetext{"enzo_EnzoRefineJeansLength.hpp"}
+       \vdots
+\end{semiverbatim}
+
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{3.~Call the \code{EnzoRefineJeansLength} constructor}
+
+\addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
+\footnotesize
+\begin{semiverbatim}
+   Refine * EnzoProblem::create_refine_ (\dots)
+   \{
+         \vdots
+   if (       type == "reflecting") \{ 
+      refine = new EnzoRefine 
+         (axis,face,mask,refine_type_reflecting);
+   \} \keyword{else if} (\variable{type} == \valuetext{"outflow"}) \{
+      \variable{refine} = \keyword{new} \type{EnzoRefineJeansLength} (\variable{axis},\variable{face},\variable{mask});
+   \} else \{
+      refine = Problem::create_refine_
+         (type,index,config,parameters);
+   \}
+         \vdots
+   \}
+\end{semiverbatim}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{4--5.~Handle any parameters}
+
+\addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.hpp}}
+\footnotesize
+\begin{semiverbatim}
+   class EnzoConfig : public Config \{ 
+        \vdots
+      public: // attributes 
+        \vdots 
+     \comment{\# This parameter specifies the number of cells which
+       \# must cover one Jeans length.}
+      \type{int} \variable{refine_jeans_length_safety_factor};
+
+     \comment{\# If this parameter is greater than zero, it will be
+       \# used in place of the temperature in all cells.}
+     \type{double} \variable{refine_jeans_length_cold_temperature};
+        \vdots 
+   \};
+\end{semiverbatim}
+
+\end{frame}
+
+%======================================================================
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{6.~Update the \charm\ control file \code{enzo.ci}}
+
+\addcharmbf{Update \code{src/Enzo/enzo.ci}}
+\footnotesize
+\begin{semiverbatim}
+   module enzo \{
+       \vdots
+      \type{PUPable} \type{EnzoRefine};
+       \vdots
+   \};
+\end{semiverbatim}
+\end{frame}
+
+
+%======================================================================
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{7-8.~Create a \code{test\_outflow.in} test problem}
+\addtestbf{Create \code{input/test\_outflow.in}}
+\vspace{-0.15in}
+\begin{semiverbatim}
+      \vdots
+   \group{Refine} \{
+      \parameter{type} = [\valuetext{"outflow"}]; 
+   \}
+      \vdots
+\end{semiverbatim}
+
+\end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssAddRefine}
+% \framesubtitle{Add \code{test\_heat} to the other regression tests}
+% 
+% \code{test/SConscript}
+% 
+% \begin{center}
+% \begin{minipage}{3.0in}
+% \blockblue
+% \begin{block}<+->{\textbf{\code{src/Enzo/enzo\_EnzoProblem.cpp}}}
+% \footnotesize
+% \begin{semiverbatim}
+% 
+% test/SConscript:# RefineJeansLength tests
+% test/SConscript:Clean(env\_mv\_out.RunSerial ('test\_refine\_heat-1.unit',bin% \_path + '/enzo-p', 
+% test/SConscript:		ARGS='input/refine\_heat-1.in'),
+% test/SConscript:      [Glob('#/' + test\_path + '/refine\_heat-1*.png'),
+% test/SConscript:       Glob('#/' + test\_path + '/refine\_heat-1*.h5'),
+% test/SConscript:        '#/input/refine\_heat-1.in.out'])
+% test/SConscript:env.MakeMovie ("refine\_heat-1.swf", "test\_refine\_heat-1.unit", \
+% test/SConscript:                ARGS= test\_path + "/refine\_heat-1*.png");
+% test/SConscript:Clean(env\_mv\_out.RunParallel ('test\_refine\_heat-8.unit',bin\_path + '/enzo-p', 
+% test/SConscript:		ARGS='input/refine\_heat-8.in'),
+% test/SConscript:      [Glob('#/' + test\_path + '/refine\_heat-8*.png'),
+% test/SConscript:      Glob('#/' + test\_path + '/refine\_heat-8*.h5'),
+% test/SConscript:      '#/input/refine\_heat-8.in.out'])
+% test/SConscript:env.MakeMovie ("refine\_heat-8.swf", "test\_refine\_heat-8.unit", \
+% test/SConscript:                ARGS= test\_path + "/refine\_heat-8-*.png");
+% \end{semiverbatim}
+% \end{block}
+% \end{minipage}
+% \end{center}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+% \begin{frame}[fragile] 
+% \secframetitle{\ssAddRefine}
+% \framesubtitle{Display the \code{test\_heat} test results in \code{index.php}}
+     
+% \code{test/index.php}
+
+
+% \begin{center}
+% \begin{minipage}{3.0in}
+% \blockblue
+% \begin{block}<+->{\textbf{\code{src/Enzo/enzo\_EnzoProblem.cpp}}}
+% \footnotesize
+% \begin{semiverbatim}
+% test/index.php:test\_summary("Refine-heat",
+% test/index.php:	     array("refine\_heat-1",
+% test/index.php:		   "refine\_heat-8"),
+% test/index.php:test\_group("Refine-heat");
+% test/index.php:Refine-heat tests serve to test basic functionality of the "heat" refine
+% test/index.php:  echo "<h3>HEAT (serial) </h3>";
+% test/index.php:tests("Enzo","enzo-p","test\_refine\_heat-1","HEAT 1 block");
+% test/index.php:test\_table ("refine\_heat-1",
+% test/index.php:  echo "<h3>HEAT (parallel) </h3>";
+% test/index.php:tests("Enzo","enzo-p","test\_refine\_heat-8","HEAT 8 block");
+% test/index.php:test\_table ("refine\_heat-8",
+% \end{semiverbatim}
+% \end{block}
+% \end{minipage}
+% \end{center}
+% \end{frame}
+
+%----------------------------------------------------------------------
+
+
+\begin{frame}[fragile] 
+\secframetitle{\ssAddRefine}
+\framesubtitle{8.~Run the test and verify test results}
+%     Call test problem in \code{test/}
+\begin{center}
+   \ANIMATEGRAPHICS{width=4.0in}{20}{Images/DoubleMachAmr/doublemach-0}{000}{272}
+\end{center}
+\end{frame}
+

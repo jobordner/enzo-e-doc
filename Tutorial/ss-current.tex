@@ -1,0 +1,53 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssCurrent}
+
+% ----------------------------------------------------------------------
+\begin{frame}[fragile,label=ss-current] 
+\secframetitle{\ssCurrent}
+
+\rowcolors[]{1}{blue!5}{blue!10}
+\begin{tabular}{ll}
+\uncover<2->{\orow{\magentabf{Methods}}} &
+\uncover<2->{\orow{PPM, PPML, heat equation, \magentabf{gravity}, \textcolor{gray}{(grackle)}}} \\
+
+\uncover<3->{\erow{Block data}} &
+\uncover<3->{\erow{Field (padding, alignment, precision, centering)}} \\
+
+\uncover<4->{\orow{ Initial conditions}} &
+\uncover<4->{\orow{direct ($f(x,y,z)$), problems (Implosion, Sedov)}} \\
+
+\uncover<5->{\erow{ Boundary conditions}} &
+\uncover<5->{\erow{inflow ($f(x,y,z,t)$), outflow, reflecting, periodic}} \\
+
+\uncover<6->{\orow{\magentabf{Refinement criteria}}} &
+\uncover<6->{\orow{slope, \magentabf{density, mass, shear, shock}}} \\
+
+\uncover<7->{\orow{Interpolation}} &
+\uncover<7->{\orow{linear, \textcolor{gray}{\enzo's \textit{SecondOrderA}, etc.}}} \\
+
+\uncover<8->{\erow{Time stepping}} &
+\uncover<8->{\erow{uniform, \textcolor{gray}{level-adaptive},  \textcolor{gray}{block-adaptive}}} \\
+
+\uncover<9->{\erow{\magentabf{Checkpoint/restart}}} &
+\uncover<9->{\erow{\magentabf{\charm\ (disk, memory+disk)}}} \\
+
+\uncover<10->{\orow{\magentabf{Load balancing}}} &
+\uncover<10->{\orow{\magentabf{\charm\ (dozens of strategies available)}}} \\
+
+\uncover<11->{\orow{I/O}} &
+\uncover<11->{\orow{HDF5, PNG}} \\
+
+\uncover<12->{\erow{Performance}} &
+\uncover<12->{\erow{time, memory (current,high,high/cycle), PAPI}}
+\end{tabular}
+\ \\
+\ \\
+\ \\
+\centerline{
+\uncover<1->{\magentatext{New capability}} \hfill
+\uncover<1->{\bluetext{Pre-existing capability}} \hfill
+\uncover<1->{\textcolor{gray}{Not ready yet}}}
+\end{frame}
