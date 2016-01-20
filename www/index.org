@@ -1,0 +1,5 @@
+* Enzo-P / Cello Project Site
+
+  Currently the project website is a single static index.html web page,
+  which lives in @gedeckt:/var/www/html/cello/index.html
+
