@@ -1,4 +1,4 @@
-FILES=index.html Cello-logo3.png cello.css
+FILES=index.html Cello-logo3.png cello.css 1602-si2.pdf ../Tutorial/developing-with-cello.pdf  ../Tutorial/using-enzo-p.pdf
 
 WEBSITE=/var/www/html/cello
 
