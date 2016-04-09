@@ -8,21 +8,30 @@
 \secframetitle{\ssFields}
 \greenbf{Field classes represent field data on \code{Block}s}
 \ \\
-
+\includegraphics[width=2in]{data-classes-field.pdf}
 \begin{itemize}
 \item \greencode{FieldBlock}
 \begin{itemize}
 \item represents state-independent (intrinsic) data
-\item stored in \greencode{Block} \greencode{Data} objects
-\item raw arrays
+\item associated with \greencode{Block}'s: one per mesh node
 \end{itemize}
 \item \greencode{FieldDescr}
 \begin{itemize}
 \item represents state-dependent (extrinsic) data
-\item stored in \greencode{Simulation} object
-\item precision, ghost depth, padding, alignment, centering
+\item associated with \greencode{Simulation} object: one per process
 \end{itemize}
-\item \greencode{Field} used to simplify using \greencode{FieldBlock} and \greencode{FieldDescr}
+\item Applications access field data via \greencode{Field} objects
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile] 
+\secframetitle{\ssFields}
+\greenbf{Field classes represent field data on \code{Block}s}
+\ \\
+
+\begin{itemize}
+\item \greencode{FieldBlock}
+\item precision, ghost depth, padding, alignment, centering
 \end{itemize}
 \end{frame}
 

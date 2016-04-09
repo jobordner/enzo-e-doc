@@ -1,0 +1,24 @@
+\input{1509-BEGIN}
+
+\begin{document}
+
+
+\newcommand{\modframetitle}[1]{\frametitle{(\arabic{ModuleCounter}) #1 }}
+\newcommand{\secframetitle}[1]{\frametitle{(\arabic{ModuleCounter}.\arabic{SectionCounter}) #1 }}
+
+\newcounter{ModuleCounter}
+\newcommand{\NEWMOD}{\stepcounter{ModuleCounter}\setcounter{SectionCounter}{0}}
+\newcounter{SectionCounter}
+\newcommand{\NEWSEC}{\stepcounter{SectionCounter}}
+
+
+\NEWMOD
+
+\section{Design}
+
+\input{ss-blocks}
+\input{ss-fields}
+\input{ss-particles}
+  
+\input{1509-END}
+
