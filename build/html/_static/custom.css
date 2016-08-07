@@ -22,7 +22,7 @@
 }
 .d{
   font-weight: bold;
-  font-family: courier;
+  font-family: monospace;
    color: #006600; 
 }
 .e{
@@ -31,7 +31,18 @@
 }
 .o{
   font-weight: bold;
-  color: #ff0000;
+  color: #ff00ff;
+}
+
+/* Cello scope */
+.c{
+  font-weight: bold;
+  color: #007777;
+}
+/* Enzo scope */
+.z{
+  font-weight: bold;
+  color: #770077;
 }
 
 
