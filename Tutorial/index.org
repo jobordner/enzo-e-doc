@@ -1,4 +1,5 @@
-* Enzo Workshop 2015
+* Enzo Tutorials
+** TODO [#A] review PRESENTATION at end
 ** TODO [#A] section on "do something" after parameters
 ** TODO [#A] finish and email slides ASAP
 ** TODO [#A] blast or similar, maybe collapse
@@ -214,8 +215,7 @@ void 	print (const char *message, bool use_file=false) const
 ** TODO [#C] How to contribute? (Expand existing)
 ** TODO [#C] [[file:Log/150825/cello-hg-graph.png][cello-hg-graph.png]] and [[file:Log/150825/cello-hg-punchcard.png][cello-hg-punchcard.png]] bitbucket analytics
 ** TODO [#C] Workshop particles not implemented, but this is how they will be used more or less
-* TODO UNORDERED TOPICS
-* TODO SCHEDULE
+* TODO SCHEDULE 2015
 ** 150930 DAY 1. Using Enzo-P
 
    Download Charm++
