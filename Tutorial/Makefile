@@ -1,4 +1,5 @@
-DOCUMENTS = using-enzo-p developing-with-cello
+# DOCUMENTS = using-enzo-p developing-with-cello
+DOCUMENTS = enzo-p-cello
 
 current:pdf
 

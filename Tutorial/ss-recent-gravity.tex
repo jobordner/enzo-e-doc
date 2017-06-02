@@ -1,0 +1,145 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+%   - [ ] Collapse demonstration (tracer particles)
+%
+%   - [ ] List of gravity-related capabilities
+%
+%     dark matter particles
+%     CIC particle deposit into "total density" field
+%     scalable linear solver
+%        multigrid: unigrid working
+%        Reynolds "HG"
+%            one last final bug cornered
+%            [ images ]
+%     KDK particle updates
+%        todo--use t + 0.5*dt for updates
+%     
+%   - [ ] How gravity code is organized
+%
+%     EvolveLevel
+%      :458 PrepareDensityField 
+%           pm_deposit
+%  	 gravity if level == 0
+%      :495 SolveForPotential
+%           gravity if level > 0
+%      :497 ComputeAccelerations
+%      :539 SolveHydroEquations
+%           update density fields
+%      :548 UpdateParticlePositions
+%           update particle positions
+%
+%   - [ ] How parameters files are defined
+%
+%
+%      Method {
+%         list = [ "pm_deposit", "gravity", "ppm", "pm_update" ];
+%
+%        pm_deposit { ... }
+%        gravity { ... }
+%           solver = "bicgstab"
+%	ppm
+%	pm_update
+%	
+%     Solver {
+%        list = ["MG","BCG","J1","C","J2"];
+%        MG {
+%           type = "mg0";
+%	   local = true;
+%        }
+%     }
+%
+%   - [ ] Code structure
+%     code has (d)evolved to have multiple "levels" of Block computation
+%     Method
+%        general physics-based code
+%        typically requires refresh of ghost zones
+%        examples EnzoMethodPpm, EnzoMethodPpml, EnzoMethodGrackle
+%        list = [...] specifies order of computation, as hard-coded 
+%          in EvolveLevel
+%     Solver [new]
+%        solve or approximate solve of A*X = B
+%        typically requires refresh of ghost zones
+%        examples: EnzoSolverBiCgStab, EnzoSolverCg, EnzoSolverMg0,
+%                  EnzoSolverJacobi
+%        can composit solvers: BiCgStab + Mg0 + (Jacobi, Cg)
+%        list = [ ... ] needs to include all solvers involved
+%        - [ ] write solver-hg.incl, solver-mg0.incl, etc.
+%     Compute 
+%        local-only computation
+%        typically don't require ghost zones
+%        eg EnzoComputeTemperature, EnzoComputePressure
+%
+%   - [ ] Multigrid solver
+%
+%     EnzoSolverMg0
+%     uses EnzoMatrixLaplace matvec
+%     existing prolong and restrict
+%
+%     Parameters setup
+%
+%     sequencing: I'm in level 0 < k < N.  What do I do?
+%
+%       ( verify from code )
+%
+%         1. do nothing (finer grids start)
+%         2. receive coarsened residual from a child
+%	    2a. if not last child, do nothing
+%            2b. if last child, continue
+%	 3. pre-smooth
+%	 4. send coarsened data to parent
+%	 5. do nothing (coarser grids continue V-cycle)
+%         6. receive correction from parent
+%         7. prolong correction and update solution
+%	 8. post-smooth
+%         9. send correction to parent
+%	10. last V-cycle iteration?
+%	    if no, then do nothing
+%	    if yes, then refresh
+%
+%   - [ ] Reynolds "HG" solver
+%
+%     description
+%
+%     equations
+%
+%     implementation in Enzo-P
+%        bicgstab solver
+%        mg0 preconditioner
+%	mg0 no pre- or post-smoothing
+%
+%     parameters set up
+%
+%        Method {
+%     
+%   - [ ] Scaling results on Blue Waters
+%
+%     ( slides from BW talk)
+%
+%     Note V-cycle only
+%        actual solves require O(log N)
+%        FMG less scalable too--more work on coarser blocks
+%
+%     
+%        
+%   
+%
+%   
+%   Method
+%     pm_deposit
+%       deposit particle mass into "density_total"
+%     gravity [ rename?  e.g. potential ]
+%       compute potential given "density_total"
+%       compute accelerations
+%
+%     "ppm"
+%     pm_update
+
+
+\subsection{\ssRecentGravity}
+
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\end{frame}
+
