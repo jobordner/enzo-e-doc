@@ -2,10 +2,10 @@
 \NEWSEC
 %======================================================================
 
-\subsection{\ssAddMethod}
+\subsection{\ssDevelMethod}
 
-\begin{frame}[fragile,label=ss-add-method] 
-\secframetitle{\ssAddMethod}
+\begin{frame}[fragile,label=ss-devel-method] 
+\secframetitle{\ssDevelMethod}
 \textbf{Suppose we wish to add a FE heat equation solver to \enzop.} \\ \ \\
 \centerline{\Large \greentext{$u_t - \alpha \nabla^2 u = 0$}}
 \begin{center}
@@ -28,7 +28,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 
 \addclassbf{Create header and source code files}
@@ -64,7 +64,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 \addclassbf{Create the \code{src/Enzo/EnzoMethodHeat.hpp} header file}
 \footnotesize
@@ -206,7 +206,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 \addclassbf{Implement the \code{EnzoMethodHeat::compute()} method}
 \scriptsize
@@ -236,7 +236,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 \addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
 \scriptsize
@@ -258,7 +258,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 \addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
 \begin{semiverbatim}\scriptsize
@@ -284,7 +284,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{2.~Include the \code{enzo\_EnzoMethodHeat.hpp} file}
 \addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
 %
@@ -304,7 +304,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{3.~Call the \code{EnzoMethodHeat} constructor}
 
 \addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
@@ -330,8 +330,8 @@ xxxxxxx\=xxxxxx\=\kill
 
 %----------------------------------------------------------------------
 
-\begin{frame}[fragile, label=sss-add-parameters] 
-\secframetitle{\ssAddMethod}
+\begin{frame}[fragile, label=ss-devel-parameters] 
+\secframetitle{\ssDevelMethod}
 \framesubtitle{4.~Declare any \code{EnzoMethodHeat} parameters}
 
 \addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.hpp}}
@@ -354,7 +354,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{5.~Read in the \code{EnzoMethodHeat} parameters}
 
 \addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.cpp}}
@@ -380,7 +380,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{6.~Update the \charm\ control file \code{enzo.ci}}
 
 \addcharmbf{Update \code{src/Enzo/enzo.ci}}
@@ -404,7 +404,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{7.~Create a \code{test\_heat.in} test problem}
 \addtestbf{Create \code{input/test\_heat.in}}
 \scriptsize
@@ -435,7 +435,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddMethod}
+% \secframetitle{\ssDevelMethod}
 % \framesubtitle{Add \code{test\_heat} to the other regression tests}
 % 
 % \code{test/SConscript}
@@ -471,7 +471,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddMethod}
+% \secframetitle{\ssDevelMethod}
 % \framesubtitle{Display the \code{test\_heat} test results in \code{index.php}}
      
 % \code{test/index.php}
@@ -504,7 +504,7 @@ xxxxxxx\=xxxxxx\=\kill
 
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{8.~Run the test and verify test results}
 %     Call test problem in \code{test/}
 \begin{center}
@@ -515,7 +515,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddMethod}
+\secframetitle{\ssDevelMethod}
 \framesubtitle{8.~Run the test and verify test results}
    \addtestbf{Lets make it unstable and see what happens! (bwahaha)}\\
    \centerline{\code{\group{Field} \{ \parameter{courant} = \valuetext{1.1}; \} }}

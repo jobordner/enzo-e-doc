@@ -2,10 +2,10 @@
 \NEWSEC
 %======================================================================
 
-\subsection{\ssAddRefine}
+\subsection{\ssDevelRefine}
 
-\begin{frame}[fragile,label=ss-add-refine] 
-\secframetitle{\ssAddRefine}
+\begin{frame}[fragile,label=ss-devel-refine] 
+\secframetitle{\ssDevelRefine}
 \textbf{Suppose we wish to add Jeans length refinement criterion to \enzop.}
 \begin{center}
 \rowcolors[]{1}{blue!5}{blue!10}
@@ -26,7 +26,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 
 \addclassbf{Create header and source code files}
@@ -60,7 +60,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Create the \code{src/Enzo/EnzoRefineJeansLength.hpp} header file}
 \footnotesize
@@ -156,7 +156,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Implement the \code{EnzoRefineJeansLength} constructor}
 \begin{semiverbatim}
@@ -174,7 +174,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (1/4)}
 \scriptsize
@@ -200,7 +200,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (2/4)}
 \scriptsize
@@ -229,7 +229,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (3/4)}
 \vspace{-0.15in}
@@ -259,7 +259,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{1.~Create an \code{EnzoRefineJeansLength} class}
 \addclassbf{Implement the \code{EnzoRefineJeansLength::enforce()} method (4/4)}
 \vspace{-0.15in}
@@ -286,7 +286,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{2.~Include the \code{enzo\_EnzoRefineJeansLength.hpp} file}
 \addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
 %
@@ -302,7 +302,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{3.~Call the \code{EnzoRefineJeansLength} constructor}
 
 \addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
@@ -329,7 +329,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{4--5.~Handle any parameters}
 
 \addparambf{Update \code{src/Enzo/enzo\_EnzoConfig.hpp}}
@@ -355,7 +355,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{6.~Update the \charm\ control file \code{enzo.ci}}
 
 \addcharmbf{Update \code{src/Enzo/enzo.ci}}
@@ -373,7 +373,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{7-8.~Create a \code{test\_outflow.in} test problem}
 \addtestbf{Create \code{input/test\_outflow.in}}
 \vspace{-0.15in}
@@ -390,7 +390,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddRefine}
+% \secframetitle{\ssDevelRefine}
 % \framesubtitle{Add \code{test\_heat} to the other regression tests}
 % 
 % \code{test/SConscript}
@@ -426,7 +426,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddRefine}
+% \secframetitle{\ssDevelRefine}
 % \framesubtitle{Display the \code{test\_heat} test results in \code{index.php}}
      
 % \code{test/index.php}
@@ -459,7 +459,7 @@ xxxxxxx\=xxxxxx\=\kill
 
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddRefine}
+\secframetitle{\ssDevelRefine}
 \framesubtitle{8.~Run the test and verify test results}
 %     Call test problem in \code{test/}
 \begin{center}

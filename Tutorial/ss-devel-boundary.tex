@@ -2,10 +2,10 @@
 \NEWSEC
 %======================================================================
 
-\subsection{\ssAddBoundary}
+\subsection{\ssDevelBoundary}
 
-\begin{frame}[fragile,label=ss-add-boundary] 
-\secframetitle{\ssAddBoundary}
+\begin{frame}[fragile,label=ss-devel-boundary] 
+\secframetitle{\ssDevelBoundary}
 \textbf{Suppose we wish to add outflow boundary conditions to \enzop.}
 \begin{center}
 \rowcolors[]{1}{blue!5}{blue!10}
@@ -28,7 +28,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 
 \addclassbf{Create header and source code files}
@@ -59,7 +59,7 @@
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Create the \code{src/Enzo/EnzoBoundaryOutflow.hpp} header file}
 \footnotesize
@@ -155,7 +155,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Implement the \code{EnzoBoundaryOutflow} constructor}
 \begin{semiverbatim}
@@ -173,7 +173,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Implement the \code{EnzoBoundaryOutflow::enforce()} method (1/4)}
 \scriptsize
@@ -199,7 +199,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Implement the \code{EnzoBoundaryOutflow::enforce()} method (2/4)}
 \scriptsize
@@ -228,7 +228,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Implement the \code{EnzoBoundaryOutflow::enforce()} method (3/4)}
 \vspace{-0.15in}
@@ -258,7 +258,7 @@ xxxxxxx\=xxxxxx\=\kill
 %-----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{1.~Create an \code{EnzoBoundaryOutflow} class}}
 \addclassbf{Implement the \code{EnzoBoundaryOutflow::enforce()} method (4/4)}
 \vspace{-0.15in}
@@ -285,7 +285,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addclass{2.~Include the \code{enzo\_EnzoBoundaryOutflow.hpp} file}}
 
 \addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
@@ -302,7 +302,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{\addconstruct{3.~Call the \code{EnzoBoundaryOutflow} constructor}}
 
 \addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
@@ -329,15 +329,15 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{4--5.~Handle any parameters}
-\addparambf{(No parameters: see section on \hyperlink{sss-add-parameters}{\underline{adding parameters to \code{Method}s)}}}
+\addparambf{(No parameters: see section on \hyperlink{ss-devel-parameters}{\underline{adding parameters to \code{Method}s)}}}
 \end{frame}
 
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{6.~Update the \charm\ control file \code{enzo.ci}}
 
 \addcharmbf{Update \code{src/Enzo/enzo.ci}}
@@ -355,7 +355,7 @@ xxxxxxx\=xxxxxx\=\kill
 %======================================================================
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{7-8.~Create a \code{test\_outflow.in} test problem}
 \addtestbf{Create \code{input/test\_outflow.in}}
 \vspace{-0.15in}
@@ -372,7 +372,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddBoundary}
+% \secframetitle{\ssDevelBoundary}
 % \framesubtitle{Add \code{test\_heat} to the other regression tests}
 % 
 % \code{test/SConscript}
@@ -408,7 +408,7 @@ xxxxxxx\=xxxxxx\=\kill
 %----------------------------------------------------------------------
 
 % \begin{frame}[fragile] 
-% \secframetitle{\ssAddBoundary}
+% \secframetitle{\ssDevelBoundary}
 % \framesubtitle{Display the \code{test\_heat} test results in \code{index.php}}
      
 % \code{test/index.php}
@@ -441,7 +441,7 @@ xxxxxxx\=xxxxxx\=\kill
 
 
 \begin{frame}[fragile] 
-\secframetitle{\ssAddBoundary}
+\secframetitle{\ssDevelBoundary}
 \framesubtitle{8.~Run the test and verify test results}
 %     Call test problem in \code{test/}
 \begin{center}
