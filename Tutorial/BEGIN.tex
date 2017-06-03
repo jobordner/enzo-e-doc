@@ -7,31 +7,32 @@
 % UNCOMMENT TO PRINT
 %========================================================================
 
-  \newcommand{\PAUSE}{}
-  \newcommand{\enhance}[1]{}
-  \newcommand{\enhancebf}[2]{\textbf{#2}}
-  \newcommand{\enhanceus}[1]{\color{blue}}
-  \newcommand{\enhancenewus}[1]{\color{magenta}}
-  \newcommand{\enhancethem}[1]{\color{red!50!black}}
- \newcommand{\ENHANCE}[1]{
-  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
+%  \newcommand{\PAUSE}{}
+%  \newcommand{\enhance}[1]{}
+%  \newcommand{\enhancebf}[2]{\textbf{#2}}
+%  \newcommand{\enhanceus}[1]{\color{blue}}
+%  \newcommand{\enhancenewus}[1]{\color{magenta}}
+%  \newcommand{\enhancethem}[1]{\color{red!50!black}}
+% \newcommand{\ENHANCE}[1]{
+%  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
 
 %========================================================================
-% UNCOMMENT FOR TALK:
+% UNCOMMENT FOR PRESENTATION:
 %========================================================================
 
-% \newcommand{\PAUSE}{\pause}
-% \newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
-% \newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
-% \newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
-% \newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
-% \newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
-% newcommand{\ENHANCE}[1]{
-% \temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+\newcommand{\PAUSE}{\pause}
+\newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+\newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
+\newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
+\newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
+\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
+\newcommand{\ENHANCE}[1]{
+\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
 %========================================================================
 
+% UNCOMMENT FOR HANDOUT 
 %\documentclass[xcolor=table,slidestop,compress,handout]{beamer}
-
+% UNCOMMENT FOR PRESENTATION
 \documentclass[xcolor=table,slidestop,compress]{beamer}
 
 %\documentclass[xcolor=table,compress]{beamer}
@@ -108,11 +109,15 @@
 \newcommand{\sRecent}{Recently added functionality in Enzo-P/Cello}
 \newcommand{\ssRecentParticles}{Particle support in Cello}
 \newcommand{\ssRecentGravity}{Scalable gravity in Enzo-P}
+\newcommand{\ssRecentHistory}{History of Field data in Enzo-P}
+\newcommand{\ssRecentUnits}{Units in Enzo-P}
+\newcommand{\ssRecentCosmology}{Cosmology in Enzo-P}
 
 %==================================================
 \newcommand{\sCharm}{\charm\ System}
 \newcommand{\ssCharm}{What is \charm?}
-%\newcommand{\ssCharmCode}{How do I write a simple \charm\ program?}
+\newcommand{\ssCharmCode}{How do I write a simple \charm\ program?}
+\newcommand{\ssCharmPup}{\charm\ ``pup'' functions--what are they?}
 \newcommand{\ssCharmCello}{How is \charm\ used in Cello?}
 %==================================================
 \newcommand{\sDesign}{Software Design}

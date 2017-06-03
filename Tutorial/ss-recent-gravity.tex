@@ -2,6 +2,31 @@
 \NEWSEC
 %======================================================================
 
+%----------------------------------------------------------------------
+%  Scalable AMR Gravity
+%  Current status
+%
+%    Krylov solvers available previously
+%       CG, BiCG-STAB
+%       O(N)
+%       not feasible for large problems
+%    Multigrid solvers now avalible
+%       Mg0: scalable unigrid gravity
+%         fully functional
+%       HG [Reynolds] scalable robust AMR gravity
+%         BiCG-STAB + MG preconditioner
+%         almost functional (1 bug left!)
+%
+%----------------------------------------------------------------------
+%  Scalable AMR Gravity
+%  Example collapse tests
+%
+%    [ IMAGE ] density
+%    [ IMAGE ] potential
+%    [ IMAGE ] acceleration
+%    [ IMAGE ] tracer particles
+%----------------------------------------------------------------------
+
 %   - [ ] Collapse demonstration (tracer particles)
 %
 %   - [ ] List of gravity-related capabilities
@@ -116,16 +141,37 @@
 %   - [ ] Scaling results on Blue Waters
 %
 %     ( slides from BW talk)
+%     Scalable through 64K
+%
+%     Projections visualization
+%        P=8K
+%
+%        IMAGE: mg0-vcycle-old.pdf
+%          non-scalable V-cycle
+%          coarse grid problem--single block CG with global reductions
+%        
+%        IMAGE: mg0-vcycle-new.pdf
+%          scalable V-cycle
+%          coarse grid problem--single block CG on single process
+%
+%     Gravity performance considerations
+%        inherently non-scalable ( < O(N) ) algorithm
+%        times are MG V-cycle only
+%           time-to-solution O(log N) cycles for MG V-cycle
+%           time-to-solution O(1) cycles for FMG
+%              more time spent in coarser levels--less parallel O(log P^2)?
+%        how far down do you go (coarse grid size?)
+%           Could implement MG0 on coarse grid
+%        smaller blocks improves scaling
+%           more blocks per process
+%           less efficient per block (ghost zones, surface/volume)
+%        interleaved solves could be much more efficient than two in sequence
+%           solve gravity + FLD simultaneously?
 %
 %     Note V-cycle only
 %        actual solves require O(log N)
 %        FMG less scalable too--more work on coarser blocks
 %
-%     
-%        
-%   
-%
-%   
 %   Method
 %     pm_deposit
 %       deposit particle mass into "density_total"

@@ -1,0 +1,42 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+% 
+%  Recent
+%  History of Fields
+%
+%  Cello supports arbitrary history of fields
+%  Specify history in parameter file
+%
+%  Field {
+%     history = 1;
+%  }
+%
+%  Access arrays as usual, plus optional history parameter
+%
+%  Field field = enzo_block->data()->field();
+%
+%  int id = field.field_id ("density");
+%
+%  enzo_float * de_new = field.unknowns(id,0);
+%  enzo_float * de_old = field.unknowns(id,1);
+%
+%  double time_new = enzo_block->time()
+%  double time_old = field.history_time(1);
+%
+%  for (int iz=0; iz<nz; iz++) {
+%    for (int iy=0; iy<ny; iy++) {
+%      for (int ix=0; ix<nx; ix++) {
+%         de_new[i] - de_old[i];
+%       }
+%    }
+%  }
+%----------------------------------------------------------------------
+  
+
+\subsection{\ssRecentHistory}
+
+\begin{frame}[fragile,label=ss-module-section] 
+  \secframetitle{\ssRecentHistory}
+\end{frame}
+
