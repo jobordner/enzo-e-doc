@@ -6,25 +6,52 @@
 
 \begin{frame}[fragile,label=ss-purpose] 
 \frametitle{\ssPurpose}
+\small
+       This document begins with several modules that describe
+       what \enzopcello\ is and why it's being developed, its current
+       state of usefulness, recent advances in code capabilities, next
+       steps, and how the overall project is organized.
 
-Three main goals:
-\begin{enumerate}
-\item Tell you \blueit{\textbf{what} Enzo-P is} (and \blueit{\textbf{why} it exists})
-\item Help you learn to \blueit{\textbf{use} Enzo-P}
-\begin{itemize}
-\item download Enzo-P / Cello
-\item configure / compile / run
-\item write parameter files
-\end{itemize}
-\item Show you how to \blueit{\textbf{develop} Enzo-P}
-\begin{itemize}
-\item \charm\ parallel programming system
-\item Cello software design
-\item add parameters
-\item add methods, refinement criteria
-\item add initial and boundary conditions
-\end{itemize}
-\end{enumerate}
+\vspace{0.1in}
+       Next is a module describing how to ``get started''
+       using \enzop, including downloading and installing \enzopcello\
+       and dependent software, configuring, compiling, and running a
+       simple test problem.  An additional module describes input
+       files in more detail to help users get started running their
+       own simulations.
+
+\vspace{0.1in}
+       Some more in-depth details about the internals of \enzopcello\
+       are described next, including modules covering the basics
+       of \charm\ and how it's used in \enzopcello, the class-level
+       design of the \enzopcello, and its control flow.
+
+\vspace{0.1in}
+       We end with a larger module covering various topics related to
+       how to develop new capabilities in \enzop, including adding new
+       block computational methods, initial conditions, boundary
+       conditions, etc. that access particles or field data.
+
+       
+
+% Three main goals:
+% \begin{enumerate}
+% \item Tell you \blueit{\textbf{what} Enzo-P is} (and \blueit{\textbf{why} it exists})
+% \item Help you learn to \blueit{\textbf{use} Enzo-P}
+% \begin{itemize}
+% \item download Enzo-P / Cello
+% \item configure / compile / run
+% \item write parameter files
+% \end{itemize}
+% \item Show you how to \blueit{\textbf{develop} Enzo-P}
+% \begin{itemize}
+% \item \charm\ parallel programming system
+% \item Cello software design
+% \item add parameters
+% \item add methods, refinement criteria
+% \item add initial and boundary conditions
+% \end{itemize}
+% \end{enumerate}
 %Enzo-P has had a single developer for long enough. \\
 %That needs to change. \\
 %Today! \pause (\ldots and tomorrow)

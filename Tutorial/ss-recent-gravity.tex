@@ -2,145 +2,179 @@
 \NEWSEC
 %======================================================================
 
+
+\subsection{\ssRecentGravity}
+
+
+
 %----------------------------------------------------------------------
 %  Scalable AMR Gravity
-%  Current status
+%  
 %
-%    Krylov solvers available previously
-%       CG, BiCG-STAB
-%       O(N)
-%       not feasible for large problems
-%    Multigrid solvers now avalible
-%       Mg0: scalable unigrid gravity
-%         fully functional
-%       HG [Reynolds] scalable robust AMR gravity
-%         BiCG-STAB + MG preconditioner
-%         almost functional (1 bug left!)
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Current status}
+\begin{itemize}
+   \item Krylov-based solvers available previously
+\begin{itemize}
+   \item        CG, BiCG-STAB
+ \item       $O(N^{1.5})$
+\item       not feasible for large problems
+\end{itemize}
+   \item Scalable unigrid solvers avalible
+\begin{itemize}
+   \item        MG0: unigrid scalable gravity
+\item         fully usable as gravity solver
+\item         $O(N \log P)$
+         demonstrated high scalability
+\end{itemize}
+   \item  Scalable AMR scalable gravity soon
+\begin{itemize}
+\item HG [Reynolds] BiCG-STAB + MG-like preconditioner
+\item         almost functional (1 bug left!)
+\item         expected higher scalability than Mg0
+\item          (provided not too deep AMR)
+\end{itemize}
+\end{itemize}
+\end{frame}
 %
 %----------------------------------------------------------------------
+% Gravity solver in Enzo-P
+%
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Gravity solver in Enzo-P}
+   Enzo's CIC PM self-gravity is split between multiple Enzo-P ``Method''s
+\begin{itemize}
+\item \greencode{EnzoMethodPmDeposit}
+\begin{itemize}
+\item        compute \code{"density\_total"} field
+\item        \code{"density"} field + \code{"dark"} particle density
+\item        Enzo: \bluecode{PrepareDensityField}
+\end{itemize}
+\item \greencode{EnzoMethodGravity}
+\begin{itemize}
+\item        compute potential from \code{"density\_total"}
+\item        flexible linear Solvers: \code{"cg"}, \code{"mg0"}, etc.
+\item        computes acceleration given potential
+\item        Enzo: \bluecode{SolveForPotential, ComputeAccelerations}
+\end{itemize}
+\item \greencode{EnzoMethodPmUpdate}
+\begin{itemize}
+\item        update particle positions
+\item        KDK method
+\item        Enzo: \bluecode{UpdateParticlePositions}
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+
+%    Cello handles relocating particles as well as ghost zone refresh
+%----------------------------------------------------------------------
+% Scalable AMR Gravity
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Sample gravity parameter file excerpt}
+\small
+\begin{tabbing}
+\code{xxxx}\=\code{xxxx}\=\code{xxxx}\= \kill
+\> \code{Method \{ } \\
+\> \>  \code{list = [ "pm\_deposit", "gravity", "ppm", "pm\_update" ]; } \\
+\> \>  \code{gravity \{  solver = "MG"; \} } \\
+\> \} \\
+\> \code{Solver \{ } \\
+\> \> \code{list = ["MG","BCG","J1","C","J2"]; } \\
+\> \> \code{MG \{ } \\
+\> \> \> \code {type = "mg0"; } \\
+\> \> \> \code {local = true; } \\
+\> \> \code{\} } \\
+\> \code{     \} }
+\end{tabbing}
+\end{frame}
+%
+%----------------------------------------------------------------------
+%
 %  Scalable AMR Gravity
-%  Example collapse tests
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Parallel scaling test problem}
+
+\textbf{We tested scalability of a recently implemented gravity solver}
+\begin{minipage}{1.5in}
+  \vspace{0.2in}
+  \includegraphics[width=1.5in]{de.png} \ \\
+  \includegraphics[width=1.5in]{po.png} \ \\
+  \includegraphics[width=1.5in]{axz.png}
+\end{minipage} \
+\begin{minipage}{2.75in}
+\centerline{\includegraphics[width=1.5in]{hpgmg_v_cycle.png}}
+  \begin{itemize}
+  \item ``array of collapsing spheres'' problem
+  \item varied both block size and problem size
+  \item multigrid V-cycle solve (uniform-mesh)
+  \item debugging scalable AMR gravity
+    \begin{itemize}
+      \item Reynolds ``HG'' algorithm
+    \item BiCG-STAB Krylov solver
+    \item multigrid-based preconditioner
+    \end{itemize}
+  \end{itemize}
+\end{minipage}
+\end{frame}
+%  Parallel scaling test problem
 %
 %    [ IMAGE ] density
 %    [ IMAGE ] potential
 %    [ IMAGE ] acceleration
 %    [ IMAGE ] tracer particles
+%
 %----------------------------------------------------------------------
+% Scalable AMR Gravity
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Gravity weak scaling}
+  \begin{center}
+    \vspace{-0.1in}
+    \begin{minipage}{4.5in}
+      \begin{center}
+        \begin{minipage}{4.in}
+          \includegraphics[width=4.0in]{scale-multigrid-weak.pdf}
+        \end{minipage} \ 
+      \end{center}
+    \end{minipage}
+  \end{center}
+\end{frame}
 
-%   - [ ] Collapse demonstration (tracer particles)
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Gravity strong scaling}
+  \begin{center}
+    \vspace{-0.1in}
+    \begin{minipage}{4.5in}
+      \begin{center}
+        \begin{minipage}{4.0in}
+          \includegraphics[width=4.0in]{scale-multigrid-strong.pdf}
+        \end{minipage} \\
+      \end{center}
+    \end{minipage}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Projections view of one V-cycle ($P=8205$)}
+  \begin{center}
+    \vspace{-0.1in}
+    \begin{minipage}{4.5in}
+          \includegraphics[width=4.5in]{mg0-vcycle-new-2.pdf}
+    \end{minipage}
+  \end{center}
+\end{frame}
+% 
 %
-%   - [ ] List of gravity-related capabilities
+%    [ IMAGE ] strong scaling
+%    [ IMAGE ] weak scaling
 %
-%     dark matter particles
-%     CIC particle deposit into "total density" field
-%     scalable linear solver
-%        multigrid: unigrid working
-%        Reynolds "HG"
-%            one last final bug cornered
-%            [ images ]
-%     KDK particle updates
-%        todo--use t + 0.5*dt for updates
-%     
-%   - [ ] How gravity code is organized
-%
-%     EvolveLevel
-%      :458 PrepareDensityField 
-%           pm_deposit
-%  	 gravity if level == 0
-%      :495 SolveForPotential
-%           gravity if level > 0
-%      :497 ComputeAccelerations
-%      :539 SolveHydroEquations
-%           update density fields
-%      :548 UpdateParticlePositions
-%           update particle positions
-%
-%   - [ ] How parameters files are defined
-%
-%
-%      Method {
-%         list = [ "pm_deposit", "gravity", "ppm", "pm_update" ];
-%
-%        pm_deposit { ... }
-%        gravity { ... }
-%           solver = "bicgstab"
-%	ppm
-%	pm_update
-%	
-%     Solver {
-%        list = ["MG","BCG","J1","C","J2"];
-%        MG {
-%           type = "mg0";
-%	   local = true;
-%        }
-%     }
-%
-%   - [ ] Code structure
-%     code has (d)evolved to have multiple "levels" of Block computation
-%     Method
-%        general physics-based code
-%        typically requires refresh of ghost zones
-%        examples EnzoMethodPpm, EnzoMethodPpml, EnzoMethodGrackle
-%        list = [...] specifies order of computation, as hard-coded 
-%          in EvolveLevel
-%     Solver [new]
-%        solve or approximate solve of A*X = B
-%        typically requires refresh of ghost zones
-%        examples: EnzoSolverBiCgStab, EnzoSolverCg, EnzoSolverMg0,
-%                  EnzoSolverJacobi
-%        can composit solvers: BiCgStab + Mg0 + (Jacobi, Cg)
-%        list = [ ... ] needs to include all solvers involved
-%        - [ ] write solver-hg.incl, solver-mg0.incl, etc.
-%     Compute 
-%        local-only computation
-%        typically don't require ghost zones
-%        eg EnzoComputeTemperature, EnzoComputePressure
-%
-%   - [ ] Multigrid solver
-%
-%     EnzoSolverMg0
-%     uses EnzoMatrixLaplace matvec
-%     existing prolong and restrict
-%
-%     Parameters setup
-%
-%     sequencing: I'm in level 0 < k < N.  What do I do?
-%
-%       ( verify from code )
-%
-%         1. do nothing (finer grids start)
-%         2. receive coarsened residual from a child
-%	    2a. if not last child, do nothing
-%            2b. if last child, continue
-%	 3. pre-smooth
-%	 4. send coarsened data to parent
-%	 5. do nothing (coarser grids continue V-cycle)
-%         6. receive correction from parent
-%         7. prolong correction and update solution
-%	 8. post-smooth
-%         9. send correction to parent
-%	10. last V-cycle iteration?
-%	    if no, then do nothing
-%	    if yes, then refresh
-%
-%   - [ ] Reynolds "HG" solver
-%
-%     description
-%
-%     equations
-%
-%     implementation in Enzo-P
-%        bicgstab solver
-%        mg0 preconditioner
-%	mg0 no pre- or post-smoothing
-%
-%     parameters set up
-%
-%        Method {
-%     
-%   - [ ] Scaling results on Blue Waters
-%
-%     ( slides from BW talk)
 %     Scalable through 64K
 %
 %     Projections visualization
@@ -154,7 +188,13 @@
 %          scalable V-cycle
 %          coarse grid problem--single block CG on single process
 %
-%     Gravity performance considerations
+%----------------------------------------------------------------------
+%
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Gravity performance considerations}
+\end{frame}
+%     
 %        inherently non-scalable ( < O(N) ) algorithm
 %        times are MG V-cycle only
 %           time-to-solution O(log N) cycles for MG V-cycle
@@ -172,20 +212,43 @@
 %        actual solves require O(log N)
 %        FMG less scalable too--more work on coarser blocks
 %
-%   Method
-%     pm_deposit
-%       deposit particle mass into "density_total"
-%     gravity [ rename?  e.g. potential ]
-%       compute potential given "density_total"
-%       compute accelerations
+%----------------------------------------------------------------------
+\begin{frame}[fragile,label=ss-recent-gravity] 
+\secframetitle{\ssRecentGravity}
+\framesubtitle{Mg0: Multigrid solver for uniform grids}
+\end{frame}
+% Scalable AMR Gravity
+% 
 %
-%     "ppm"
-%     pm_update
-
-
-\subsection{\ssRecentGravity}
-
+% The Solver ``mg0'' is a V-cycle multigrid method for uniform grids.
+%
+%     Implemented in EnzoSolverMg0 Solver
+%        A defined using EnzoMatrixLaplace::matvec()
+%        existing prolong and restrict 
+%        ``negative levels'' for coarsening below level=0
+%        single-block coarse grid works well
+%           use ``single
+%----------------------------------------------------------------------
+% Scalable AMR Gravity
 \begin{frame}[fragile,label=ss-recent-gravity] 
 \secframetitle{\ssRecentGravity}
 \end{frame}
-
+% Mg0: Multigrid solver for uniform grids
+%
+%  I'm in level 0 < k < N.  What do I do?
+%
+%         1. do nothing (finer grids start)
+%         2. ENTRY RECV:  coarsened residual from a child
+%	    2a. if not last child, do nothing
+%           2b. if last child, continue
+%         3. pre-smooth
+%         4. compute residual
+%	  5. ENTRY SEND: coarsened residual to parent
+%	  6. do nothing (coarser grids continue V-cycle)
+%         7. ENTRY RECV: correction from parent
+%         8. prolong correction and update solution
+%	  9. post-smooth
+%        10. ENTRY SEND: correction to parent
+%           9a if converged, end
+%	    9b else goto 1
+%

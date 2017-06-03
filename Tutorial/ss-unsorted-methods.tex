@@ -1,0 +1,20 @@
+%   - [ ] Code structure
+%     code has (d)evolved to have multiple "levels" of Block computation
+%     Method
+%        general physics-based code
+%        typically requires refresh of ghost zones
+%        examples EnzoMethodPpm, EnzoMethodPpml, EnzoMethodGrackle
+%        list = [...] specifies order of computation, as hard-coded 
+%          in EvolveLevel
+%     Solver [new]
+%        solve or approximate solve of A*X = B
+%        typically requires refresh of ghost zones
+%        examples: EnzoSolverBiCgStab, EnzoSolverCg, EnzoSolverMg0,
+%                  EnzoSolverJacobi
+%        can composit solvers: BiCgStab + Mg0 + (Jacobi, Cg)
+%        list = [ ... ] needs to include all solvers involved
+%        - [ ] write solver-hg.incl, solver-mg0.incl, etc.
+%     Compute 
+%        local-only computation
+%        typically don't require ghost zones
+%        eg EnzoComputeTemperature, EnzoComputePressure
