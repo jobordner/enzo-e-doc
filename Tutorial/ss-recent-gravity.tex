@@ -21,10 +21,9 @@
  \item       $O(N^{1.5})$
 \item       not feasible for large problems
 \end{itemize}
-   \item Scalable unigrid solvers avalible
+   \item Scalable unigrid solvers availible
 \begin{itemize}
-   \item        MG0: unigrid scalable gravity
-\item         fully usable as gravity solver
+   \item        MG0: unigrid multigrid V-Cycle
 \item         $O(N \log P)$
          demonstrated high scalability
 \end{itemize}
@@ -32,6 +31,7 @@
 \begin{itemize}
 \item HG [Reynolds] BiCG-STAB + MG-like preconditioner
 \item         almost functional (1 bug left!)
+\item          high quality solution even at level boundaries
 \item         expected higher scalability than Mg0
 \item          (provided not too deep AMR)
 \end{itemize}
