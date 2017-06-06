@@ -11,14 +11,14 @@
 
 \begin{minipage}{2.5in}
 \begin{itemize}
-\item user-defined types
+\item User-defined types
 \begin{itemize}
         \item  declared in input parameter file
         \item  \bluecode{"trace"}: tracer particles
         \item  \bluecode{"dark"}: dark matter particles
         \item  others defined as needed
 \end{itemize}
-\item each with own list of attributes
+\item Arbitrary lists of attributes
 \begin{itemize}
         \item  position (\bluecode{"x"},\bluecode{"y"},\bluecode{"z"})
         \item  velocity (\bluecode{"vx"},\bluecode{"vy"},\bluecode{"vz"})
@@ -27,7 +27,7 @@
         \item \textit{integer} (8-,16-,32-,64-bit)
         \item \textit{float}   (32-, 64-, 128-bit)
         \end{itemize}
-\item constant attributes available
+\item Constant attributes available
 \end{itemize}
 \end{minipage} \
 \begin{minipage}{2.0in}
@@ -45,15 +45,15 @@
 \end{minipage} \ 
 \begin{minipage}{2.5in}
 \begin{itemize}
-\item multiple particle \textit{types}
-\item particles allocated in \textit{batches}
+\item Multiple particle \textit{types}
+\item Particles allocated in \textit{batches}
 \begin{itemize}
 \item fixed size arrays
 \item fewer new/delete operations
 \item efficient insert/delete operations
 \item potentially useful for GPU's
 \end{itemize}
-\item batches store particle \textit{attributes}
+\item Batches store particle \textit{attributes}
 \begin{itemize}
 \item (position, velocity, mass, etc.)
 \item 8,16,32,64-bit integers
@@ -62,7 +62,7 @@
 \end{itemize}
 \end{minipage}
 \begin{itemize}
-\item particle positions may be floating-point or integers
+\item Particle positions may be floating-point or integers
 \begin{itemize}
 \item floating-point for storing global positions
 \item integers for \code{Block}-local coordinates
@@ -90,8 +90,8 @@
   \secframetitle{\ssRecentParticles}
   \framesubtitle{Particle communication between Blocks}
 \begin{itemize}
-\item communication is required when particles move outside a Block 
-\item this is done using a 4x4x4 array
+\item Communication is required when particles move outside a Block 
+\item Uses a 4x4x4 array
 \begin{itemize}
 \item array contains pointers to ParticleData (PD) objects
 \item one PD object per neighbor Block
@@ -106,14 +106,14 @@
 \end{minipage} \ 
 \begin{minipage}{2.7in}
 \begin{itemize}
-\item migrating particles are
+\item Migrating particles are
 \begin{itemize}
 \item \code{scatter()}-ed to PD array objects
 \item sent to associated neighbors
 \item \code{gather()}-ed by neighbors
 \end{itemize}
-\item one sweep through particles
-\item one communication step per neighbor
+\item One sweep through particles
+\item One communication step per neighbor
 %\item similar for refinement / coarsening
 \end{itemize}
 \end{minipage}
@@ -202,15 +202,15 @@ Particles are declared in the input parameter file using the Particle group
   \begin{minipage}{2.75in}
     \vspace{0.1in}
     \begin{itemize}
-    \item variation of ``array of Sedov Blast'' test
-    \item letters instead of spheres
+    \item Variation of ``array of Sedov Blast'' test
+    \item Letters instead of spheres
       \begin{itemize}
       \item inhibits lockstep coarsen/refine
       \end{itemize}
-    \item one letter per Blue Waters core
-    \item tested with/without tracer particles
+    \item One letter per Blue Waters core
+    \item Tested with/without tracer particles
     \item $32^3$ or $24^3$ cells per block
-    \item among largest AMR runs ever done
+    \item Among largest AMR runs ever done
       \begin{itemize}
       \item $256K$ fp-cores
       \item $1.7T$ cells; $0.7T$ (cells + particles)

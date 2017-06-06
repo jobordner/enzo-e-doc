@@ -6,42 +6,31 @@
 %  History of Fields
 %
 %----------------------------------------------------------------------
-  
+
 
 \subsection{\ssRecentHistory}
 
 \begin{frame}[fragile,label=ss-recent-history] 
-  \secframetitle{\ssRecentHistory}
-  \framesubtitle{Cello supports field history}
-  \begin{itemize}
-  \item Specify history in parameter file
+\secframetitle{\ssRecentHistory}
+\framesubtitle{Cello field history}
+Cello can save copies of old field data from previous cycles
 
-  Field {
-     history = 1;
-  }
-  \end{itemize}
-%  
-%
-%
-%  Access arrays as usual, plus optional history parameter
-%
-%  Field field = enzo_block->data()->field();
-%
-%  int id = field.field_id ("density");
-%
-%  enzo_float * de_new = field.unknowns(id,0);
-%  enzo_float * de_old = field.unknowns(id,1);
-%
-%  double time_new = enzo_block->time()
-%  double time_old = field.history_time(1);
-%
-%  for (int iz=0; iz<nz; iz++) {
-%    for (int iy=0; iy<ny; iy++) {
-%      for (int ix=0; ix<nx; ix++) {
-%         de_new[i] - de_old[i];
-%       }
-%    }
-%  }
-
+\begin{itemize}
+\item Multiple generations supported
+\item Minimal data copies: pointer changes
+\begin{tabbing}
+\code{xxx}\= \kill
+\> \code{Field \{ history = 1; \}}
+\end{tabbing}
+\item Easy to access old fields and times
+\begin{tabbing}
+\code{xxx}\= \kill
+\> \code{enzo\_float * de\_new = field.unknowns(id,0);} \\
+\> \code{enzo\_float * de\_old = field.unknowns(id,1);} \\
+\> \code{double time\_new = enzo\_block->time(0);} \\
+\> \code{double time\_old = enzo\_block->time(1);}
+\end{tabbing}
+\item Cello handles saving fields
+\end{itemize}
 \end{frame}
 
