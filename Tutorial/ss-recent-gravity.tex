@@ -193,25 +193,33 @@
 %
 \begin{frame}[fragile,label=ss-recent-gravity] 
 \secframetitle{\ssRecentGravity}
-\framesubtitle{Gravity performance considerations}
+\framesubtitle{Notes on gravity performance}
+\begin{itemize}
+\item Inherently non-scalable problem ($O(N \log N)$ )
+\item Times are single MG V-cycle
+\begin{itemize}
+\item MG: $O(\log N)$ cycles
+\item FMG: $O(1)$ cycles but less scalable
+\begin{itemize}
+\item more time spent in coarser levels
+\item less parallel efficiency $O(log P^2)$?
+\end{itemize}
+\end{itemize}
+\item  How much to coarsen?
+\begin{itemize}
+\item tests go to single \code{Block}
+\item coarse solver currently CG
+\item could implement MG0 on coarse grid
+\end{itemize}
+\item Smaller blocks scale better
+\begin{itemize}
+\item  more blocks per process
+\item better parallel efficiency in mid-levels
+\item  but less efficient per block
+\end{itemize}
+\item Interleaving multiple solves could help
+\end{itemize}
 \end{frame}
-%     
-%        inherently non-scalable ( < O(N) ) algorithm
-%        times are MG V-cycle only
-%           time-to-solution O(log N) cycles for MG V-cycle
-%           time-to-solution O(1) cycles for FMG
-%              more time spent in coarser levels--less parallel O(log P^2)?
-%        how far down do you go (coarse grid size?)
-%           Could implement MG0 on coarse grid
-%        smaller blocks improves scaling
-%           more blocks per process
-%           less efficient per block (ghost zones, surface/volume)
-%        interleaved solves could be much more efficient than two in sequence
-%           solve gravity + FLD simultaneously?
-%
-%     Note V-cycle only
-%        actual solves require O(log N)
-%        FMG less scalable too--more work on coarser blocks
 %
 %----------------------------------------------------------------------
 \begin{frame}[fragile,label=ss-recent-gravity] 
@@ -233,23 +241,33 @@
 % Scalable AMR Gravity
 \begin{frame}[fragile,label=ss-recent-gravity] 
 \secframetitle{\ssRecentGravity}
-\end{frame}
+\framesubtitle{Mg0 V-cycle algorithm}
 % Mg0: Multigrid solver for uniform grids
 %
-%  I'm in level 0 < k < N.  What do I do?
-%
-%         1. do nothing (finer grids start)
-%         2. ENTRY RECV:  coarsened residual from a child
-%	    2a. if not last child, do nothing
-%           2b. if last child, continue
-%         3. pre-smooth
-%         4. compute residual
-%	  5. ENTRY SEND: coarsened residual to parent
-%	  6. do nothing (coarser grids continue V-cycle)
-%         7. ENTRY RECV: correction from parent
-%         8. prolong correction and update solution
-%	  9. post-smooth
-%        10. ENTRY SEND: correction to parent
-%           9a if converged, end
-%	    9b else goto 1
+ I'm in level $0 < k < N$: what do I do?
+ \begin{minipage}{2.5in}
+\footnotesize
+\vspace{0.1in}
+\begin{tabbing}
+\code{xxx}\=\code{xxx}\=\code{xxx}\=\kill
+\>         1. do nothing (finer grids start) \\
+\>         2. \bluetext{entry recv}: coarse residual from a child \\
+\>\>	    2a. if not last child, do nothing \\
+\>\>           2b. if last child, continue \\
+\>         3. pre-smooth \\
+\>         4. compute residual \\
+\>	  5. \redtext{entry send}: coarse residual to parent \\
+\>	  6. do nothing (coarser grids continue) \\
+\>         7. \bluetext{entry recv}: correction from parent \\
+\>         8. prolong correction and update solution \\
+\>	  9. post-smooth \\
+\>        10. \redtext{entry send}: correction to parent \\
+\>\>           10a. if converged, end \\
+\>\>	    10b. else goto 1
+\end{tabbing}
+\end{minipage}
+\begin{minipage}{1.9in}
+\centerline{\includegraphics[width=2.0in]{hpgmg_v_cycle.png}}
+\end{minipage}
+\end{frame}
 %

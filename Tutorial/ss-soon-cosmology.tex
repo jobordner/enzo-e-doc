@@ -6,5 +6,47 @@
 
 \begin{frame}[fragile,label=ss-soon-cosmology] 
 \secframetitle{\ssSoonCosmology}
+Cosmological parameters are set in the \code{Physics} parameter group.
+\small
+\begin{tabbing}
+\code{xxx}\=\code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxxxx}\=\kill
+\>\code{Physics \{ } \\
+\> \> \code{list = ["cosmology"];} \\
+\> \> \code{cosmology \{ } \\
+\>\>\> \code{hubble\_constant\_now} \> \code { = 0.701; } \\
+\>\>\> \code{omega\_matter\_now} \> \code{ =   0.279; } \\
+\>\>\> \code{omega\_dark\_matter\_now} \> \code { =   -1.0; } \\
+\>\>\> \code{omega\_lambda\_now} \> \code { =   0.721; } \\
+\>\>\> \code{comoving\_box\_size} \> \code { = 64.0; } \\
+\>\>\> \code{max\_expansion\_rate} \> \code { = 0.01; } \\
+\>\>\> \code{initial\_redshift} \> \code { =  20.0; } \\
+\>\>\> \code{final\_redshift} \> \code { =  0.0; } \\
+\>\>  \code{ \} } \\
+\>  \code{ \} }
+\end{tabbing}
+\end{frame}
+
+% ----------------------------------------------------------------------
+
+
+\begin{frame}[fragile]
+\secframetitle{\ssSoonCosmology}
+Cosmological parameters are stored in an \code{EnzoPhysicsCosmology} object.
+\footnotesize`
+\begin{tabbing}
+\code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxxxx}\=\kill
+\> \code{EnzoPhysicsCosmology * cosmology = (EnzoPhysicsCosmology * )} \\
+\> \> \code{      simulation()->problem()->physics("cosmology");} \\
+\\ 
+\> \code{enzo\_float omega\_lambda\_now =} \\
+\>\> \code{cosmology->omega\_lambda\_now()} \\
+\> \code{enzo\_float time\_begin =} \\
+\>\> \code{cosmology->initial\_time\_in\_code\_units();} \\
+\\
+\> \code{cosmology->compute\_expansion\_factor (\&a,\&dadt, time);} \\
+\> \code{cosmology->compute\_expansion\_timestep (\&dt\_expansion, time);} \\ 
+\> \code{cosmology->get\_units ( \&density\_units,} \\
+\>\>\> \code{\&length\_units, \&temperature\_units, \&time\_units, \&velocity\_units, time);}
+\end{tabbing}
 \end{frame}
 

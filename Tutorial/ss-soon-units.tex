@@ -6,5 +6,26 @@
 
 \begin{frame}[fragile,label=ss-soon-units] 
 \secframetitle{\ssSoonUnits}
+
+\begin{itemize}
+\item Set units in parameter file
+\begin{tabbing}
+\code{xxx}\=\code{xxx}\=\kill
+\> \code{   Units \{ } \\
+\>\> \code{      time = 1.0; } \\
+\>\> \code{      density = 1.0; } \\
+\>\> \code{      length = 1.0;               } \\
+\> \code{   \} }
+\end{tabbing}
+\item Can use \code{density} or \code{mass}
+\item Access units via \code{EnzoUnits}
+\begin{tabbing}
+\code{xxx}\=\code{xxx}\=\kill
+\> \code{EnzoUnits * units = (EnzoUnits *)} \\
+\>\> \code{   enzo\_block->simulation()->problem()->units();}
+\end{tabbing}
+\item \code{EnzoUnits : public Units}
+\item \code{EnzoUnits} includes Cosmology
+\end{itemize}
 \end{frame}
 
