@@ -18,11 +18,10 @@
 \begin{tabbing}
   \code{xxx}\=\code{xxx}\=\code{xxx}\=\code{xxx}\=\kill
   \> \greencode{\% Reserve a temporary field (executed once)} \\
-\>  \code{ir\_ = field\_descr->insert\_temporary();} \\
+\>  \code{ir\_ = }\bluecode{field\_descr->insert\_temporary();} \\
 \>\>\code{\vdots} \\
 \> \greencode{\greencode{\% Allocate, use, then deallocate} } \\
-\\
-\>\code{field.allocate\_temporary(ir\_);} \\
+\>\bluecode{field.allocate\_temporary(ir\_);} \\
 \>\code{enzo\_float * R   = (enzo\_float*) field.unknowns(ir\_);} \\
 \>\code{for (int iz=0; iz<nz\_; iz++) \{ } \\
 \>\>\code{	for (int iy=0; iy<ny\_; iy++) \{ } \\
@@ -32,7 +31,7 @@
 \>\>\>\code{	  \} } \\
 \>\>\code{	\} } \\
 \>\code{      \} } \\
-\>\code{    field.deallocate\_temporary(ir\_); }
+\>\bluecode{    field.deallocate\_temporary(ir\_); }
 \end{tabbing}      
 
 \end{frame}

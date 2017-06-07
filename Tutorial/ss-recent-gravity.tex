@@ -18,20 +18,20 @@
    \item Gravity available previously
 \begin{itemize}
    \item        CG, BiCG-STAB Krylov solvers
- \item       $O(N^{1.5})$
+ \item       $O(N^{4/3})$ for $3D$
 \item       not feasible for large problems
 \end{itemize}
    \item Scalable unigrid gravity available now
 \begin{itemize}
    \item        MG0: unigrid multigrid V-cycle solver
-\item         $O(N \log P)$
+\item         efficiency $O(1/\log P)$ for $N \rightarrow \infty$, $N/P = $const
 \end{itemize}
    \item  Scalable AMR gravity soon
 \begin{itemize}
 \item HG [Reynolds] BiCG-STAB + MG-like preconditioner
 \item         \textit{almost} working (one bug left!)
 \item          high quality solution even at level boundaries
-\item         expected higher scalability than MG0
+\item         expected higher performance than MG0
 \item          (provided not too deep AMR)
 \end{itemize}
 \end{itemize}
@@ -195,21 +195,15 @@
 \secframetitle{\ssRecentGravity}
 \framesubtitle{Notes on gravity performance}
 \begin{itemize}
-\item Inherently non-scalable problem ($O(N \log N)$ )
 \item Times are single MG V-cycle
 \begin{itemize}
 \item MG: $O(\log N)$ cycles
-\item FMG: $O(1)$ cycles but less scalable
-\begin{itemize}
-\item more time spent in coarser levels
-\item less parallel efficiency $O(log P^2)$?
-\end{itemize}
 \end{itemize}
 \item  How much to coarsen?
 \begin{itemize}
 \item tests go to single \code{Block}
 \item coarse solver currently CG
-\item could implement MG0 on coarse grid
+\item could try single-Block MG0
 \end{itemize}
 \item Smaller blocks scale better
 \begin{itemize}
@@ -222,21 +216,6 @@
 \end{frame}
 %
 %----------------------------------------------------------------------
-\begin{frame}[fragile,label=ss-recent-gravity] 
-\secframetitle{\ssRecentGravity}
-\framesubtitle{MG0: Multigrid solver for uniform grids}
-\end{frame}
-% Scalable AMR Gravity
-% 
-%
-% The Solver ``mg0'' is a V-cycle multigrid method for uniform grids.
-%
-%     Implemented in EnzoSolverMg0 Solver
-%        A defined using EnzoMatrixLaplace::matvec()
-%        existing prolong and restrict 
-%        ``negative levels'' for coarsening below level=0
-%        single-block coarse grid works well
-%           use ``single
 %----------------------------------------------------------------------
 % Scalable AMR Gravity
 \begin{frame}[fragile,label=ss-recent-gravity] 

@@ -34,7 +34,7 @@ Cosmological parameters are set in the \code{Physics} parameter group.
 Cosmological parameters are stored in an \code{EnzoPhysicsCosmology} object.
 \footnotesize`
 \begin{tabbing}
-\code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxxxx}\=\kill
+\code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxx}\=\kill
 \> \code{EnzoPhysicsCosmology * cosmology = (EnzoPhysicsCosmology * )} \\
 \> \> \code{      simulation()->problem()->physics("cosmology");} \\
 \\ 
@@ -45,8 +45,12 @@ Cosmological parameters are stored in an \code{EnzoPhysicsCosmology} object.
 \\
 \> \code{cosmology->compute\_expansion\_factor (\&a,\&dadt, time);} \\
 \> \code{cosmology->compute\_expansion\_timestep (\&dt\_expansion, time);} \\ 
-\> \code{cosmology->get\_units ( \&density\_units,} \\
-\>\>\> \code{\&length\_units, \&temperature\_units, \&time\_units, \&velocity\_units, time);}
+\> \code{cosmology->get\_units (\&density\_units,} \\
+\>\>\> \code{\&length\_units,} \\
+\>\>\> \code{\&temperature\_units,} \\
+\>\>\> \code{\&time\_units,} \\
+\>\>\> \code{\&velocity\_units,} \\
+\>\>\> \code{time);}
 \end{tabbing}
 \end{frame}
 
