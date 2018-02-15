@@ -26,13 +26,12 @@
 
 <b>Cello</b> is a highly scalable, fully-distributed array-of-octree
 parallel adaptive mesh refinement (AMR) framework, and <b>Enzo-P</b>
-is an Eulerian hydrodynamics and MHD astrophysics application that is
+is a hybrid Eulerian-Lagrangian astrophysics and cosmology application that is
 built using Cello.
 Enzo-P is a
 branch of the <a href="http://enzo-project.org/"><b>Enzo</b></a> parallel astrophysics and cosmology
-application. Enzo-P / Cello is currently funded by the National
-Science Foundation (NSF) grant SI2-SSE-1440709, with previous funding
-through NSF grants PHY-1104819 and AST-0808184.</p>
+application. Enzo-P / Cello has been funded by the National
+Science Foundation (NSF) grants SI2-SSE-1440709, PHY-1104819 and AST-0808184.</p>
 
 Two fundamental differences between Enzo-P and Enzo are their AMR
 design and parallelization. Cello implements <em>array of octree
@@ -45,20 +44,14 @@ Supercomputing Applications</a>. Unlike Enzo, which is parallelized
 using MPI, Enzo-P/Cello is parallelized
 using <a href="http://charm.cs.uiuc.edu/software"><em>Charm++</em></a>,
 an externally-developed OOP parallel programming system targeting
-the implementation of Exascale applications.</p>
+Exascale software application development.</p>
 
-Enzo-P currently has two hyperbolic
-solvers: <a href="http://adsabs.harvard.edu/abs/1995CoPhC..89..149B">PPM</a>,
-an enhanced piecewise parabolic method solver that was migrated to
-Enzo-P from the Enzo code base,
-and <a href="http://arxiv.org/abs/0905.2960">PPML</a>, an ideal
-compressible MHD solver originally implemented in serial Fortran.
-More recently, physics and infrastructure capabilities have been
-developed for particle methods, including an implementation of Enzo's
-CIC particle-mesh gravity solver.  Currently we are collaborating
-with <a href="http://faculty.smu.edu/reynolds/">Prof. Daniel
-Reynolds</a> on developing and implementing a highly scalable
-multigrid-based linear solver.
+Enzo-P physics capabilities to date include hydrodynamics using an
+enhanced piecewise parabolic method
+(<a href="http://adsabs.harvard.edu/abs/1995CoPhC..89..149B">PPM</a>),
+hybrid particle-mesh self gravity with a multigrid-based linear solver
+developed by <a href="http://faculty.smu.edu/reynolds/">Prof. Daniel
+Reynolds</a>, and cosmological expansion terms.
 
 <p>
   
