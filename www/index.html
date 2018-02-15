@@ -6,52 +6,62 @@
 
 <html>
 
-<img src="Cello-logo3.png"></img>
+<img src="Cello-logo3.png"></img><p>
+
+<a class="button" href="http://cello-project.org/doc"><b>Documentation</b></a> 
+<!-- <ul>
+  <li><a href="http://cello-project.org/doc/parameters-list.html">Parameters list</a></li>
+  <li><a href="http://cello-project.org/using-enzo-p.pdf">Using Enzo-P</a> </li>
+  <li><a href="http://cello-project.org/developing-with-cello.pdf">Developing with Cello</a> </li>
+  <li><a href="http://cello-project.org/1602-si2.pdf">Petascale Enzo: Software Infrastructure Development and Community Engagement</a></li>
+</ul> -->
+<a class="button" href="http://bitbucket.org/cello-project/cello-src"><b>Source code</b></a>
+<a class="button" href="http://client64-249.sdsc.edu/cello-bug"><b>Bug tracking</b></a>
+<a class="button" href="http://client64-249.sdsc.edu/~bordner/cello-src/test/index.php"><b>Regression tests</b></a>
+<p>
 
 <h2>The Enzo-P/Cello Project</h2>
 
-<b>Cello</b> is a highly scalable, fully-distributed forest-of-octree
-adaptive mesh refinement (AMR) framework, and <b>Enzo-P</b> is a
-(currently) Eularian hydrodynamics and MHD astrophysics application
-that is built using Cello. Enzo-P is a branch of the <b>Enzo</b>
-parallel astrophysics and cosmology application (see
-the <a href="http://enzo-project.org/">Enzo Project
-Website</a>). Enzo-P / Cello is currently funded by the National
+<!-- CAUTION: sync with source/index.rst -->
+
+<b>Cello</b> is a highly scalable, fully-distributed array-of-octree
+parallel adaptive mesh refinement (AMR) framework, and <b>Enzo-P</b>
+is an Eulerian hydrodynamics and MHD astrophysics application that is
+built using Cello.
+Enzo-P is a
+branch of the <a href="http://enzo-project.org/"><b>Enzo</b></a> parallel astrophysics and cosmology
+application. Enzo-P / Cello is currently funded by the National
 Science Foundation (NSF) grant SI2-SSE-1440709, with previous funding
 through NSF grants PHY-1104819 and AST-0808184.</p>
 
-Two fundamental differences between Enzo-P and Enzo are its AMR design
-and parallelization. Cello implements <em>forest of octree AMR</em>,
-which has demonstrated scalability to date through 32K floating-point
-cores of the NSF Blue Waters supercomputer at NCSA. Unlike Enzo, which
-is parallelized using MPI, Enzo-P/Cello is parallelized
-using <em>Charm++</em>, an externally-developed OOP parallel language
-targeting the implementation of Exascale applications (see
-the <a href="http://charm.cs.uiuc.edu/software">Charm++
-website</a>).</p>
+Two fundamental differences between Enzo-P and Enzo are their AMR
+design and parallelization. Cello implements <em>array of octree
+AMR</em>, which has demonstrated scalability to date through 256K
+floating-point cores of
+the <a href="http://www.ncsa.illinois.edu/enabling/bluewaters/">NSF
+Blue Waters supercomputer</a> at the
+<a href="http://www.ncsa.illinois.edu/">National Center for
+Supercomputing Applications</a>. Unlike Enzo, which is parallelized
+using MPI, Enzo-P/Cello is parallelized
+using <a href="http://charm.cs.uiuc.edu/software"><em>Charm++</em></a>,
+an externally-developed OOP parallel programming system targeting
+the implementation of Exascale applications.</p>
 
-Enzo-P currently has two hyperbolic solvers: PPM, an enhanced
-piecewise parabolic method solver that was migrated to Enzo-P from the
-Enzo code base, and PPML, an ideal compressible MHD solver originally
-implemented in serial Fortran. Additional physics and infrastructure
-capabilities are currently being developed, including self-gravity and
-support for particle methods.</p>
+Enzo-P currently has two hyperbolic
+solvers: <a href="http://adsabs.harvard.edu/abs/1995CoPhC..89..149B">PPM</a>,
+an enhanced piecewise parabolic method solver that was migrated to
+Enzo-P from the Enzo code base,
+and <a href="http://arxiv.org/abs/0905.2960">PPML</a>, an ideal
+compressible MHD solver originally implemented in serial Fortran.
+More recently, physics and infrastructure capabilities have been
+developed for particle methods, including an implementation of Enzo's
+CIC particle-mesh gravity solver.  Currently we are collaborating
+with <a href="http://faculty.smu.edu/reynolds/">Prof. Daniel
+Reynolds</a> on developing and implementing a highly scalable
+multigrid-based linear solver.
 
-<ul>
-<li><a href="http://cello-project.org/doc">Documentation</a></li>
-<ul>
-  <li><a href="http://cello-project.org/doc/parameters-list.html">Parameter list</a></li>
-  <li><a href="http://cello-project.org/using-enzo-p.pdf">PDF presentation: Using Enzo-P</a> </li>
-  <li><a href="http://cello-project.org/developing-with-cello.pdf">PDF presentation: Developing with Cello</a> </li>
-  <li><a href="http://cello-project.org/1602-si2.pdf">PDF poster: Petascale Enzo: Software Infrastructure Development and Community Engagement</a></li>
-</ul>
-<li><a href="http://bitbucket.org/cello-project/cello-src">Source code</a></li>
-<li><a href="http://cello-project.org/bug">Bug tracking</a></li>
-<li><a href="http://cello-project.org/test/index.php">Regression tests</a></li>
-</ul>
-
-
-
+<p>
+  
 <A href="mailto:jobordner@ucsd.edu?subject=Enzo-P%20Website" target="_top">James Bordner (jobordner@ucsd.edu)</a>
 </html>
 </body>
