@@ -6,11 +6,11 @@
 
 \begin{frame}[fragile,label=ss-bugs] 
 \secframetitle{\ssBugs}
-\framesubtitle{\url{http://cello-project.org/bug/}}
+\framesubtitle{\url{http://cello-project.org/}  \framebox{\footnotesize{Bug Tracking}}}
 \rowcolors[]{1}{blue!5}{blue!10}
 \begin{center}
 \vspace{-0.1in}
-\begin{minipage}{4.00in}
+\begin{minipage}{4.5in}
 \footnotesize
 \begin{tabular}{rll}
 % (As of 2015-09-03)
@@ -41,24 +41,16 @@
 % 78	2015-07-15 	Mg0 solver has grid-effects 
 % 79  	2015-07-27      Synchronization in Refresh is incorrect for Mg0
 \uncover<1->{ID} & Date & \centerline{\uncover<1->{Summary}} \\
-\hline 
-{\orow{2}} & 13-06-18 & \orow{Excessive syncronization during mesh adaptation} \\
-{\orow{3}} &13-06-18 & \orow{Multiple refresh steps are performed} \\
-{\orow{4}} &13-06-18 & \orow{ProlongLinear requires ghost depth of four} \\
-{\orow{13}} &14-08-19 & \orow{I/O is incorrect for ip stride $\ne$ 1} \\
-{\orow{19}} &15-03-26 & \orow{method\_ppm-1 and method\_ppm-8 differ slightly} \\
-{\orow{21}} & 14-03-17 & \orow{Small errors near corners of just-refined blocks} \\
-{\orow{31}} & 14-01-22 & \orow{Refresh errors in larger-scale parallel runs} \\
-{\orow{34}} & 14-02-21 & \orow{Several components seem to have memory leaks} \\
-{\orow{36}} & 14-03-17 & \orow{Adapt crashes (surprise) in sdsc-demo.in} \\
-{\orow{40}} & 14-04-29 & \orow{adapt-L5 problem fails sometimes} \\
-{\orow{45}} & 14-05-11 & \orow{Performance output for components seems incorrect} \\
-{\orow{46}} & 15-05-06 & \orow{Adapt doesn't always coarsen when is seems it should} \\
-{\orow{51}} & 14-06-27 & \orow{Parameter file error messages show wrong line number} \\
-{\orow{56}} & 14-08-21 & \orow{Restart fails when number of processors is changed} \\
-{\orow{60}} & 15-09-03 & \orow{Load balancing unit tests occasionally hang} \\
-{\orow{74}} & 15-06-16 & \orow{Enzo-P crashes with Charm version 6.6.1 with P $>$ 1} \\
-{\orow{76}} & 15-07-07 & \orow{Refresh add\_fields() does not work as expected}
+\hline
+{\erow{151}} &	2018-05-03 &\erow{Single root block Cosmo crashes in refinement} \\
+{\orow{150}} &	2018-04-26 &\orow{Memory leak in Cosmology problems} \\
+{\erow{148}} &	2018-04-17 &\erow{load balancing fails when Index bit ordering is changed} \\
+{\orow{147}} &	2018-04-17 &\orow{Errors with netlrs smp charm++} \\
+{\erow{146}} &	2018-04-02 &\erow{Restart fails for Cosmo\_OsNa problem on SDSC Comet} \\
+{\orow{138}} &	2018-02-07 &\orow{Image output fails with ``image\_ already created''} \\
+{\erow{126}} &	2017-08-31 &\erow{data output of particles generates corrupt HDF5 files} \\
+{\orow{118}} &	2017-07-12 &\orow{HDF5 output does not scale on Blue Waters} \\
+{\erow{111}} & 	2017-06-08 &\erow{Adapt fails if octree array axis is not power of 2}
 \end{tabular}
 \end{minipage}
 \end{center}

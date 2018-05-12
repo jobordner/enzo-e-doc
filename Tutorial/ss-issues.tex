@@ -10,13 +10,6 @@
 % Review ss-bugs.tex / http://client64-249.sdsc.edu/cello-bug
 
 \begin{itemize}
-  \item Semicolon ';' required between subgroups
-  \begin{verbatim}
-Initial
-   density      { value = 1.0; };
-   total_energy { value = 0.1; }
-}
-   \end{verbatim}\vspace{-0.1in}
    \item Floats and ints cannot be mixed
    \cornersize{0.9}
    \begin{itemize}
@@ -29,21 +22,6 @@ Initial
      \item[\frownie] \textcolor{red}{\code{density = x -2.0;}}
      \item[\smiley] \textcolor{green!50!black}{\code{density = x - 2.0;}}
    \end{itemize}
-\end{itemize}
-\end{frame}
-
-%======================================================================
-
-\begin{frame}[fragile]
-\secframetitle{\ssIssues}
-
-% Review ss-bugs.tex / http://client64-249.sdsc.edu/cello-bug
-
-\begin{itemize}
-  \item \enzopcello\ does not compile with \charm\ version $\ge$ 6.6.0
-  \begin{itemize}
-  \item \footnotesize Try \href{http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}{\greentext{\url{http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}}}
-  \end{itemize}
   \item Need at least as many root blocks as processors $P$
   \begin{itemize}
     \item \code{Mesh \{ root\_blocks = [4,4,4]; \} }
