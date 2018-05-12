@@ -7,33 +7,33 @@
 % UNCOMMENT TO PRINT
 %========================================================================
 
-%  \newcommand{\PAUSE}{}
-%  \newcommand{\enhance}[1]{}
-%  \newcommand{\enhancebf}[2]{\textbf{#2}}
-%  \newcommand{\enhanceus}[1]{\color{blue}}
-%  \newcommand{\enhancenewus}[1]{\color{magenta}}
-%  \newcommand{\enhancethem}[1]{\color{red!50!black}}
-% \newcommand{\ENHANCE}[1]{
-%  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
+ \newcommand{\PAUSE}{}
+ \newcommand{\enhance}[1]{}
+ \newcommand{\enhancebf}[2]{\textbf{#2}}
+ \newcommand{\enhanceus}[1]{\color{blue}}
+ \newcommand{\enhancenewus}[1]{\color{magenta}}
+ \newcommand{\enhancethem}[1]{\color{red!50!black}}
+ \newcommand{\ENHANCE}[1]{
+  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
 
 %========================================================================
 % UNCOMMENT FOR PRESENTATION:
 %========================================================================
 
-\newcommand{\PAUSE}{\pause}
-\newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
-\newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
-\newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
-\newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
-\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
-\newcommand{\ENHANCE}[1]{
-\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+% \newcommand{\PAUSE}{\pause}
+% \newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+% \newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
+% \newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
+% \newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
+%\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
+% \newcommand{\ENHANCE}[1]{
+% \temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
 %========================================================================
 
 % UNCOMMENT FOR HANDOUT 
-%\documentclass[xcolor=table,slidestop,compress,handout]{beamer}
+\documentclass[xcolor=table,slidestop,compress,handout]{beamer}
 % UNCOMMENT FOR PRESENTATION
-\documentclass[xcolor=table,slidestop,compress]{beamer}
+%\documentclass[xcolor=table,slidestop,compress]{beamer}
 
 %\documentclass[xcolor=table,compress]{beamer}
 
@@ -102,7 +102,7 @@
 %==================================================
 \newcommand{\sIntro}{What is Enzo-P/Cello?}
 \newcommand{\ssMotivation}{Why does Enzo-P exist?}
-\newcommand{\ssAmr}{How does Enzo-P's AMR compare to Enzo's?}
+\newcommand{\ssAmr}{How does Enzo-P's AMR differ from Enzo's?}
 \newcommand{\ssCompare}{How do Enzo-P and Enzo differ?}
 \newcommand{\ssApproach}{How does Enzo-P address Enzo's limitations?}
 
@@ -202,9 +202,9 @@
 \newcommand{\ssRefresh}{Refresh ghost zones}
 
 %==================================================
-\newcommand{\sPresent}{Current state}
+\newcommand{\sPresent}{Current status}
 
-\newcommand{\ssState}{What is the current state of Enzo-P/Cello?}
+\newcommand{\ssState}{What is the current status of Enzo-P/Cello?}
 \newcommand{\ssCurrent}{What are Enzo-P's current capabilities?}
 \newcommand{\ssScaling}{How well does Enzo-P scale?}
 \newcommand{\ssIssues}{What are some of Enzo-P's known issues?}
@@ -347,12 +347,12 @@
 %\newcommand{\colorat}[2]{\textcolor<#1>{f{#2}}{#2}}
 \newcommand{\TITLE}[2]{\title{#1}
 \subtitle{#2}
-\author{James Bordner \and Michael L.~Norman}
+\author[Bordner/Norman]{James Bordner \and Michael L.~Norman}
 \institute {
    University of California, San Diego\\
    San Diego Supercomputer Center}
-\date[2017-06-5/8]{Enzo Workshop\\
-            5-8 June 2017}}
+\date[2018-05-14/18]{Enzo Days 2018 / Georgia Tech \\
+            2018-05-14/18}}
 
 \definecolor{enzop}{rgb}{0.75,0.00,0.00}
 \definecolor{cello}{rgb}{0.00,0.50,0.000}
