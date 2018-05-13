@@ -1,0 +1,196 @@
+\input{BEGIN}
+
+
+\includeonly{
+%--------------------------------------------------
+%  s-intro,
+  s-present,
+  s-project,
+  s-future,
+%--------------------------------------------------
+%  s-starting,
+%  s-parameters,
+%--------------------------------------------------
+%  s-charm,
+%  s-design,
+%  s-control,
+%  s-devel
+%--------------------------------------------------
+ }
+
+\begin{document}
+
+\TITLE{Enzo-P / Cello Status and What's New?}{ \ \\
+% Scalable Adaptive Mesh Refinement \\
+% for Astrophysics and Cosmology \\
+%\ \\
+%\tiny{National Science Foundation} \\
+\tiny{NSF SI2-SSE-1440709 PHY-1104819 AST-0808184}}
+
+
+
+\frame[label=titlepage]{ \titlepage }
+
+%\setbeamertemplate{frametitle}{%
+%\begin{beamercolorbox}[wd=\textwidth, ht=0.5cm, dp=0.2cm]{frametitle}
+%\usebeamerfont{frametitle}\insertframetitle
+%\end{beamercolorbox}}
+
+\newcommand{\modframetitle}[1]{\frametitle{(\arabic{ModuleCounter}) #1 }}
+\newcommand{\secframetitle}[1]{\frametitle{(\arabic{ModuleCounter}.\arabic{SectionCounter}) #1 }}
+
+\newcounter{ModuleCounter}
+\newcommand{\NEWMOD}{\stepcounter{ModuleCounter}\setcounter{SectionCounter}{0}}
+\newcounter{SectionCounter}
+\newcommand{\NEWSEC}{\stepcounter{SectionCounter}}
+
+
+\begin{frame}[fragile,label=outline] 
+\frametitle{Chapters}
+\begin{center}
+\begin{minipage}{3.25in}
+%\rowcolors[]{1}{blue!5}{blue!10}
+%\begin{tabular}{l}
+\begin{enumerate}
+%--------------------------------------------------
+\item  \hyperlink{s-intro<1>}      {\BUTTON {\orow{\sIntro}}} \\
+\item  \hyperlink{s-present<1>}    {\BUTTON {\erow{\sPresent}}} \\
+\item  \hyperlink{s-project<1>}    {\BUTTON {\erow{\sProject}}} \\
+\item  \hyperlink{s-future<1>}     {\BUTTON {\orow{\sFuture}}} \\
+%\item  \hyperlink{s-starting<1>}   {\BUTTON {\orow{\sStarting}}} \\
+%\item  \hyperlink{s-parameters<1>} {\BUTTON {\erow{\sParameters}}} \\
+%\item  \hyperlink{s-charm<1>}      {\BUTTON {\orow{\sCharm}}} \\
+%\item \hyperlink{s-design<1>}      {\BUTTON {\erow{\sDesign}}} \\
+%\item \hyperlink{s-control<1>}      {\BUTTON {\orow{\sControl}}} \\
+%\item  \hyperlink{s-devel<1>} {\BUTTON {\erow{\sDevel}}}
+%\end{tabular}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+
+% \include{s-intro}
+ %======================================================================
+\NEWMOD
+%======================================================================
+
+\section{\sIntro}
+
+%----------------------------------------------------------------------
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-intro] 
+\modframetitle{\sIntro}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+%\item \hyperlink{ss-purpose<1>}   {\BUTTON {\ssPurpose}}
+\item \hyperlink{ss-motivation<1>} {\BUTTON {\ssMotivation}}
+\item \hyperlink{ss-amr<1>}        {\BUTTON {\ssAmr}}
+\item \hyperlink{ss-compare<1>}    {\BUTTON {\ssCompare}}
+\item \hyperlink{ss-approach<1>}   {\BUTTON {\ssApproach}}
+\item \hyperlink{ss-intro-summary<1>}   {\BUTTON {\ssIntroSummary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-intro<1>}{\icon}}
+
+%\input{ss-purpose}    % What is the purpose of this workshop?
+\input{ss-motivation}  % Why does Enzo-P exist?
+\input{ss-amr}         % How does Enzo-P's AMR compare to Enzo's
+\input{ss-compare}     % What are the key differences between Enzo-P and Enzo?
+\input{ss-approach}    % How does Enzo-P AMR address Enzo's limitations?}
+\input{ss-intro-summary}
+
+%  \include{s-present}
+%======================================================================
+\NEWMOD
+%======================================================================
+
+\section{\sPresent}
+
+%----------------------------------------------------------------------
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-present] 
+\modframetitle{\sPresent}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-state<1>}   {\BUTTON {\ssState}}
+\item \hyperlink{ss-current<1>}   {\BUTTON {\ssCurrent}}
+\item \hyperlink{ss-scaling<1>}   {\BUTTON {\ssScaling}}
+\item \hyperlink{ss-issues<1>}   {\BUTTON {\ssIssues}}
+\item \hyperlink{ss-present-summary<1>}   {\BUTTON {\ssPresentSummary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-present<1>}{\icon}}
+
+\input{ss-state}  % What is the current state of Enzo-P/Cello?
+\input{ss-current}  % What are Enzo-P's current and near future capabilities?
+\input{ss-scaling}  % How well does ENzo-P scale?
+\input{ss-issues}      % What are some of Enzo-P's known issues?
+\input{ss-present-summary}
+
+%  \include{s-future}
+%  \include{s-project}
+%======================================================================
+\NEWMOD
+%======================================================================
+
+\section{\sProject}
+
+%----------------------------------------------------------------------
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-project] 
+\modframetitle{\sProject}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-project<1>}       {\BUTTON {\orow{\ssProject}}} \\
+\item \hyperlink{ss-source<1>}        {\BUTTON {\erow{\ssSource}}} \\
+\item \hyperlink{ss-browse<1>}        {\BUTTON {\orow{\ssBrowse}}} \\
+\item \hyperlink{ss-documentation<1>} {\BUTTON {\erow{\ssDocumentation}}} \\
+\item \hyperlink{ss-testing<1>}       {\BUTTON {\orow{\ssTesting}}} \\
+\item \hyperlink{ss-bugs<1>}          {\BUTTON {\erow{\ssBugs}}} \\
+\item \hyperlink{ss-project-summary<1>} {\BUTTON {\erow{\ssProjectSummary}}} \\
+%\hyperlink{ss-communicate<1>}   {\BUTTON {\orow{\ssCommunicate}}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-project<1>}{\icon}}
+
+\input{ss-project} % How is the Enzo-P project currently organized?
+\input{ss-source} % Where is the source code hosted?
+\input{ss-browse} % How can I browse the source code?
+\input{ss-documentation} % What documentation is available?
+\input{ss-testing} % How is testing done?
+\input{ss-bugs} % What are some of the known bugs?
+\input{ss-project-summary} 
+%\input{ss-communicate} % How do Enzo-P developers communicate?
+
+  
+%  \include{s-starting}
+%  \include{s-parameters}
+%  \include{s-charm}
+%  \include{s-design}
+%  \include{s-control}
+%  \include{s-devel}
+  
+\input{END}
+

@@ -1,14 +1,14 @@
 
 
-#DOCUMENTS = 1805-status
-#DOCUMENTS = 1805-intro
-#DOCUMENTS = 1805-using
-
+#DOCUMENTS = 1805-1-status
+#DOCUMENTS = 1805-2-intro
+#DOCUMENTS = 1805-3-using
+DOCUMENTS =  1805-1-status 1805-2-intro 1805-3-using
 #DOCUMENTS = cello-project
 #DOCUMENTS = using-enzo-p
 #DOCUMENTS = developing-with-cello
 
-DOCUMENTS = cello-project using-enzo-p developing-with-cello
+#DOCUMENTS = cello-project using-enzo-p developing-with-cello
 #DOCUMENTS = enzo-p-cello
 #DOCUMENTS = 1706
 
