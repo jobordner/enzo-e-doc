@@ -1,0 +1,79 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssRecentMusic}
+
+
+
+
+%----------------------------------------------------------------------
+%  MUSIC initial conditions
+%  
+%
+\begin{frame}[fragile,label=ss-recent-music] 
+  \secframetitle{\ssRecentMusic}
+  \begin{itemize}
+  \item Can read in MUSIC initial conditions: \code{EnzoInitialMusic}
+  \item Support both field data and particle data
+\small
+\begin{verbatim}
+   Initial {
+      list = [ ... "music" ... ];
+      music {
+         file_list = [ "FD", ... , "PX", ... ];
+         FD {
+            type = "field";
+            ...
+         }
+         PX {
+            type = "particle";
+            ...
+         }
+      }
+   }
+\end{verbatim}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,label=ss-recent-music] 
+  \secframetitle{\ssRecentMusic}
+  \begin{itemize}
+  \item Field file parameters
+    \small
+  \begin{verbatim}
+   FD {
+      name = "density";
+      file = "GridDensity";
+      dataset = "GridDensity";
+      coords = "tzyx";
+   }
+         \end{verbatim}
+  \item Particle file parameters
+    \small
+  \begin{verbatim}
+   PX {
+      name = "dark";
+      attribute = "x";
+      file = "ParticleDisplacements_x";
+      dataset = "ParticleDisplacements_x";
+      coords = "tzyx";
+   }
+   \end{verbatim}
+\end{itemize}
+\end{frame}
+
+    %           MUSIC Input data files
+%           EnzoInitialMusic class
+%           supports both particles and fields
+%           Currently unigrid only
+%           Each Block figures out what section to read
+%           AMR should be relatively painless
+%   
+% #+BEGIN_SRC text
+%       }
+%      }
+% #+END_SRC
+
+  %

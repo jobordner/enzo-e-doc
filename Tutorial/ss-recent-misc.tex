@@ -1,0 +1,30 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssRecentMisc}
+
+\begin{frame}[fragile,label=ss-recent-misc] 
+\secframetitle{\ssRecentMisc}
+\begin{itemize}
+\item \code{Yt} interface for Enzo-P (Britton Smith)
+\begin{itemize}
+\item may need trivial tweak to work
+\item (``\verb+particle dark+'' -> ``\verb+particle_dark+'')
+\item uses \verb+parameters.libconfig+ file of Enzo-P parameters
+\item Enzo-P parameter names are subject to change
+\end{itemize}
+\item \verb+sedov_random+ problem initialier (Thomas Bolden)
+\item \code{RefineByMass} has been updated
+\begin{itemize}
+\item \verb+"dark"+ and \verb+"baryon"+ supported individually
+\item includes updates for cosmology
+\end{itemize}
+\item Updating some things to C++-11/C++-14
+\begin{itemize}
+\item  smart pointers
+\item  auto variables
+\end{itemize}
+\end{itemize}
+\end{frame}

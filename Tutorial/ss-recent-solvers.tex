@@ -1,0 +1,73 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssRecentGravity}
+
+
+
+%----------------------------------------------------------------------
+%  Scalable AMR Solvers
+%  
+%
+\begin{frame}[fragile,label=ss-recent-solvers] 
+  \secframetitle{\ssRecentSolvers}
+  \begin{itemize}
+  \item Previously had individual \verb+"EnzoMethodGravity+\textit{<solver>}\verb+"+ \code{Methods}
+    \begin{verbatim}
+   Method {
+      list = [ ... "gravity_bicgstab" ... ];
+      gravity_bicgstab {
+         max_iter = 1000;
+         res_tol  = 0.01;
+      }
+   }
+\end{verbatim}
+    \vspace{-0.3in}
+  \item Now have single \code{EnzoMethodGravity} \code{Method}
+  \item Now have separate \code{Solver} classes for linear solvers
+  \begin{itemize}
+    \item \code{EnzoSolverCg}: Conjugate gradient method (symmetric only)
+    \item \code{EnzoSolverBiCgStab}: stabilized Bi-conjugate gradient
+    \item \code{EnzoSolverMg0}: Multigrid V-cycle solver (unigrid only)
+  \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile,label=ss-recent-solvers] 
+  \secframetitle{\ssRecentSolvers}
+  \begin{itemize}
+  \item Specify solver with \verb+solver+ paramater
+    \small
+     \begin{verbatim}
+   Method {
+      list = [ ... "gravity" ... ];
+      gravity {
+         solver = "bcg";
+      }
+   }
+   Solver {
+      list = ["bcg"];
+      bcg {
+         type = "bicgstab";
+          max_iter = 1000;
+          res_tol  = 0.01;
+      }
+   }
+     \end{verbatim}
+%        Used to be different 
+%          for each solver.
+%        solver code couldn't be reused for non-gravity
+%        duplicate gravity-related code
+%  
+%        Old parameters
+%
+%       New parameters
+%#+BEGIN_SRC text
+    %#+END_SRC
+    \end{itemize}
+\end{frame}
+%

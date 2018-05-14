@@ -1,0 +1,35 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+
+\subsection{\ssRecentPpmDevel}
+
+\begin{frame}[fragile,label=ss-recent-ppm-devel] 
+\secframetitle{\ssRecentPpmDevel}
+\begin{itemize}
+\item PPM hydrodynamics updated from enzo-dev ``week-of-code''
+\item old PPM still available: in \code{SContruct} set \code{new\_ppm=0}
+\item new changes to ENZO PPM can be tracked using \code{diff}:
+\footnotesize
+\begin{verbatim}
+    diff -bB calcdiss_dev.F ~/Enzo/enzo-dev/src/enzo/calcdiss.F 
+    1,2c1
+    < #include "fortran.h"
+    < #define FORTRAN
+    ---
+    > #include "fortran.def"
+    18c17
+    <       subroutine calcdiss_dev(
+    ---
+    >       subroutine calcdiss(
+    115c114
+    < #include "fortran_types.h"
+    ---
+    > #include "fortran_types.def"
+\end{verbatim}
+\end{itemize}
+
+\end{frame}
+

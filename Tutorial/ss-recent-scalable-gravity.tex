@@ -1,0 +1,34 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+
+\subsection{\ssRecentScalableGravity}
+
+\begin{frame}[fragile,label=ss-recent-scalable-gravity] 
+\secframetitle{\ssRecentScalableGravity}
+
+\begin{itemize}
+%   - [ ] create performance plots / movies
+  \item New solver: ``HG'' algorithm
+  \begin{itemize}
+    \item developed by Dan Reynolds
+    \item designed for modest refinement levels
+%    \item No separate \code{EnzoSolverHg} class
+    \item implemented as preconditioned BiCgStab
+    \begin{itemize}
+      \item Mg0 V-cycle preconditioner
+      \item no smoothings going up/down hierarchy
+      \item final Jacobi smoothing
+    \end{itemize}
+    \item restart with previous solution
+  \end{itemize}
+  \item Additional gravity improvements
+  \begin{itemize}
+    \item corrected ghost refresh (accumulate for particle mass)
+    \item higher level discretizations in \code{EnzoMatrixLaplacian}
+    \item incorporate \verb+dep_grid_cic()+ for centered-time gas
+  \end{itemize}
+\end{itemize}
+\end{frame}
+

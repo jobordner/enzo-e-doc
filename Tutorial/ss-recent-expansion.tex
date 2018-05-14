@@ -1,0 +1,78 @@
+%======================================================================
+\NEWSEC
+%======================================================================
+
+\subsection{\ssRecentExpansion}
+
+\begin{frame}[fragile,label=ss-recent-expansion] 
+\secframetitle{\ssRecentExpansion}
+\begin{itemize}
+\item Britton implemented comoving expansion
+\item \code{EnzoMethodComovingExpansion} calls \verb+expand_terms()+
+\item Cosmology initial conditions
+\begin{itemize}
+\item \code{EnzoInitialMusic}: read MUSIC I.C.'s
+\item \code{EnzoInitialCosmology}: compute energies, initial redshift
+\begin{verbatim}
+  Initial {
+    list = [ "music", "cosmology" ];
+    ...
+  }
+\end{verbatim}
+\end{itemize}
+\item Incorporate expansion factors in \code{EnzoComputeAcceleration}
+\item \code{EnzoUnits : public Units} supports expansion factors
+\end{itemize}
+\end{frame}
+
+
+% \begin{frame}[fragile,label=ss-recent-cosmology] 
+% \secframetitle{\ssRecentCosmology}
+% Cosmological parameters are set in the \code{Physics} parameter group.
+% \small
+% \begin{tabbing}
+% \code{xxx}\=\code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxxxx}\=\kill
+% \>\code{Physics \{ } \\
+% \> \> \code{list = ["cosmology"];} \\
+% \> \> \code{cosmology \{ } \\
+% \>\>\> \code{hubble\_constant\_now} \> \code { = 0.701; } \\
+% \>\>\> \code{omega\_matter\_now} \> \code{ =   0.279; } \\
+% \>\>\> \code{omega\_dark\_matter\_now} \> \code { =   -1.0; } \\
+% \>\>\> \code{omega\_lambda\_now} \> \code { =   0.721; } \\
+% \>\>\> \code{comoving\_box\_size} \> \code { = 64.0; } \\
+% \>\>\> \code{max\_expansion\_rate} \> \code { = 0.01; } \\
+% \>\>\> \code{initial\_redshift} \> \code { =  20.0; } \\
+% \>\>\> \code{final\_redshift} \> \code { =  0.0; } \\
+% \>\>  \code{ \} } \\
+% \>  \code{ \} }
+% \end{tabbing}
+% \end{frame}
+
+% ----------------------------------------------------------------------
+
+
+% \begin{frame}[fragile]
+% \secframetitle{\ssRecentCosmology}
+% Cosmological parameters are stored in an \code{EnzoPhysicsCosmology} object.
+% \footnotesize
+% \begin{tabbing}
+% \code{xxx}\=\code{xxx}\=\code{xxxxxxxxxxxxxxxxxxx}\=\kill
+% \> \code{EnzoPhysicsCosmology * cosmology = (EnzoPhysicsCosmology * )} \\
+% \> \> \code{      simulation()->problem()->physics("cosmology");} \\
+% \\ 
+% \> \code{enzo\_float omega\_lambda\_now =} \\
+% \>\> \code{cosmology->omega\_lambda\_now()} \\
+% \> \code{enzo\_float time\_begin =} \\
+% \>\> \code{cosmology->initial\_time\_in\_code\_units();} \\
+% \\
+% \> \code{cosmology->compute\_expansion\_factor (\&a,\&dadt, time);} \\
+% \> \code{cosmology->compute\_expansion\_timestep (\&dt\_expansion, time);} \\ 
+% \> \code{cosmology->get\_units (\&density\_units,} \\
+% \>\>\> \code{\&length\_units,} \\
+% \>\>\> \code{\&temperature\_units,} \\
+% \>\>\> \code{\&time\_units,} \\
+% \>\>\> \code{\&velocity\_units,} \\
+% \>\>\> \code{time);}
+% \end{tabbing}
+% \end{frame}
+
