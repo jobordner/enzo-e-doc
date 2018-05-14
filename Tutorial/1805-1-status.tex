@@ -218,6 +218,7 @@
 \input{ss-scaling-2}
 \input{ss-scaling-3}
 \input{ss-scaling-4}
+\input{ss-scaling-5}
 
 %======================================================================
 \input{ss-issues}      % What are some of Enzo-P's known issues?
@@ -236,11 +237,18 @@
 \begin{center}
 \begin{minipage}{3.25in}
 \begin{enumerate}
+\item \hyperlink{ss-recent-solvers<1>}   {\BUTTON {\ssRecentSolvers}}
+\item \hyperlink{ss-recent-music<1>}      {\BUTTON {\ssRecentMusic}}
+\item \hyperlink{ss-recent-scalable-gravity<1>}   {\BUTTON {\ssRecentScalableGravity}}
+\item \hyperlink{ss-recent-expansion<1>}   {\BUTTON {\ssRecentExpansion}}
 \item \hyperlink{ss-recent-cosmology<1>}   {\BUTTON {\ssRecentCosmology}}
-\item \hyperlink{ss-recent-particles<1>}   {\BUTTON {\ssRecentParticles}}
-\item \hyperlink{ss-recent-gravity<1>}     {\BUTTON {\ssRecentGravity}}
-\item \hyperlink{ss-recent-history<1>}     {\BUTTON {\ssRecentHistory}}
-\item \hyperlink{ss-recent-temporary<1>}     {\BUTTON {\ssRecentTemporary}}
+\item \hyperlink{ss-recent-ppm-devel<1>}   {\BUTTON {\ssRecentPpmDevel}}
+\item \hyperlink{ss-recent-misc<1>}   {\BUTTON {\ssRecentMisc}}
+%@@@@@@@@@@@@@@@@
+%\item \hyperlink{ss-recent-particles<1>}   {\BUTTON {\ssRecentParticles}}
+%\item \hyperlink{ss-recent-gravity<1>}     {\BUTTON {\ssRecentGravity}}
+%\item \hyperlink{ss-recent-history<1>}     {\BUTTON {\ssRecentHistory}}
+%\item \hyperlink{ss-recent-temporary<1>}     {\BUTTON {\ssRecentTemporary}}
 \end{enumerate}
 \end{minipage}
 \end{center}
@@ -248,12 +256,19 @@
 
 \logo{\hfill\hyperlink{s-recent<1>}{\icon}}
 
-\input{ss-recent-cosmology} % have cosmological support
-\input{ss-recent-particles} % have particles
-\input{ss-recent-gravity}   % have scalable gravity (unigrid)
-\input{ss-recent-history} % save field history
-\input{ss-recent-temporary} % define temporary fields
-\input{ss-scaling-5}
+\input{ss-recent-solvers} % have Solvers objects
+\input{ss-recent-music} % MUSIC initial conditions
+\input{ss-recent-scalable-gravity} % scalable gravity solvers
+\input{ss-recent-expansion} % have cosmological expansion
+\input{ss-recent-cosmology} % have scalable AMR cosmology
+\input{ss-recent-ppm-devel} % Updated PPM devel
+\input{ss-recent-misc} % Miscellaneous
+
+%@@@@@@@@@@@@@@@@@
+%\input{ss-recent-particles} % have particles
+%\input{ss-recent-gravity}   % have scalable gravity (unigrid)
+%\input{ss-recent-history} % save field history
+%\input{ss-recent-temporary} % define temporary fields
 \input{ss-recent-summary} % Summary of recent capabilities
 
 %======================================================================
@@ -268,15 +283,15 @@
 \begin{center}
 \begin{minipage}{3.25in}
 \begin{enumerate}
-\item \hyperlink{ss-roadmap<1>}   {\BUTTON {\ssRoadmap}}
+%\item \hyperlink{ss-roadmap<1>}   {\BUTTON {\ssRoadmap}}
 \item \hyperlink{ss-future-hydro<1>}   {\BUTTON {\ssFutureHydro}}
 \item \hyperlink{ss-future-gravity<1>}   {\BUTTON {\ssFutureGravity}}
 \item \hyperlink{ss-future-particles<1>}   {\BUTTON {\ssFutureParticles}}
 \item \hyperlink{ss-future-chemistry<1>}   {\BUTTON {\ssFutureChemistry}}
-\item \hyperlink{ss-future-magnetism<1>}   {\BUTTON {\ssFutureMagnetism}}
-\item \hyperlink{ss-future-radiation<1>}   {\BUTTON {\ssFutureRadiation}}
-\item \hyperlink{ss-contribute<1>}   {\BUTTON {\ssContribute}}
-\item \hyperlink{ss-future-summary<1>}   {\BUTTON {\ssFutureSummary}}
+%\item \hyperlink{ss-future-magnetism<1>}   {\BUTTON {\ssFutureMagnetism}}
+%\item \hyperlink{ss-future-radiation<1>}   {\BUTTON {\ssFutureRadiation}}
+%\item \hyperlink{ss-contribute<1>}   {\BUTTON {\ssContribute}}
+%\item \hyperlink{ss-future-summary<1>}   {\BUTTON {\ssFutureSummary}}
 \end{enumerate}
 \end{minipage}
 \end{center}
@@ -284,15 +299,15 @@
 
 \logo{\hfill\hyperlink{s-future<1>}{\icon}}
 
-\input{ss-roadmap} % What is the project roadmap?
+%\input{ss-roadmap} % What is the project roadmap?
 \input{ss-future-hydro} % What is needed to complete V1.0 (hydrodynamics)?
 \input{ss-future-gravity} % What is needed to complete V3.0 (gravity)?
 \input{ss-future-chemistry} % What is needed to complete V2.0 (chemistry)?
 \input{ss-future-particles} % What is needed to complete V4.0 (particles)?
-\input{ss-future-magnetism} % What is needed to complete V5.0 (magnetism)?
-\input{ss-future-radiation} % What is needed to complete V6.0 (radiation)?
-\input{ss-contribute} % How can I contribute?
-\input{ss-future-summary}
+%\input{ss-future-magnetism} % What is needed to complete V5.0 (magnetism)?
+%\input{ss-future-radiation} % What is needed to complete V6.0 (radiation)?
+%\input{ss-contribute} % How can I contribute?
+%\input{ss-future-summary}
 
 \input{END}
 

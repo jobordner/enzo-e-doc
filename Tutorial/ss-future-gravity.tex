@@ -12,26 +12,9 @@
 \begin{minipage}{3.8in}
 \begin{enumerate}
 \item[\redcirc] \highpriority\ 
-\redtext{Debug \texttt{Mg0} root-level multigrid solver}
-\item[\redcirc] \highpriority\ 
-\redtext{Incorporate \texttt{Mg0} as preconditioner to \texttt{BiCGStab}}
-\item[\redcirc] \highpriority\ 
-\redtext{Implement scalable multigrid solver}
-\pause
-\item[\orangecirc] \medpriority\ \orangetext{Optimize ghost-referesh}
-\begin{itemize}
-\item \orangetext{70\% time spent in \code{FieldFace} methods}
-\item \orangetext{excessive mallocs and data copies}
-\item \orangetext{sends ghost zones for all fields (Bug \#76)}
-\item \orangetext{global barrier each refresh}
-\end{itemize}
-\pause
-\item[\greencirc] \lowpriority\ \greentext{Separate gravity (physics) from solver (method)}
-\begin{itemize}
-\item \greentext{currently \code{EnzoMethodGravityCg}}
-\item \greentext{change to \code{EnzoPhysicsGravity}, \code{EnzoSolverCg}}
-\end{itemize}
-
+\redtext{debug HG solver performance}
+\item[\redcirc] \highpriority\ \redtext{improve memory usage (memory leak?)}
+\item[\orangecirc] \medpriority\ \orangetext{optimize ghost-referesh}
 \end{enumerate}
 \end{minipage}
 \end{center}
