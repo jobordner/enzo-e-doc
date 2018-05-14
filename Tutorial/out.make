@@ -561,7 +561,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (./1509.16.vrb) <use home.jpg> [58] (./1509.16.vrb) <use home.jpg> [59]
 (./1509.16.vrb) <use home.jpg> [60] (./1509.16.vrb) <use home.jpg> [61]
 (./1509.16.vrb) <use home.jpg> [62] (./1509.16.vrb) <use home.jpg> [63])
-(./ss-ver-hydro.tex
+(./ss-future-hydro.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
@@ -574,7 +574,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
-(./1509.17.vrb) <use home.jpg> [64]) (./ss-ver-chemistry.tex
+(./1509.17.vrb) <use home.jpg> [64]) (./ss-future-chemistry.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
@@ -587,7 +587,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
-(./1509.18.vrb) <use home.jpg> [65]) (./ss-ver-gravity.tex
+(./1509.18.vrb) <use home.jpg> [65]) (./ss-future-gravity.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
@@ -600,7 +600,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
-(./1509.19.vrb) <use home.jpg> [66]) (./ss-ver-particles.tex
+(./1509.19.vrb) <use home.jpg> [66]) (./ss-future-particles.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
@@ -613,7 +613,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
-(./1509.20.vrb) <use home.jpg> [67]) (./ss-ver-magnetism.tex
+(./1509.20.vrb) <use home.jpg> [67]) (./ss-future-magnetism.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
@@ -626,7 +626,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.
 
-(./1509.21.vrb) <use home.jpg> [68]) (./ss-ver-radiation.tex
+(./1509.21.vrb) <use home.jpg> [68]) (./ss-future-radiation.tex
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 5.

@@ -1,0 +1,36 @@
+\begin{frame}[fragile] 
+\secframetitle{\ssCharm}
+%--------------------------------------------------
+%\framesubtitle{Anatomy of a simple Charm program}
+%--------------------------------------------------
+
+%     Look at simple HelloWorld Charm++ code
+%        Control files
+%          *.ci
+         
+%        Main
+%        chare Group
+%           one class created per process
+% 	  indexed by ip
+%        Chare Array
+%           at least one class created per process
+
+\begin{itemize}
+\item C++ program with ``extra features''
+\item Defined using ``\bluecode{.ci}'' control files: 
+\begin{itemize}
+\item which classes are chares
+\item which methods are entry methods
+\item declare message objects
+\item declare global ``\code{readonly}'' variables
+\end{itemize}
+\item compiled using \bluecode{charmc}
+\item generates \bluecode{.decl.h} and \bluecode{.def.h} from \bluecode{.ci}
+\begin{itemize}
+\item ``hooks'' program to \charm\ runtime
+\item \bluecode{.decl.h} declarations
+\item \bluecode{.def.h}: include definitions
+\end{itemize}
+\item Run executable using \bluecode{charmrun}
+\end{itemize}
+\end{frame}

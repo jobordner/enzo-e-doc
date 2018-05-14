@@ -1,0 +1,34 @@
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile]
+ \secframetitle{\ssScaling}
+  \framesubtitle{Hydro and tracer particles: ``Alphabet Soup'' problem}
+%   \animategraphics[width=3.5in]{12}{de-2-}{0}{166} 
+  \textbf{We tested basic \enzop\ hydrodynamics and particles scalability}
+  \begin{minipage}{1.5in}
+  \vspace{0.2in}
+    \includegraphics<1>[width=1.5in]{Images/Scaling/de-2-3.png} \\
+\ \\
+    \includegraphics<1>[width=1.5in]{Images/Scaling/age-2-16.png}
+  \end{minipage} \
+  \begin{minipage}{2.80in}
+    \vspace{0.1in}
+    \begin{itemize}
+    \item variation of ``array of Sedov Blast'' test
+    \item letters instead of spheres
+      \begin{itemize}
+      \item inhibits lockstep coarsen/refine
+      \end{itemize}
+    \item one ``letter'' per Blue Waters core
+    \item tested with/without tracer particles
+    \item $32^3$ or $24^3$ cells per block
+    \item decent sized AMR problem for 2016
+      \begin{itemize}
+      \item $256K$ fp-cores
+      \item $1.7T$ cells; $0.7T$ (cells + particles)
+        \item $50M$ Blocks
+      \end{itemize}
+      \item \enzo\ would need $72GB$ per process!
+    \end{itemize}
+    \end{minipage}
+\end{frame}

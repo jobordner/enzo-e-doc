@@ -1,33 +1,12 @@
 \input{BEGIN}
 
 
-\includeonly{
-%--------------------------------------------------
-%  s-intro,
-  s-present,
-  s-project,
-  s-future,
-%--------------------------------------------------
-%  s-starting,
-%  s-parameters,
-%--------------------------------------------------
-%  s-charm,
-%  s-design,
-%  s-control,
-%  s-devel
-%--------------------------------------------------
- }
-
 \begin{document}
 
+%======================================================================
 \TITLE{Enzo-P / Cello Status and What's New?}{ \ \\
-% Scalable Adaptive Mesh Refinement \\
-% for Astrophysics and Cosmology \\
-%\ \\
-%\tiny{National Science Foundation} \\
+%======================================================================
 \tiny{NSF SI2-SSE-1440709 PHY-1104819 AST-0808184}}
-
-
 
 \frame[label=titlepage]{ \titlepage }
 
@@ -45,17 +24,19 @@
 \newcommand{\NEWSEC}{\stepcounter{SectionCounter}}
 
 
+%======================================================================
+% TOP LEVEL MENU
+%======================================================================
 \begin{frame}[fragile,label=outline] 
 \frametitle{Chapters}
 \begin{center}
 \begin{minipage}{3.25in}
-%\rowcolors[]{1}{blue!5}{blue!10}
-%\begin{tabular}{l}
 \begin{enumerate}
 %--------------------------------------------------
 \item  \hyperlink{s-intro<1>}      {\BUTTON {\orow{\sIntro}}} \\
-\item  \hyperlink{s-present<1>}    {\BUTTON {\erow{\sPresent}}} \\
 \item  \hyperlink{s-project<1>}    {\BUTTON {\erow{\sProject}}} \\
+\item  \hyperlink{s-present<1>}    {\BUTTON {\orow{\sPresent}}} \\
+\item  \hyperlink{s-recent<1>}     {\BUTTON {\erow{\sRecent}}} \\
 \item  \hyperlink{s-future<1>}     {\BUTTON {\orow{\sFuture}}} \\
 %\item  \hyperlink{s-starting<1>}   {\BUTTON {\orow{\sStarting}}} \\
 %\item  \hyperlink{s-parameters<1>} {\BUTTON {\erow{\sParameters}}} \\
@@ -70,12 +51,9 @@
 \end{frame}
 
 
-% \include{s-intro}
- %======================================================================
-\NEWMOD
 %======================================================================
-
-\section{\sIntro}
+\NEWMOD \section{\sIntro}
+%======================================================================
 
 %----------------------------------------------------------------------
 
@@ -88,10 +66,11 @@
 \begin{minipage}{3.25in}
 \begin{enumerate}
 %\item \hyperlink{ss-purpose<1>}   {\BUTTON {\ssPurpose}}
-\item \hyperlink{ss-motivation<1>} {\BUTTON {\ssMotivation}}
-\item \hyperlink{ss-amr<1>}        {\BUTTON {\ssAmr}}
-\item \hyperlink{ss-compare<1>}    {\BUTTON {\ssCompare}}
-\item \hyperlink{ss-approach<1>}   {\BUTTON {\ssApproach}}
+\item \hyperlink{ss-motivation<1>} {\BUTTON {\ssMotivation}}  % 1.1
+\item \hyperlink{ss-amr<1>}        {\BUTTON {\ssAmr}}          % 1.2
+\item \hyperlink{ss-charm<1>}      {\BUTTON {\ssCharm}}          % 1.2
+\item \hyperlink{ss-compare<1>}    {\BUTTON {\ssCompare}}      % 1.3
+%\item \hyperlink{ss-approach<1>}   {\BUTTON {\ssApproach}}     % 1.5
 \item \hyperlink{ss-intro-summary<1>}   {\BUTTON {\ssIntroSummary}}
 \end{enumerate}
 \end{minipage}
@@ -101,54 +80,49 @@
 \logo{\hfill\hyperlink{s-intro<1>}{\icon}}
 
 %\input{ss-purpose}    % What is the purpose of this workshop?
-\input{ss-motivation}  % Why does Enzo-P exist?
-\input{ss-amr}         % How does Enzo-P's AMR compare to Enzo's
-\input{ss-compare}     % What are the key differences between Enzo-P and Enzo?
-\input{ss-approach}    % How does Enzo-P AMR address Enzo's limitations?}
-\input{ss-intro-summary}
-
-%  \include{s-present}
-%======================================================================
-\NEWMOD
-%======================================================================
-
-\section{\sPresent}
 
 %----------------------------------------------------------------------
+\NEWSEC \subsection{\ssMotivation}
+%----------------------------------------------------------------------
+%\input{ss-motivation-1}
+\input{ss-motivation-2}
+%\input{ss-motivation}  % Why does Enzo-P exist?
 
-\logo{\hfill\hyperlink{outline<1>}{\icon}}
+%----------------------------------------------------------------------
+\NEWSEC \subsection{\ssAmr}
+%----------------------------------------------------------------------
+\input{ss-amr-2}
+\input{ss-amr-1}
 
-\begin{frame}[fragile,label=s-present] 
-\modframetitle{\sPresent}
-\small
-\begin{center}
-\begin{minipage}{3.25in}
-\begin{enumerate}
-\item \hyperlink{ss-state<1>}   {\BUTTON {\ssState}}
-\item \hyperlink{ss-current<1>}   {\BUTTON {\ssCurrent}}
-\item \hyperlink{ss-scaling<1>}   {\BUTTON {\ssScaling}}
-\item \hyperlink{ss-issues<1>}   {\BUTTON {\ssIssues}}
-\item \hyperlink{ss-present-summary<1>}   {\BUTTON {\ssPresentSummary}}
-\end{enumerate}
-\end{minipage}
-\end{center}
-\end{frame}
 
-\logo{\hfill\hyperlink{s-present<1>}{\icon}}
+%----------------------------------------------------------------------
+\NEWSEC \subsection{\ssCharm}
+%----------------------------------------------------------------------
+%\input{ss-charm-1}
+\input{ss-charm-2}
+%\input{ss-charm-3}
+%\input{ss-charm-4}
+%\input{ss-charm-5}
+%\input{ss-charm-6}
 
-\input{ss-state}  % What is the current state of Enzo-P/Cello?
-\input{ss-current}  % What are Enzo-P's current and near future capabilities?
-\input{ss-scaling}  % How well does ENzo-P scale?
-\input{ss-issues}      % What are some of Enzo-P's known issues?
-\input{ss-present-summary}
+%----------------------------------------------------------------------
+\input{ss-compare}     % What are the key differences between Enzo-P and Enzo?
+%----------------------------------------------------------------------
 
-%  \include{s-future}
-%  \include{s-project}
+
+%----------------------------------------------------------------------
+%\NEWSEC \subsection{\ssApproach}
+%----------------------------------------------------------------------
+%\input{ss-approach-1}
+%\input{ss-approach-2}
+
+%----------------------------------------------------------------------
+\input{ss-intro-summary}
+
+
 %======================================================================
-\NEWMOD
+\NEWMOD \section{\sProject}
 %======================================================================
-
-\section{\sProject}
 
 %----------------------------------------------------------------------
 
@@ -183,14 +157,142 @@
 \input{ss-bugs} % What are some of the known bugs?
 \input{ss-project-summary} 
 %\input{ss-communicate} % How do Enzo-P developers communicate?
+  
 
-  
-%  \include{s-starting}
-%  \include{s-parameters}
-%  \include{s-charm}
-%  \include{s-design}
-%  \include{s-control}
-%  \include{s-devel}
-  
+%======================================================================
+\NEWMOD \section{\sPresent}
+%======================================================================
+
+%----------------------------------------------------------------------
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-present] 
+\modframetitle{\sPresent}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-state<1>}   {\BUTTON {\ssState}}
+\item \hyperlink{ss-current<1>}   {\BUTTON {\ssCurrent}}
+\item \hyperlink{ss-scaling<1>}   {\BUTTON {\ssScaling}}
+\item \hyperlink{ss-issues<1>}   {\BUTTON {\ssIssues}}
+\item \hyperlink{ss-present-summary<1>}   {\BUTTON {\ssPresentSummary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-present<1>}{\icon}}
+
+%----------------------------------------------------------------------
+\NEWSEC \subsection{\ssState}
+%----------------------------------------------------------------------
+
+% What is the current state of Enzo-P/Cello?
+
+\input{ss-state-1}
+\input{ss-state-2}
+\input{ss-state-3}
+
+
+%======================================================================
+\NEWSEC
+%======================================================================
+
+% What are Enzo-P's current and near future capabilities?
+
+\subsection{\ssCurrent}
+
+\input{ss-current-1}
+
+%======================================================================
+\NEWSEC
+%======================================================================
+
+% How well does ENzo-P scale?
+
+\subsection{\ssScaling}
+
+%\input{ss-scaling-1}
+\input{ss-scaling-2}
+\input{ss-scaling-3}
+\input{ss-scaling-4}
+
+%======================================================================
+\input{ss-issues}      % What are some of Enzo-P's known issues?
+%======================================================================
+
+\input{ss-present-summary}
+
+%======================================================================
+\NEWMOD \section{\sRecent}
+%======================================================================
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+\begin{frame}[fragile,label=s-recent] 
+\modframetitle{\sRecent}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-recent-cosmology<1>}   {\BUTTON {\ssRecentCosmology}}
+\item \hyperlink{ss-recent-particles<1>}   {\BUTTON {\ssRecentParticles}}
+\item \hyperlink{ss-recent-gravity<1>}     {\BUTTON {\ssRecentGravity}}
+\item \hyperlink{ss-recent-history<1>}     {\BUTTON {\ssRecentHistory}}
+\item \hyperlink{ss-recent-temporary<1>}     {\BUTTON {\ssRecentTemporary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-recent<1>}{\icon}}
+
+\input{ss-recent-cosmology} % have cosmological support
+\input{ss-recent-particles} % have particles
+\input{ss-recent-gravity}   % have scalable gravity (unigrid)
+\input{ss-recent-history} % save field history
+\input{ss-recent-temporary} % define temporary fields
+\input{ss-scaling-5}
+\input{ss-recent-summary} % Summary of recent capabilities
+
+%======================================================================
+\NEWMOD \section{\sFuture}
+%======================================================================
+
+\logo{\hfill\hyperlink{outline<1>}{\icon}}
+
+\begin{frame}[fragile,label=s-future] 
+\modframetitle{\sFuture}
+\small
+\begin{center}
+\begin{minipage}{3.25in}
+\begin{enumerate}
+\item \hyperlink{ss-roadmap<1>}   {\BUTTON {\ssRoadmap}}
+\item \hyperlink{ss-future-hydro<1>}   {\BUTTON {\ssFutureHydro}}
+\item \hyperlink{ss-future-gravity<1>}   {\BUTTON {\ssFutureGravity}}
+\item \hyperlink{ss-future-particles<1>}   {\BUTTON {\ssFutureParticles}}
+\item \hyperlink{ss-future-chemistry<1>}   {\BUTTON {\ssFutureChemistry}}
+\item \hyperlink{ss-future-magnetism<1>}   {\BUTTON {\ssFutureMagnetism}}
+\item \hyperlink{ss-future-radiation<1>}   {\BUTTON {\ssFutureRadiation}}
+\item \hyperlink{ss-contribute<1>}   {\BUTTON {\ssContribute}}
+\item \hyperlink{ss-future-summary<1>}   {\BUTTON {\ssFutureSummary}}
+\end{enumerate}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\logo{\hfill\hyperlink{s-future<1>}{\icon}}
+
+\input{ss-roadmap} % What is the project roadmap?
+\input{ss-future-hydro} % What is needed to complete V1.0 (hydrodynamics)?
+\input{ss-future-gravity} % What is needed to complete V3.0 (gravity)?
+\input{ss-future-chemistry} % What is needed to complete V2.0 (chemistry)?
+\input{ss-future-particles} % What is needed to complete V4.0 (particles)?
+\input{ss-future-magnetism} % What is needed to complete V5.0 (magnetism)?
+\input{ss-future-radiation} % What is needed to complete V6.0 (radiation)?
+\input{ss-contribute} % How can I contribute?
+\input{ss-future-summary}
+
 \input{END}
 

@@ -1,0 +1,27 @@
+% ----------------------------------------------------------------------
+\begin{frame}[fragile] 
+\secframetitle{\ssCharm}
+\framesubtitle{\charm\ control files}
+
+\bluebf{Example control file: \bluecode{hello.ci}}
+
+ \begin{semiverbatim}
+    \bluecode{mainmodule} \greencode{hello} \{
+       \bluecode{readonly} \greencode{CProxy_Main mainProxy};
+       \bluecode{mainchare} \greencode{main} \{
+          \bluecode{entry} \greencode{main}(\bluecode{CkArgMsg}*);
+       \};
+    \};
+\end{semiverbatim}
+\vspace{-0.2in}
+\begin{itemize}
+\item \charm\ programs start in a \blueit{mainchare}
+\item Other chares created dynamically using \bluecode{ckNew()}
+\begin{itemize}
+\item new chare may reside remotely
+\item \code{ckNew()} returns \blueit{proxy} to chare
+\item entry methods called via \bluetext{proxy}
+\end{itemize}
+
+\end{itemize}
+\end{frame}

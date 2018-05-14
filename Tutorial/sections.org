@@ -131,7 +131,7 @@
    TreePM / PPPM
    MHD
 
-*** TODO [[file:ss-ver-hydro.tex][ss-ver-hydro]]: What is needed to complete V1.0 (hydrodynamics)?
+*** TODO [[file:ss-future-hydro.tex][ss-future-hydro]]: What is needed to complete V1.0 (hydrodynamics)?
     
     bug fixes (review bugs)
        monotonic interpolation
@@ -140,11 +140,11 @@
        I/O incorrect (HDF5 outputs data and block location--needs more tests)    
        flux-correction
 
-*** TODO [[file:ss-ver-chemistry.tex][ss-ver-chemistry]]: What is needed to complete V2.0 (chemistry)?
-*** TODO [[file:ss-ver-gravity.tex][ss-ver-gravity]]: What is needed to complete V3.0 (gravity)?
-*** TODO [[file:ss-ver-particles.tex][ss-ver-particles]]: What is needed to complete V4.0 (particles)?
-*** TODO [[file:ss-ver-magnetism.tex][ss-magnetism]]: What is needed to complete V5.0 (magnetism)?
-*** TODO [[file:ss-ver-radiation.tex][ss-radiation]]: What is needed to complete V6.0 (radiation)?
+*** TODO [[file:ss-future-chemistry.tex][ss-future-chemistry]]: What is needed to complete V2.0 (chemistry)?
+*** TODO [[file:ss-future-gravity.tex][ss-future-gravity]]: What is needed to complete V3.0 (gravity)?
+*** TODO [[file:ss-future-particles.tex][ss-future-particles]]: What is needed to complete V4.0 (particles)?
+*** TODO [[file:ss-future-magnetism.tex][ss-magnetism]]: What is needed to complete V5.0 (magnetism)?
+*** TODO [[file:ss-future-radiation.tex][ss-radiation]]: What is needed to complete V6.0 (radiation)?
 *** TODO [[file:ss-contribute.tex][ss-contribute]]: How can I contribute?
     
     download and play with as beta tester

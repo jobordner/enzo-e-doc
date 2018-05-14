@@ -1,0 +1,46 @@
+\begin{frame}[fragile,label=ss-scaling] 
+\secframetitle{\ssScaling}
+\begin{center}
+\begin{minipage}{4.50in}
+\includegraphics[width=2.25in]{Images/Scaling/scale-eff.png} \ 
+\includegraphics[width=2.25in]{Images/Scaling/scale-mem.png}
+\end{minipage} \\
+\begin{minipage}{4.0in}
+\footnotesize
+\pause
+\begin{minipage}[t]{1.20in}
+\blockblue
+\begin{block}<+->{Problem}
+%\begin{itemize}
+Sedov blast array \\
+$L=3$; $32K$ cores \\
+$32^3$ cells / block \\
+$329$ blocks /core
+%\end{itemize}
+\end{block}
+\end{minipage} \
+\begin{minipage}[t]{1.20in}
+\blockgreen
+\begin{block}<+->{Parallel Efficiency}
+%\begin{itemize}
+\begin{tabbing}
+xxxxxxxxxx\=\kill
+Time \> $0.868$ \\
+Memory \> $0.993$
+\end{tabbing}
+%\end{itemize}
+\end{block}
+\end{minipage} \
+\begin{minipage}[t]{1.20in}
+\blockred
+\begin{block}<+->{Caveats}
+%\begin{itemize}
+load balanced \\
+few refinement steps \\
+startup ignored
+%\end{itemize}
+\end{block}
+\end{minipage}
+\end{minipage}
+\end{center}
+\end{frame}

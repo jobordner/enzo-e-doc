@@ -1,0 +1,34 @@
+\begin{frame}[fragile,label=ss-amr] 
+
+  \secframetitle{\ssAmr}
+  
+  \begin{center}
+    \begin{minipage}{1in}
+      \includegraphics<1->[width=1in]{enzo-sedov.png}
+    \end{minipage} \ 
+    \begin{minipage}{2.5in}
+      \blockblue
+      \begin{block}<+->{\textbf{\enzo}}
+        structured AMR \\
+        flexible grid shapes \\
+        neighbors \& parent communication \\
+        MPI/OpenMP parallel
+      \end{block}
+    \end{minipage} \\
+    \vspace{0.1in}
+    \begin{minipage}{1in}
+      \includegraphics<2->[width=1in]{cello-sedov.png}
+    \end{minipage} \ 
+    \begin{minipage}{2.5in}
+      \blockgreen
+      \begin{block}<+->{\textbf{\enzopcello}}
+        array of octrees \\
+        fixed shaped blocks \\
+        neighbors only communication \\
+        Charm++ parallel
+      \end{block}
+    \end{minipage}
+  \end{center}
+
+\end{frame}
+

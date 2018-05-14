@@ -1,0 +1,35 @@
+% ----------------------------------------------------------------------
+\begin{frame}[fragile] 
+\secframetitle{\ssCharm}
+\framesubtitle{Chare objects}
+\framesubtitle{Chares are concurrent objects}
+\begin{itemize}
+\item Chares are C++ objects
+\item Inherit from \charm\ base class
+\footnotesize
+\begin{semiverbatim}
+#\bluetext{include} \orangetext{"foo.decl.h"}
+\bluetext{class} \greentext{Foo} : \bluetext{public} \redtext{CBase_}\greentext{Foo} \{
+   \bluetext{Foo} (\greentext{int} \orangetext{n});
+   \greentext{void} \bluetext{p_receive_data} (\greentext{int} \orangetext{n}, \greentext{double} * \orangetext{a});
+   \greentext{void} \bluetext{print_results} ();
+\};
+#\bluetext{include} \orangetext{"foo.def.h"}
+\end{semiverbatim}
+\normalsize
+\item Chares and entry methods declared in \code{.ci} control file
+\footnotesize
+\begin{semiverbatim}
+\greentext{module foo} \{
+   \greentext{chare} \bluetext{Foo} \{
+      \greentext{entry} \bluetext{Foo} (\greentext{int} \orangetext{n});
+      \greentext{entry void} \bluetext{p_receive_data} (\greentext{int} \orangetext{n}, \greentext{double} \orangetext{a}[\orangetext{n}]);
+   \};
+\}
+\end{semiverbatim}
+\end{itemize}
+%\normalsize
+%\item \redcode{CBase\_}\greencode{Foo} declared in \bluecode{.decl.h} file
+%\item \redcode{CBase\_}\greencode{Foo} defined in \bluecode{.def.h} file
+%\end{itemize}
+\end{frame}
