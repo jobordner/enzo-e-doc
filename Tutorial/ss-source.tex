@@ -29,22 +29,23 @@
 \begin{frame}[fragile] 
 \secframetitle{\ssSource}
 \begin{itemize}
+\item \greentext{\url{http://cello-project.org} / \framebox{Source code}}
 \item \bluetext{Basic directory structure: \redcode{cello-src/}\ldots} \\
 \begin{tabular}{ll}
-\redcode{src/Enzo} & \bluetext{Enzo-P source} \\
-\redcode{src/Cello} & \bluetext{Cello source} \\
+\redcode{src/Enzo/} & \bluetext{Enzo-P source} \\
+\redcode{src/Cello/} & \bluetext{Cello source} \\
 \redcode{bin/enzo-p} & \bluetext{executable} \\
-\redcode{input} & \bluetext{sample parameter files} \\
-\redcode{test} & \bluetext{tests and results} \\
-\redcode{tools} & \bluetext{convenience utilities}
+\redcode{input/} & \bluetext{sample parameter files} \\
+\redcode{test/} & \bluetext{tests and results} \\
+\redcode{tools/} & \bluetext{convenience utilities}
 \end{tabular}
 \item \bluetext{Some useful files} \\
 \begin{tabular}{ll}
-\redcode{build.sh} & \bluetext{Build script} \\
-\redcode{SContstruct} & \bluetext{Top-level ``make'' file}\\
-\redcode{errors.org} & \bluetext{Generated \code{org-mode} errors / warnings} \\
-\redcode{diff.org} & \bluetext{Generated \code{org-mode} \greencode{hg diff}} \\
-\redcode{log.org} & \bluetext{Generated \code{org-mode} \greencode{hg log}}
+\redcode{build.sh} & \bluetext{build script} \\
+\redcode{SContstruct} & \bluetext{top-level ``make'' file}\\
+\redcode{errors.org} & \bluetext{generated \code{org-mode} errors / warnings} \\
+\redcode{diff.org} & \bluetext{generated \code{org-mode} \greencode{hg diff}} \\
+\redcode{log.org} & \bluetext{generated \code{org-mode} \greencode{hg log}}
 \end{tabular}
 
 \end{itemize}

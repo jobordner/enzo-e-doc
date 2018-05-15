@@ -1,33 +1,33 @@
 
 
-%\newcommand{\ANIMATEGRAPHICS}[5]{\animategraphics[#1]{#2}{#3}{#4}{#5}}
-\newcommand{\ANIMATEGRAPHICS}[5]{ANIMATION: #3}
+\newcommand{\ANIMATEGRAPHICS}[5]{\animategraphics[#1]{#2}{#3}{#4}{#5}}
+%\newcommand{\ANIMATEGRAPHICS}[5]{ANIMATION: #3}
 
 %========================================================================
 % UNCOMMENT TO PRINT
 %========================================================================
 
- \newcommand{\PAUSE}{}
- \newcommand{\enhance}[1]{}
- \newcommand{\enhancebf}[2]{\textbf{#2}}
- \newcommand{\enhanceus}[1]{\color{blue}}
- \newcommand{\enhancenewus}[1]{\color{magenta}}
- \newcommand{\enhancethem}[1]{\color{red!50!black}}
- \newcommand{\ENHANCE}[1]{
-  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
+% \newcommand{\PAUSE}{}
+% \newcommand{\enhance}[1]{}
+% \newcommand{\enhancebf}[2]{\textbf{#2}}
+% \newcommand{\enhanceus}[1]{\color{blue}}
+% \newcommand{\enhancenewus}[1]{\color{magenta}}
+% \newcommand{\enhancethem}[1]{\color{red!50!black}}
+% \newcommand{\ENHANCE}[1]{
+%  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
 
 %========================================================================
 % UNCOMMENT FOR PRESENTATION:
 %========================================================================
 
-% \newcommand{\PAUSE}{\pause}
-% \newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
-% \newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
-% \newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
-% \newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
-%\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
-% \newcommand{\ENHANCE}[1]{
-% \temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+\newcommand{\PAUSE}{\pause}
+\newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+\newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
+\newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
+\newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
+\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
+\newcommand{\ENHANCE}[1]{
+\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
 %========================================================================
 
 % UNCOMMENT FOR HANDOUT 
