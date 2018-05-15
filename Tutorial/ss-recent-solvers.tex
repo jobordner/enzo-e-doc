@@ -15,7 +15,7 @@
   \secframetitle{\ssRecentSolvers}
   \begin{itemize}
   \item Previously had individual \verb+"EnzoMethodGravity+\textit{<solver>}\verb+"+ \code{Methods}
-    \begin{verbatim}
+\begin{verbatim}
    Method {
       list = [ ... "gravity_bicgstab" ... ];
       gravity_bicgstab {
@@ -24,7 +24,7 @@
       }
    }
 \end{verbatim}
-    \vspace{-0.3in}
+    \vspace{-0.1in}
   \item Now have single \code{EnzoMethodGravity} \code{Method}
   \item Now have separate \code{Solver} classes for linear solvers
   \begin{itemize}
@@ -42,7 +42,7 @@
   \begin{itemize}
   \item Specify solver with \verb+solver+ paramater
     \small
-     \begin{verbatim}
+\begin{verbatim}
    Method {
       list = [ ... "gravity" ... ];
       gravity {
@@ -53,11 +53,11 @@
       list = ["bcg"];
       bcg {
          type = "bicgstab";
-          max_iter = 1000;
-          res_tol  = 0.01;
+         max_iter = 1000;
+         res_tol  = 0.01;
       }
    }
-     \end{verbatim}
+\end{verbatim}
 %        Used to be different 
 %          for each solver.
 %        solver code couldn't be reused for non-gravity
