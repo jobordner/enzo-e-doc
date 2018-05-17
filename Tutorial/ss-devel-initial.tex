@@ -9,11 +9,11 @@
 \textbf{Suppose we wish to add an implosion test problem to \enzop.}\begin{center}
 \rowcolors[]{1}{blue!5}{blue!10}
   \begin{tabular}{l}
-  \uncover<2->{\addclass{1.~\textbf{Create \code{EnzoInitialImplosion} class}}} \\
-  \uncover<3->{\addclass{2.~Include \code{enzo\_EnzoInitialImplosion.hpp} file}} \\
-  \uncover<4->{\addconstruct{3.~Call \code{EnzoInitialImplosion} constructor}} \\
-  \uncover<5->{\addparam{4.~Declare any \code{EnzoInitialImplosion} parameters}} \\
-  \uncover<6->{\addparam{5.~Read in any \code{EnzoInitialImplosion} parameters}}  \\
+  \uncover<2->{\addclass{1.~\textbf{Create \code{EnzoInitialImplosion2} class}}} \\
+  \uncover<3->{\addclass{2.~Include \code{enzo\_EnzoInitialImplosion2.hpp} file}} \\
+  \uncover<4->{\addconstruct{3.~Call \code{EnzoInitialImplosion2} constructor}} \\
+  \uncover<5->{\addparam{4.~Declare any \code{EnzoInitialImplosion2} parameters}} \\
+  \uncover<6->{\addparam{5.~Read in any \code{EnzoInitialImplosion2} parameters}}  \\
   \uncover<7->{\addcharm{6.~Update \charm\ control file \code{enzo.ci}}} \\
   \uncover<8->{\addtest{7.~Create \code{test\_implosion.in} test problem}} \\
   \uncover<9->{\addtest{8.~Run the test and verify test results}}
@@ -26,26 +26,26 @@
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{1.~Create an \code{EnzoInitialImplosion} class}
+\framesubtitle{1.~Create an \code{EnzoInitialImplosion2} class}
 
 \addclassbf{Create header and source code files}
       \begin{itemize}
       
          \item \textcolor{red!50!black}
-             {\code{src/Enzo/enzo\_EnzoInitialImplosion.hpp}}
+             {\code{src/Enzo/enzo\_EnzoInitialImplosion2.hpp}}
          \item \textcolor{red!50!black}
-             {\code{src/Enzo/enzo\_EnzoInitialImplosion.cpp}}
+             {\code{src/Enzo/enzo\_EnzoInitialImplosion2.cpp}}
       \end{itemize}
       \pause
       \bluebf{Implement virtual functions}
       \begin{itemize}
       
           \item \textcolor{blue!50!black}
-              {\code{EnzoInitialImplosion::EnzoInitialImplosion} ()}
+              {\code{EnzoInitialImplosion2::EnzoInitialImplosion2} ()}
           \item \textcolor{blue!50!black}
-              {\code{EnzoInitialImplosion::enforce\_block} ()}
+              {\code{EnzoInitialImplosion2::enforce\_block} ()}
           \item \textcolor{blue!50!black}
-              {\code{EnzoInitialImplosion::pup} ()}
+              {\code{EnzoInitialImplosion2::pup} ()}
       \end{itemize}
 \end{frame}
 
@@ -60,14 +60,14 @@
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{1.~Create an \code{EnzoInitialImplosion} class}
-\addclassbf{Create the \code{src/Enzo/EnzoInitialImplosion.hpp} header file}
+\framesubtitle{1.~Create an \code{EnzoInitialImplosion2} class}
+\addclassbf{Create the \code{src/Enzo/EnzoInitialImplosion2.hpp} header file}
 \footnotesize
 \begin{tabbing}
 xxxxxxx\=xxxxxx\=\kill
 \textbf<2>{\code{
 \color<1,2>{kcol} class
-\color<1,2>{ccol} EnzoInitialImplosion
+\color<1,2>{ccol} EnzoInitialImplosion2
 \color<1,2>{black}:\ \color<1,2>{kcol}public
 \color<1,2>{ccol} Initial
 \color<1,2>{black}     \{ 
@@ -78,7 +78,7 @@ xxxxxxx\=xxxxxx\=\kill
 \color<1>{mcol} // interface
 } \\
 \> \textbf<3>{\code{
-\color<1,3>{fcol}  EnzoInitialImplosion 
+\color<1,3>{fcol}  EnzoInitialImplosion2 
 \color<1,3>{black} ( 
 \color<1,3>{tcol}  int
 \color<1,3>{black}  * 
@@ -116,11 +116,11 @@ xxxxxxx\=xxxxxx\=\kill
 \color<1,4>{black}    ();
 }} \\
 \> \textbf<5>{\code{
-\color<1,5>{fcol}EnzoInitialImplosion
+\color<1,5>{fcol}EnzoInitialImplosion2
 \color<1,5>{black} () \{\};
 }} \\
 \> \textbf<5>{\code{
-\color<1,5>{fcol} EnzoInitialImplosion
+\color<1,5>{fcol} EnzoInitialImplosion2
 \color<1,5>{black} (
 \color<1,5>{tcol} CkMigrateMessage
 \color<1,5>{black}  *
@@ -128,7 +128,7 @@ xxxxxxx\=xxxxxx\=\kill
 \color<1,5>{black} ) \{\}
 }} \\
 \> \textbf<5>{\code{
-\color<1,5>{fcol}PUPable\_decl\color<1,5>{black}(\color<1,5>{tcol}EnzoInitialImplosion\color<1,5>{black} );
+\color<1,5>{fcol}PUPable\_decl\color<1,5>{black}(\color<1,5>{tcol}EnzoInitialImplosion2\color<1,5>{black} );
 }} \\
 \> \textbf<5>{\code{
 \color<1,5>{kcol} void
@@ -155,11 +155,11 @@ xxxxxxx\=xxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{1.~Create an \code{EnzoInitialImplosion} class}
-\addclassbf{Implement the \code{EnzoInitialImplosion::enforce\_block()} method}
+\framesubtitle{1.~Create an \code{EnzoInitialImplosion2} class}
+\addclassbf{Implement the \code{EnzoInitialImplosion2::enforce\_block()} method}
 \scriptsize
 \begin{semiverbatim}
-\keyword{void} \type{EnzoInitialImplosion}::\function{enforce_block} 
+\keyword{void} \type{EnzoInitialImplosion2}::\function{enforce_block} 
 (
  \type{Block} * \variable{block},
  \keyword{const} \type{FieldDescr} * \variable{field_descr},
@@ -180,22 +180,19 @@ xxxxxxx\=xxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{1.~Create an \code{EnzoInitialImplosion} class}
-\addclassbf{Implement the \code{EnzoInitialImplosion::enforce\_block()} method}
+\framesubtitle{1.~Create an \code{EnzoInitialImplosion2} class}
+\addclassbf{Implement the \code{EnzoInitialImplosion2::enforce\_block()} method}
 \scriptsize
 \begin{semiverbatim}
       \vdots
   \comment{// Field attributes}
-  \type{int} \variable{mx},\variable{my},\variable{nx},\variable{ny},\variable{gx},\variable{gy};     
+  \type{int} \variable{mx},\variable{my},\variable{gx},\variable{gy};     
   \variable{field}.\function{dimensions}  (\valuetext{0},&\variable{mx},&\variable{my});
-  \variable{field}.\function{size}          (&\variable{nx},&\variable{ny});
   \variable{field}.\function{ghost_depth} (\valuetext{0},&\variable{gx},&\variable{gy});
 
   \comment{// Cell widths}
-  \type{double} \variable{xm},\variable{ym},\variable{xp},\variable{yp},\variable{hx},\variable{hy};
-  \variable{block}->\function{data}()->\function{lower}(&\variable{xm},&\variable{ym});
-  \variable{block}->\function{data}()->\function{upper}(&\variable{xp},&\variable{yp});
-  \variable{field}.\function{cell_width}(\variable{xm},\variable{xp},&\variable{hx},\variable{ym},\variable{yp},&\variable{hy});
+  \type{double} \variable{hx},\variable{hy};
+  \variable{block}->\function{cell_width}(&\variable{hx},&\variable{hy});
       \vdots
 \end{semiverbatim}
 \end{frame}
@@ -204,14 +201,14 @@ xxxxxxx\=xxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{1.~Create an \code{EnzoInitialImplosion} class}
-\addclassbf{Implement the \code{EnzoInitialImplosion::enforce\_block()} method}
+\framesubtitle{1.~Create an \code{EnzoInitialImplosion2} class}
+\addclassbf{Implement the \code{EnzoInitialImplosion2::enforce\_block()} method}
 \scriptsize
 \begin{semiverbatim}
       \vdots
-   \keyword{for} (\type{int} \variable{iy}=\variable{gy}; \variable{iy}<\variable{ny}+\variable{gy}; \variable{iy}++) \{
+   \keyword{for} (\type{int} \variable{iy}=\variable{gy}; \variable{iy}<\variable{my}-\variable{gy}; \variable{iy}++) \{
       \type{double} \variable{y} = \variable{ym} + (\variable{iy} - \variable{gy} + \valuetext{0.5})*\variable{hy};
-      \keyword{for} (\type{int} \variable{ix}=\variable{gx}; \variable{ix}<\variable{nx}+\variable{gx}; \variable{ix}++) \{
+      \keyword{for} (\type{int} \variable{ix}=\variable{gx}; \variable{ix}<\variable{mx}-\variable{gx}; \variable{ix}++) \{
          \type{double} \variable{x} = \variable{xm} + (\variable{ix} - \variable{gx} + \valuetext{0.5})*\variable{hx};
          \type{int} \variable{i} = \variable{ix} + \variable{mx}*\variable{iy};
          \keyword{if} (\variable{x} + \variable{y} < \valuetext{0.1517}) \{
@@ -232,14 +229,14 @@ xxxxxxx\=xxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{2.~Include the \code{enzo\_EnzoInitialImplosion.hpp} file}
+\framesubtitle{2.~Include the \code{enzo\_EnzoInitialImplosion2.hpp} file}
 
 \addclassbf{Update \code{src/Enzo/\_enzo.hpp}}
 %
 \begin{semiverbatim}
        \vdots
    #include "enzo_EnzoInitialGrackleTest.hpp"
-   #\keyword{include} \valuetext{"enzo_EnzoInitialImplosion.hpp"}
+   #\keyword{include} \valuetext{"enzo_EnzoInitialImplosion2.hpp"}
    #include "enzo_EnzoInitialSedovArray2.hpp"
    #include "enzo_EnzoInitialSedovArray3.hpp"
    #include "enzo_EnzoInitialTurbulence.hpp"
@@ -253,7 +250,7 @@ xxxxxxx\=xxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssDevelInitial}
-\framesubtitle{3.~Call the \code{EnzoInitialImplosion} constructor}
+\framesubtitle{3.~Call the \code{EnzoInitialImplosion2} constructor}
 
 \addconstructbf{Update \code{src/Enzo/enzo\_EnzoProblem.cpp}}
 \footnotesize
@@ -261,8 +258,8 @@ xxxxxxx\=xxxxxx\=\kill
    Initial * EnzoProblem::create_initial_ (\dots)
    \{
          \vdots
-       \keyword{if} (\variable{type} == \valuetext{"implosion"}) \{
-         \variable{initial} = \keyword{new} \type{EnzoInitialImplosion}(\variable{cycle},\variable{time});
+       \keyword{if} (\variable{type} == \valuetext{"implosion_2d"}) \{
+         \variable{initial} = \keyword{new} \type{EnzoInitialImplosion2}(\variable{cycle},\variable{time});
        \} else if (type == "sedov_array_2d") \{
          initial = new EnzoInitialSedovArray2(enzo_config);
        \} else if (type == "sedov_array_3d") \{
@@ -292,7 +289,7 @@ xxxxxxx\=xxxxxx\=\kill
 \begin{semiverbatim}
    module enzo \{
        \vdots
-     \type{PUPable} \variable{EnzoInitialImplosion};
+     \type{PUPable} \variable{EnzoInitialImplosion2};
      PUPable EnzoInitialSedovArray2;
      PUPable EnzoInitialSedovArray3;
      PUPable EnzoInitialTurbulence;
@@ -312,7 +309,7 @@ xxxxxxx\=xxxxxx\=\kill
 \begin{semiverbatim}
       \vdots
    \group{Initial} \{
-      \parameter{type} = [\valuetext{"implosion"}]; 
+      \parameter{list} = [\valuetext{"implosion_2d"}]; 
    \}
       \vdots
 \end{semiverbatim}

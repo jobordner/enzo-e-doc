@@ -8,20 +8,12 @@
 \begin{frame}[fragile,label=ss-install-charm] 
 \secframetitle{\ssInstallCharm}
 \framesubtitle{Charm++ website: \urltext{http://charm.cs.illinois.edu}}
+You will likely have to download and install Charm++ yourself
 \begin{center}
 \includegraphics[width=4.00in]{charm-download.png}
 \end{center}
 \end{frame}
 
-\begin{frame}[fragile] 
-\secframetitle{\ssInstallCharm}
-\begin{itemize}
-\item \enzopcello\ uses \charm\ instead of MPI
-\item You will likely have to download and install Charm++ yourself
-\item \bluebf{Currently Enzo-P does not work with Charm version $\ge$ 6.6.0!}
-\item \footnotesize {Try \urltext{http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}}
-\end{itemize}
-\end{frame}
 
 \setbeamercolor{block title}{bg=blue!30,fg=black}
 
@@ -41,9 +33,9 @@
 %\begin{block}<+->{\textbf{Install \charm}}
 \prompt             \redcode{ mkdir \url{~}/Charm}\cursor{1}  \\
 \uncover<2->{\prompt\redcode{ cd \url{~}/Charm}\cursor{2}}  \\
-\uncover<3->{\prompt\redcode{ wget http://charm.cs.illinois.edu/distrib/charm-6.5.1.tar.gz}\cursor{3}}  \\
-\uncover<4->{\prompt\redcode{ tar zxf charm-6.5.1.tar.gz}\cursor{4}}  \\
-\uncover<5->{\prompt\redcode{ ln -s charm-6.5.1 charm}\cursor{5}}  \\
+\uncover<3->{\prompt\redcode{ wget http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz}\cursor{3}}  \\
+\uncover<4->{\prompt\redcode{ tar zxf charm-6.8.2.tar.gz}\cursor{4}}  \\
+\uncover<5->{\prompt\redcode{ ln -s charm-6.8.2 charm}\cursor{5}}  \\
 \uncover<6->{\prompt\redcode{ cd charm}\cursor{6}}  \\
 \uncover<7->{\prompt\redcode{ ./smart-build.pl}\cursor{7}}
 %\end{block}
@@ -71,9 +63,11 @@
 \ \\
 \verb@============================================================@ \\
 \ \\
-\verb@I found that you have an mpicc available in your path.@\\
-\verb@Do you want to build Charm++ on this MPI? [y/N]:@\cursor{2} \\
-
+\verb@Are you building to run just on the local machine, and not across@ \\
+\verb@multiple nodes? [y/N]@\cursor{2} \\
+\pause
+\verb@I found that you have an mpicc available in your path.@ \\
+\verb@Do you want to build Charm++ on this MPI? [y/N]:@\cursor{3} \\
 \end{frame}
 
 %----------------------------------------------------------------------
@@ -87,22 +81,14 @@
 \verb@Do you have a special network interconnect? [y/N]:@\cursor{1}
 \pause
 \verb@y@ \\
-\verb@	Choose an interconnect from below: [1-11] @ \\
-\verb@         1) MPI @ \\
-\verb@         2) Infiniband (native ibverbs alpha version) @ \\
-\verb@         3) Myrinet GM @ \\
-\verb@         4) Myrinet MX @ \\
-\verb@         5) LAPI @ \\
-\verb@         6) Cray XT3, XT4 @ \\
-\verb@         7) Cray XT5 @ \\
-\verb@         8) Cray XE, XK @ \\
-\verb@         9) Bluegene/L Native (only at T. J. Watson) @ \\
-\verb@        10) Bluegene/L MPI @ \\
-\verb@        11) Bluegene/P Native @ \\
-\verb@        12) Bluegene/P MPI @ \\
-\verb@        13) VMI @ \\
+\verb@	Choose an interconnect from below: [1-10]@ \\
+\verb@		 1) MPI@ \\
+\verb@		 2) Infiniband (ibverbs)@ \\
+\verb@		 3) Cray XE, XK@ \\
+\verb@		 4) Cray XC@ \\
+\verb@		 5) Blue Gene/Q@ \\
+\verb@		 6) Intel Omni-Path (ofi)@ \\
 \verb@  @\cursor{2}
-
 \end{frame}
 
 %----------------------------------------------------------------------
@@ -113,11 +99,10 @@
 \color{black}
 \footnotesize
 
-\verb@How do you want to handle SMP/Multicore: [1-4]@ \\
-\verb@         1) single-threaded [default]@ \\
-\verb@         2) multicore(single node only)@ \\
-\verb@         3) SMP@ \\
-\verb@         4) POSIX Shared Memory@ \\
+\verb@How do you want to handle SMP/Multicore: [1-3]@ \\
+\verb@      1) single-threaded [default]@ \\
+\verb@      2) SMP@ \\
+\verb@      3) POSIX Shared Memory@ \\
 \verb@  @\cursor{1}
 \pause
 \ \\
@@ -146,8 +131,9 @@
 \pause
 \ \\ \ \\
 \verb@What do you want to build?@ \\
-\verb@		1) Charm++ [default] (choose this if you are building NAMD)@ \\
-\verb@		2) Charm++, AMPI, ParFUM, FEM and other libraries@ \\
+\verb@          1) Charm++ [default] (choose this if you are building NAMD)@ \\
+\verb@          2) Charm++ and AMPI@ \\
+\verb@          3) Charm++, AMPI, ParFUM, FEM and other libraries@ \\
 \verb@  @\cursor{2}
 \end{frame}
 
@@ -171,10 +157,10 @@
 \ \\
 \pause
 \verb@We have determined a suitable build line is:@ \\
-\verb@	./build charm++ net-linux-x86_64  -j16  --with-production@ \\
+\verb@	./build charm++ net-linux-x86_64  -j4  --with-production@ \\
 \ \\
 \verb@Do you want to start the build now? [Y/n]@\cursor{2} \pause\code{y}\\
-\verb@Building with: ./build charm++ net-linux-x86_64  -j16 --with-production@
+\verb@Building with: ./build charm++ net-linux-x86_64  -j4 --with-production@
 
 \end{frame}
 
@@ -195,7 +181,7 @@
 \color{black}
 \verb@	Charmrun> started all node programs in 1.296 seconds. @ \\
 \verb@	Converse/Charm++ Commit ID:  @ \\
-\verb@	Trace: traceroot: /home/bordner/Charm/651/gnu/net-perf/charm-6.5.1/examples/charm++/hello/1darray/hello @ \\
+\verb@	Trace: traceroot: /home/bordner/Charm/682/gnu/net/charm-6.8.2/examples/charm++/hello/1darray/hello @ \\
 \verb@	Charm++> scheduler running in netpoll mode. @ \\
 \verb@	CharmLB> Load balancer assumes all CPUs are same. @ \\
 \verb@	Charm++> Running on 1 unique compute nodes (8-way SMP). @ \\

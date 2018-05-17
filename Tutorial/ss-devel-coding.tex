@@ -81,14 +81,13 @@ xxxxxxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
      id = field.field_id(\redcode{"density"});
 
      field.dimensions(id, &mx, &my, &mz);
-     field.size          (&nx, &ny, &nz);
      field.ghost_depth(id &gx, &gy, &gz);
 
-     \gc{double} * \oc{d} = (\gc{double} *) field.values(id);
+     \gc{enzo\_float} * \oc{d} = (\gc{enzo\_float} *) field.values(id);
 
-     \mc{for} (\gc{int} \oc{iz}=gz; iz<gz+nz; iz++) \{
-        \mc{for} (\gc{int} \oc{iy}=gy; iy<gy+ny; iy++) \{
-           \mc{for} (\gc{int} \oc{ix}=gx; ix<gx+nx; ix++) \{
+     \mc{for} (\gc{int} \oc{iz}=gz; iz<mz-gz; iz++) \{
+        \mc{for} (\gc{int} \oc{iy}=gy; iy<my-gy; iy++) \{
+           \mc{for} (\gc{int} \oc{ix}=gx; ix<mx-gx; ix++) \{
               \gc{int} \oc{i} = ix + mx*(iy + my*iz);
               d[i] = tiny ;
            \}

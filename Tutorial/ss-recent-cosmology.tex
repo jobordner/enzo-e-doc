@@ -7,7 +7,7 @@
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
 \begin{itemize}
-\item Block size = $32^3$
+\item Block size $32^3$
 \end{itemize}
 \begin{center}
 \begin{minipage}{2.0in}
@@ -24,7 +24,7 @@
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
 \begin{itemize}
-\item Block size = $16^3$
+\item Block size $16^3$
 \end{itemize}
 \begin{center}
 \begin{minipage}{2.0in}
@@ -42,7 +42,7 @@
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
 \begin{itemize}
-\item Block size = $8^3$
+\item Block size $8^3$
 \end{itemize}
 \begin{center}
 \begin{minipage}{2.0in}
@@ -57,36 +57,60 @@
 
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
+\centerline{Block size $32^3$ runs the fastest}
 \begin{center}
-\begin{minipage}{4.0in}
-\only<1->{\includegraphics[width=4.0in]{Images/b345-redshift.png}}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-redshift.png}}
 \end{minipage} \ 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
+\centerline{But block size $32^3$ uses the most memory}
 \begin{center}
-\begin{minipage}{4.0in}
-\only<1->{\includegraphics[width=4.0in]{Images/b345-bytes.png}}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-bytes.png}}
 \end{minipage} \ 
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
+\centerline{Time per cycle has a burst of growth at varying points}
 \begin{center}
-\begin{minipage}{4.0in}
-\only<1->{\includegraphics[width=4.0in]{Images/b345-time-per-cycle-log.png}}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-time-per-cycle-log.png}}
 \end{minipage}
 \end{center}
 \end{frame}
 
 \begin{frame}[fragile,label=ss-recent-cosmology] 
 \secframetitle{\ssRecentCosmology}
+\centerline{Solver time scaled by number of blocks shows this even more}
 \begin{center}
-\begin{minipage}{4.0in}
-\only<1->{\includegraphics[width=4.0in]{Images/b345-bcg-iters.png}}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-time-per-block.png}}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label=ss-recent-cosmology] 
+\secframetitle{\ssRecentCosmology}
+\centerline{Yet number of solver iterations is very reasonable}
+\begin{center}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-bcg-iters.png}}
+\end{minipage}
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile,label=ss-recent-cosmology] 
+\secframetitle{\ssRecentCosmology}
+\centerline{Memory per block is also increasing}
+\begin{center}
+\begin{minipage}{3.5in}
+\only<1->{\includegraphics[width=3.5in]{Images/b345-bytes-per-block.png}}
 \end{minipage}
 \end{center}
 \end{frame}

@@ -33,11 +33,11 @@
 \begin{minipage}{3.25in}
 \begin{enumerate}
 %--------------------------------------------------
-\item  \hyperlink{s-intro<1>}      {\BUTTON {\orow{\sIntro}}} \\
-\item  \hyperlink{s-project<1>}    {\BUTTON {\erow{\sProject}}} \\
-\item  \hyperlink{s-present<1>}    {\BUTTON {\orow{\sPresent}}} \\
-\item  \hyperlink{s-recent<1>}     {\BUTTON {\erow{\sRecent}}} \\
-\item  \hyperlink{s-future<1>}     {\BUTTON {\orow{\sFuture}}} \\
+\item  \hyperlink{s-intro<1>}      {\BUTTON {\orow{\textbf{\sIntro}}}} \\
+\item  \hyperlink{s-project<1>}    {\BUTTON {\erow{\textbf{\sProject}}}} \\
+\item  \hyperlink{s-present<1>}    {\BUTTON {\orow{\textbf{\sPresent}}}} \\
+\item  \hyperlink{s-recent<1>}     {\BUTTON {\erow{\textbf{\sRecent}}}} \\
+\item  \hyperlink{s-future<1>}     {\BUTTON {\orow{\textbf{\sFuture}}}} \\
 %\item  \hyperlink{s-starting<1>}   {\BUTTON {\orow{\sStarting}}} \\
 %\item  \hyperlink{s-parameters<1>} {\BUTTON {\erow{\sParameters}}} \\
 %\item  \hyperlink{s-charm<1>}      {\BUTTON {\orow{\sCharm}}} \\
@@ -65,13 +65,13 @@
 \begin{center}
 \begin{minipage}{3.25in}
 \begin{enumerate}
-%\item \hyperlink{ss-purpose<1>}   {\BUTTON {\ssPurpose}}
-\item \hyperlink{ss-motivation<1>} {\BUTTON {\ssMotivation}}  % 1.1
-\item \hyperlink{ss-amr<1>}        {\BUTTON {\ssAmr}}          % 1.2
-\item \hyperlink{ss-charm<1>}      {\BUTTON {\ssCharm}}          % 1.2
-\item \hyperlink{ss-compare<1>}    {\BUTTON {\ssCompare}}      % 1.3
+%\item \hyperlink{ss-purpose<1>}   {\BUTTON {\orow{\ssPurpose}}}
+\item \hyperlink{ss-motivation<1>} {\BUTTON {\orow{\ssMotivation}}}  % 1.1
+\item \hyperlink{ss-amr<1>}        {\BUTTON {\erow{\ssAmr}}}          % 1.2
+\item \hyperlink{ss-charm<1>}      {\BUTTON {\orow{\ssCharm}}}          % 1.2
+\item \hyperlink{ss-compare<1>}    {\BUTTON {\erow{\ssCompare}}}      % 1.3
 %\item \hyperlink{ss-approach<1>}   {\BUTTON {\ssApproach}}     % 1.5
-\item \hyperlink{ss-intro-summary<1>}   {\BUTTON {\ssIntroSummary}}
+%\item \hyperlink{ss-intro-summary<1>}   {\BUTTON {\orow{\ssIntroSummary}}}
 \end{enumerate}
 \end{minipage}
 \end{center}
@@ -135,11 +135,11 @@
 \begin{minipage}{3.25in}
 \begin{enumerate}
 \item \hyperlink{ss-project<1>}       {\BUTTON {\orow{\ssProject}}} \\
-\item \hyperlink{ss-documentation<1>} {\BUTTON {\erow{\ssDocumentation}}} \\
-\item \hyperlink{ss-source<1>}        {\BUTTON {\erow{\ssSource}}} \\
+%\item \hyperlink{ss-documentation<1>} {\BUTTON {\erow{\ssDocumentation}}} \\
+%\item \hyperlink{ss-source<1>}        {\BUTTON {\erow{\ssSource}}} \\
 %\item \hyperlink{ss-browse<1>}        {\BUTTON {\orow{\ssBrowse}}} \\
-\item \hyperlink{ss-bugs<1>}          {\BUTTON {\erow{\ssBugs}}} \\
-\item \hyperlink{ss-testing<1>}       {\BUTTON {\orow{\ssTesting}}} \\
+%\item \hyperlink{ss-bugs<1>}          {\BUTTON {\erow{\ssBugs}}} \\
+%\item \hyperlink{ss-testing<1>}       {\BUTTON {\orow{\ssTesting}}} \\
 %\item \hyperlink{ss-project-summary<1>} {\BUTTON {\erow{\ssProjectSummary}}} \\
 %\hyperlink{ss-communicate<1>}   {\BUTTON {\orow{\ssCommunicate}}}
 \end{enumerate}
@@ -150,11 +150,11 @@
 \logo{\hfill\hyperlink{s-project<1>}{\icon}}
 
 \input{ss-project} % How is the Enzo-P project currently organized?
-\input{ss-documentation} % What documentation is available?
-\input{ss-source} % Where is the source code hosted?
+%\input{ss-documentation} % What documentation is available?
+%\input{ss-source} % Where is the source code hosted?
 %\input{ss-browse} % How can I browse the source code?
-\input{ss-bugs} % What are some of the known bugs?
-\input{ss-testing} % How is testing done?
+%\input{ss-bugs} % What are some of the known bugs?
+%\input{ss-testing} % How is testing done?
 %\input{ss-project-summary} 
 %\input{ss-communicate} % How do Enzo-P developers communicate?
   
@@ -173,11 +173,11 @@
 \begin{center}
 \begin{minipage}{3.25in}
 \begin{enumerate}
-\item \hyperlink{ss-state<1>}   {\BUTTON {\ssState}}
+\item \hyperlink{ss-state<1>}   {\BUTTON {\orow{\ssState}}}
 %\item \hyperlink{ss-current<1>}   {\BUTTON {\ssCurrent}}
-\item \hyperlink{ss-scaling<1>}   {\BUTTON {\ssScaling}}
-\item \hyperlink{ss-issues<1>}   {\BUTTON {\ssIssues}}
-\item \hyperlink{ss-present-summary<1>}   {\BUTTON {\ssPresentSummary}}
+\item \hyperlink{ss-scaling<1>}   {\BUTTON {\erow{\ssScaling}}}
+%\item \hyperlink{ss-issues<1>}   {\BUTTON {\orow{\ssIssues}}}
+%\item \hyperlink{ss-present-summary<1>}   {\BUTTON {\ssPresentSummary}}
 \end{enumerate}
 \end{minipage}
 \end{center}
@@ -204,7 +204,7 @@
 
 %\subsection{\ssCurrent}
 
-%\input{ss-current-1}
+\input{ss-current-1}
 
 %======================================================================
 %\NEWSEC
@@ -237,13 +237,13 @@
 \begin{center}
 \begin{minipage}{3.25in}
 \begin{enumerate}
-\item \hyperlink{ss-recent-solvers<1>}   {\BUTTON {\ssRecentSolvers}}
-\item \hyperlink{ss-recent-music<1>}      {\BUTTON {\ssRecentMusic}}
-\item \hyperlink{ss-recent-scalable-gravity<1>}   {\BUTTON {\ssRecentScalableGravity}}
-\item \hyperlink{ss-recent-expansion<1>}   {\BUTTON {\ssRecentExpansion}}
-\item \hyperlink{ss-recent-cosmology<1>}   {\BUTTON {\ssRecentCosmology}}
-\item \hyperlink{ss-recent-ppm-devel<1>}   {\BUTTON {\ssRecentPpmDevel}}
-\item \hyperlink{ss-recent-misc<1>}   {\BUTTON {\ssRecentMisc}}
+\item \hyperlink{ss-recent-solvers<1>}   {\BUTTON {\orow{\ssRecentSolvers}}}
+\item \hyperlink{ss-recent-music<1>}      {\BUTTON {\erow{\ssRecentMusic}}}
+\item \hyperlink{ss-recent-scalable-gravity<1>}   {\BUTTON {\orow{\ssRecentScalableGravity}}}
+\item \hyperlink{ss-recent-expansion<1>}   {\BUTTON {\erow{\ssRecentExpansion}}}
+\item \hyperlink{ss-recent-cosmology<1>}   {\BUTTON {\orow{\ssRecentCosmology}}}
+\item \hyperlink{ss-recent-ppm-devel<1>}   {\BUTTON {\erow{\ssRecentPpmDevel}}}
+\item \hyperlink{ss-recent-misc<1>}   {\BUTTON {\orow{\ssRecentMisc}}}
 %@@@@@@@@@@@@@@@@
 %\item \hyperlink{ss-recent-particles<1>}   {\BUTTON {\ssRecentParticles}}
 %\item \hyperlink{ss-recent-gravity<1>}     {\BUTTON {\ssRecentGravity}}
@@ -269,7 +269,7 @@
 %\input{ss-recent-gravity}   % have scalable gravity (unigrid)
 %\input{ss-recent-history} % save field history
 %\input{ss-recent-temporary} % define temporary fields
-\input{ss-recent-summary} % Summary of recent capabilities
+%\input{ss-recent-summary} % Summary of recent capabilities
 
 %======================================================================
 \NEWMOD \section{\sFuture}
@@ -284,10 +284,10 @@
 \begin{minipage}{3.25in}
 \begin{enumerate}
 %\item \hyperlink{ss-roadmap<1>}   {\BUTTON {\ssRoadmap}}
-\item \hyperlink{ss-future-hydro<1>}   {\BUTTON {\ssFutureHydro}}
-\item \hyperlink{ss-future-gravity<1>}   {\BUTTON {\ssFutureGravity}}
-\item \hyperlink{ss-future-particles<1>}   {\BUTTON {\ssFutureParticles}}
-\item \hyperlink{ss-future-chemistry<1>}   {\BUTTON {\ssFutureChemistry}}
+\item \hyperlink{ss-future-hydro<1>}   {\BUTTON {\orow{\ssFutureHydro}}}
+\item \hyperlink{ss-future-gravity<1>}   {\BUTTON {\erow{\ssFutureGravity}}}
+\item \hyperlink{ss-future-particles<1>}   {\BUTTON {\orow{\ssFutureParticles}}}
+\item \hyperlink{ss-future-chemistry<1>}   {\BUTTON {\erow{\ssFutureChemistry}}}
 %\item \hyperlink{ss-future-magnetism<1>}   {\BUTTON {\ssFutureMagnetism}}
 %\item \hyperlink{ss-future-radiation<1>}   {\BUTTON {\ssFutureRadiation}}
 %\item \hyperlink{ss-contribute<1>}   {\BUTTON {\ssContribute}}
@@ -308,6 +308,27 @@
 %\input{ss-future-radiation} % What is needed to complete V6.0 (radiation)?
 %\input{ss-contribute} % How can I contribute?
 %\input{ss-future-summary}
+
+\begin{frame}[fragile,label=s-summary] 
+\secframetitle{Summary}
+\begin{itemize}
+\item We've made progress in Enzo-P/Cello in 2017/2018
+\begin{itemize}
+\item implemented scalable HG AMR linear solver
+\item support input from HDF5 files
+\item incorporated expansion terms
+\item so can now run basic AMR cosmology simulations
+\end{itemize}
+\item But there's still a lot left to do
+\begin{itemize}
+\item implement flux-correction (\code{EnzoMethodCorrectFluxes})
+\item improved interpolation (\code{SecondOrderA}, etc.)
+\item fix solver memory and performance issues
+\item scalable I/O
+\item scaling study of AMR cosmology
+\end{itemize}
+\end{itemize}
+\end{frame}
 
 \input{END}
 

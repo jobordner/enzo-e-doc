@@ -9,6 +9,7 @@
 \secframetitle{\ssRecentScalableGravity}
 
 \begin{itemize}
+\normalsize
 %   - [ ] create performance plots / movies
   \item New solver: ``HG'' algorithm
   \begin{itemize}
@@ -17,11 +18,11 @@
 %    \item No separate \code{EnzoSolverHg} class
     \item implemented as preconditioned BiCgStab
     \begin{itemize}
-      \item Mg0 V-cycle preconditioner
+      \item Mg0 multigrid V-cycle as preconditioner
       \item no smoothings going up/down hierarchy
       \item final Jacobi smoothing
     \end{itemize}
-    \item restart with previous solution
+    \item reuse previous solution as initial guess
   \end{itemize}
   \item Additional gravity improvements
   \begin{itemize}

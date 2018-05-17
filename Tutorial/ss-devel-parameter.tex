@@ -38,23 +38,23 @@ xxxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxx\=\kill
 \footnotesize
 \bluebf{\normalsize 1.~Add parameter declaration to} \greentext{enzo\_EnzoConfig.hpp}
 \begin{itemize}
-\item \bluetext{Name parameter according to owning class, e.g.~for} \redcode{MethodGravityMg}
+\item \bluetext{Name parameter according to owning class, e.g.~for} \redcode{EnzoMethodGravity}
 \begin{semiverbatim}
-  \code{int}     \redtext{method_gravity_mg_iter_max;}
+  \code{int}     \redtext{method_gravity_order;}
 \end{semiverbatim}
 \end{itemize}
 \ \\
 \bluebf{\normalsize 2.~Read parameter value in} \greencode{enzo\_EnzoConfig.cpp}
 \begin{semiverbatim}
-  \redtext{method_gravity_mg_iter_max} = \redtext{p}->\bluetext{value_integer}
-    (\orangetext{"Method:gravity_mg:iter_max"},\orangetext{10});
+  \redtext{method_gravity_order} = \redtext{p}->\bluetext{value_integer}
+    (\orangetext{"Method:gravity:order"},\orangetext{4});
 \end{semiverbatim}
 \ \\
 \bluebf{\normalsize 3.~Add \charm\ pack/unpack call to} \greencode{enzo\_EnzoConfig.cpp}
 \begin{semiverbatim}
 void \bluetext{EnzoConfig}::\bluetext{pup} (\greentext{PUP::er} &\redtext{p}) \{
           \vdots
-  \redtext{p} | \redtext{method_gravity_cg_iter_max};
+  \redtext{p} | \redtext{method_gravity_order};
           \vdots
 \}
 \end{semiverbatim}
@@ -70,18 +70,18 @@ void \bluetext{EnzoConfig}::\bluetext{pup} (\greentext{PUP::er} &\redtext{p}) \{
 \bluebf{4.~Update documentation in enzo/-doc/source/parameters-list.rst} \\
 \scriptsize
 \begin{semiverbatim}
-\greencode{:Parameter:}  \magentacode{:p:}\greencode{`Method`} : \magentacode{:p:}\greencode{`gravity_mg`} : \magentacode{:p:}\greencode{`iter_max`}
+\greencode{:Parameter:}  \magentacode{:p:}\greencode{`Method`} : \magentacode{:p:}\greencode{`gravity`} : \magentacode{:p:}\greencode{`order`}
+\greencode{:Summary:}    \magentacode{:s:} \greencode{`Order of accuracy discretization to use for the discrete}
+\greencode{Laplacian`}
+\greencode{:Type:}       \magentacode{:t:}\greencode{`integer`}
+\greencode{:Default:}    \magentacode{:d:}\greencode{`4`}
+\greencode{:Scope:}      \magentacode{:z:}\greencode{`Enzo`}
 
-\greencode{:Summary:} \magentacode{:s:} \greencode{`Maximum number of multigrid cycles.`}
-\greencode{:Type:}    \magentacode{:t:}\greencode{`int`}
-\greencode{:Default:} \magentacode{:d:}\greencode{`10`}
-\greencode{:Scope:}     Enzo
-
-\magentacode{:e:}\greencode{`Maximum number of cycles of the multigrid solver.`}
+\magentacode{:e:}\greencode{`Second, fourth, and sixth order discretizations of the Laplacian are}
+\greencode{available; valid values are 2, 4, or 6.`}
 \end{semiverbatim}
-\ \\
 \begin{center}
-\includegraphics[width=3.5in]{mg_iter_max.png}
+\includegraphics[width=4.5in]{Images/parameters_gravity_order.png}
 \end{center}
 \end{frame}
 
@@ -97,11 +97,11 @@ void \bluetext{EnzoConfig}::\bluetext{pup} (\greentext{PUP::er} &\redtext{p}) \{
  \{
     if (\redcode{name} == \orangecode{"ppm"}) \{
             \vdots
-    \} else if (\redcode{name} == \orangecode{"gravity_mg"}) \{
-       \redcode{method} = new \bluecode{EnzoMethodGravityMg0}
+    \} else if (\redcode{name} == \orangecode{"gravity"}) \{
+       \redcode{method} = new \bluecode{EnzoMethodGravity}
  	             (\redcode{field_descr}, \redcode{rank},
                     \vdots
-                \redcode{enzo_config}->\redcode{method_gravity_mg_iter_max},
+                \redcode{enzo_config}->\redcode{method_gravity_order},
                     \vdots
                );
      \} \ldots

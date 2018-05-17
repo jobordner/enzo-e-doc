@@ -219,14 +219,12 @@ xxxxxxx\=xxxxxx\=\kill
 
      \keyword{const} \type{int} \variable{id_temp} = \variable{field}.\function{field_id} (\valuetext{"temperature"});
 
-     \type{void} *    \variable{t} = \variable{field}.\function{values} (\variable{id_temp});
-     \keyword{const} \type{int} \variable{p} = \variable{field}.\function{precision} (\variable{id_temp});
+     \type{enzo_float} * \variable{U_new} = \variable{field}.\function{values} (\variable{id_temp});
+     
+     \type{field}.\function{dimensions}  (\variable{id_temp},&\variable{mx},&\variable{my},&\variable{mz});
+     \type{field}.\function{ghost_depth} (\variable{id_temp},&\variable{gx},&\variable{gy},&\variable{gz});
+        \vdots
 
-     \keyword{if}      (\variable{p} == \valuetext{precision_single})    \function{compute_} (\variable{block},(\keyword{float} *)\variable{t});
-     \keyword{else if} (\variable{p} == \valuetext{precision_double})    \function{compute_} (\variable{block},(\keyword{double}*)\variable{t});
-     \keyword{else if} (\variable{p} == \valuetext{precision_quadruple}) \function{compute_} (\variable{block},(\keyword{long double}*) \variable{t});
-     \keyword{else} 
-       \function{ERROR1}(\valuetext{"EnzoMethodHeat()"}, \valuetext{"precision %d not recognized"}, \variable{p});
   \}
   \variable{block}->\function{compute_done}();
 \}
@@ -239,33 +237,11 @@ xxxxxxx\=xxxxxx\=\kill
 \secframetitle{\ssDevelMethod}
 \framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
 \addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
-\scriptsize
-\begin{semiverbatim}
-\keyword{template} <\keyword{class} \type{T}>
-\type{void} \type{EnzoMethodHeat}::\function{compute_} (\type{T} * \variable{Unew}) \keyword{const throw}()
-\{
-   \type{Field} \variable{field}  = \variable{block}->\function{data}()->\function{field}();
-
-   \keyword{const} \type{int} \variable{id_temp} = \type{field}.\function{field_id} (\valuetext{"temperature"});
-
-   \type{field}.\function{dimensions}  (\variable{id_temp},&\variable{mx},&\variable{my},&\variable{mz});
-   \type{field}.\function{size}                (&\variable{nx},&\variable{ny},&\variable{nz});
-   \type{field}.\function{ghost_depth} (\variable{id_temp},&\variable{gx},&\variable{gy},&\variable{gz});
-        \vdots
-\end{semiverbatim}
-\end{frame}
-
-%----------------------------------------------------------------------
-
-\begin{frame}[fragile] 
-\secframetitle{\ssDevelMethod}
-\framesubtitle{1.~Create an \code{EnzoMethodHeat} class}
-\addclassbf{Implement the \code{EnzoMethodHeat::compute\_()} method}
 \begin{semiverbatim}\scriptsize
         \vdots
-   \keyword{for} (\type{int} \variable{iz}=\variable{gz}; \variable{iz}<\variable{gz}+\variable{nz}; \variable{iz}++) \{
-      \keyword{for} (\type{int} \variable{\variable{iy}}=\variable{gy}; \variable{iy}<\variable{gy}+\variable{ny}; \variable{iy}++) \{
-         \keyword{for} (\type{int} \variable{ix}=\variable{gx}; \variable{ix}<\variable{gx}+\variable{\variable{nx}}; \variable{ix}++) \{
+   \keyword{for} (\type{int} \variable{iz}=\variable{gz}; \variable{iz}<\variable{mz}-\variable{gz}; \variable{iz}++) \{
+      \keyword{for} (\type{int} \variable{\variable{iy}}=\variable{gy}; \variable{iy}<\variable{my}-\variable{my}; \variable{iy}++) \{
+         \keyword{for} (\type{int} \variable{ix}=\variable{gx}; \variable{ix}<\variable{mx}-\variable{\variable{gx}}; \variable{ix}++) \{
 
             \type{int} \variable{i} = \variable{ix} + \variable{mx}*(\variable{\variable{iy}} + \variable{my}*\variable{iz});
 
@@ -514,13 +490,13 @@ xxxxxxx\=xxxxxx\=\kill
 
 %----------------------------------------------------------------------
 
-\begin{frame}[fragile] 
-\secframetitle{\ssDevelMethod}
-\framesubtitle{8.~Run the test and verify test results}
-   \addtestbf{Lets make it unstable and see what happens! (bwahaha)}\\
-   \centerline{\code{\group{Field} \{ \parameter{courant} = \valuetext{1.1}; \} }}
-\begin{center}
-  \ANIMATEGRAPHICS{controls,width=3.5in}{5}{Images/HeatUnstable/heat-00}{000}{100}
-\end{center}
-\end{frame}
+% \begin{frame}[fragile] 
+% \secframetitle{\ssDevelMethod}
+% \framesubtitle{8.~Run the test and verify test results}
+%    \addtestbf{Lets make it unstable and see what happens! (bwahaha)}\\
+%    \centerline{\code{\group{Field} \{ \parameter{courant} = \valuetext{1.1}; \} }}
+% \begin{center}
+%   \ANIMATEGRAPHICS{controls,width=3.5in}{5}{Images/HeatUnstable/heat-00}{000}{100}
+% \end{center}
+% \end{frame}
 
