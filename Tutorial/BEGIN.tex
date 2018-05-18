@@ -6,33 +6,36 @@
 % UNCOMMENT TO PRINT
 %========================================================================
 
-% \newcommand{\PAUSE}{}
-% \newcommand{\enhance}[1]{}
-% \newcommand{\enhancebf}[2]{\textbf{#2}}
-% \newcommand{\enhanceus}[1]{\color{blue}}
-% \newcommand{\enhancenewus}[1]{\color{magenta}}
-% \newcommand{\enhancethem}[1]{\color{red!50!black}}
-% \newcommand{\ENHANCE}[1]{
-%  \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
+\newcommand{\cursor}[1]{}
+\newcommand{\PAUSE}{}
+\newcommand{\enhance}[1]{}
+\newcommand{\enhancebf}[2]{\textbf{#2}}
+\newcommand{\enhanceus}[1]{\color{blue}}
+\newcommand{\enhancenewus}[1]{\color{magenta}}
+\newcommand{\enhancethem}[1]{\color{red!50!black}}
+\newcommand{\ENHANCE}[1]{
+ \temporal<#1>{\color{lightgray}}{\color{black}}{\color{gray}}}
 
 %========================================================================
 % UNCOMMENT FOR PRESENTATION:
 %========================================================================
 
-\newcommand{\PAUSE}{\pause}
-\newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
-\newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
-\newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
-\newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
-\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
-\newcommand{\ENHANCE}[1]{
-\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+%\newcommand{\cursor}[1]{\uncover<#1>{\begin{animateinline}[autoplay,loop]{2.0}\strut\textbf{\_}\newframe\newframe[5]\end{animateinline}}}
+
+%\newcommand{\PAUSE}{\pause}
+%\newcommand{\enhance}[1]{\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
+%\newcommand{\enhancebf}[2]{\enhance{#1}\textbf{#2}}
+%\newcommand{\enhanceus}[1]{\temporal<#1>{\color{lightgray}}{\color{blue}}{\color{blue}}}
+%\newcommand{\enhancenewus}[1]{\temporal<#1>{\color{lightgray}}{\color{magenta}}{\color{magenta}}}
+%\newcommand{\enhancethem}[1]{\temporal<#1>{\color{lightgray}}{\color{red!50!black}}{\color{red!50!black}}}
+%\newcommand{\ENHANCE}[1]{
+%\temporal<#1>{\color{lightgray}}{\color{black}}{\color{black}}}
 %========================================================================
 
 % UNCOMMENT FOR HANDOUT 
-%\documentclass[xcolor=table,slidestop,compress,handout]{beamer}
+\documentclass[xcolor=table,slidestop,compress,handout]{beamer}
 % UNCOMMENT FOR PRESENTATION
-\documentclass[xcolor=table,slidestop,compress]{beamer}
+%\documentclass[xcolor=table,slidestop,compress]{beamer}
 
 %\documentclass[xcolor=table,compress]{beamer}
 
@@ -346,9 +349,7 @@
 \newcommand{\them}[1]{\color{red!50!black}{#1}}
 \newcommand{\tree}{\code{Tree}}
 \newcommand{\us}[1]{\color{blue}{#1}}
-\newcommand{\cursor}[1]{\uncover<#1>{\begin{animateinline}[autoplay,loop]{2.0}
-\strut\textbf{\_}\newframe\newframe[5]
-\end{animateinline}}}
+
 \newcommand{\prompt}{\textcolor{blue!50!black}{\$}}
 \newcommand{\bfat}[2]{\alt<#1>{\textbf{#2}}{#2}}
 %\newcommand{\colorat}[2]{\textcolor<#1>{f{#2}}{#2}}

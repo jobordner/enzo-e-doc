@@ -34,14 +34,15 @@ You will likely have to download and install Charm++ yourself
 \prompt             \redcode{ mkdir \url{~}/Charm}\cursor{1}  \\
 \uncover<2->{\prompt\redcode{ cd \url{~}/Charm}\cursor{2}}  \\
 \uncover<3->{\prompt\redcode{ wget http://charm.cs.illinois.edu/distrib/charm-6.8.2.tar.gz}\cursor{3}}  \\
+\uncover<3->{\prompt\redcode{ (wget http://client64-249.sdsc.edu/\url{~}bordner/charm-6.8.2.tar.gz}\cursor{3})}  \\
 \uncover<4->{\prompt\redcode{ tar zxf charm-6.8.2.tar.gz}\cursor{4}}  \\
 \uncover<5->{\prompt\redcode{ ln -s charm-6.8.2 charm}\cursor{5}}  \\
 \uncover<6->{\prompt\redcode{ cd charm}\cursor{6}}  \\
-\uncover<7->{\bluecode{\# To build directly (recommended for Mac's)}} \\
-\uncover<7->{\prompt\redcode{ ./build charm++ netlrts-darwin-x86\_64 gcc gfortran -j4 --with-production}\cursor{7}} \\
-\uncover<8->{\bluecode{\# To build directly (recommended for Linux)}} \\
-\uncover<8->{\prompt\redcode{ ./build charm++ netlrts-linux-x86\_64   -j4  --with-production}\cursor{8}} \\
-\uncover<9->{\bluecode{\# To run the interactive build script:}} \\
+\uncover<7->{\blueit{   \#  build directly (recommended for Mac's)}} \\
+\uncover<7->{\prompt\redcode{ ./build charm++ netlrts-darwin-x86\_64 gcc gfortran -j4 \textendash\textendash with-production}\cursor{7}} \\
+\uncover<8->{\blueit{   \# \redbf{\textbf{or}} build directly (recommended for Linux)}} \\
+\uncover<8->{\prompt\redcode{ ./build charm++ netlrts-linux-x86\_64   -j4  \textendash\textendash with-production}\cursor{8}} \\
+\uncover<9->{\blueit{   \# \redbf{\textbf{or}} run the interactive build script:}} \\
 \uncover<9->{\prompt\redcode{ ./smart-build.pl}\cursor{9}} \\
 %\end{block}
 %\end{minipage}
