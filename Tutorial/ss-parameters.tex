@@ -490,12 +490,12 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 \begin{semiverbatim}
 \group{Method} \{
    \variable{list} = [\valuetext{"gravity"},\valuetext{"ppm"}];
+   \subgroup{gravity} \{
+      \variable{solver} = \valuetext{"bcg"};
+   \}
    \subgroup{ppm} \{
       \variable{diffusion}   = \valuetext{true};
       \variable{steepening}  = \valuetext{true};
-   \}
-   \subgroup{gravity} \{
-      \variable{solver} = \valuetext{"bcg"};
    \}
 \}
 \end{semiverbatim}

@@ -9,8 +9,11 @@
 \framesubtitle{Enzo-P output: header text}
 \tiny
 \begin{semiverbatim}
-\uncover<1->{\prompt \redcode{charmrun +p4 bin/enzo-p input/test_implosion.in}}\cursor{1}
-\uncover<2->{Charmrun> started all node programs in 1.298 seconds.
+\uncover<1->{\prompt \redcode{cd ~/Cello/cello-src}}\cursor{1}
+\uncover<2->{\prompt \redcode{CHARMRUN=~/Charm/charm/bin/charmrun}}\cursor{2}
+\uncover<3->{\prompt \redcode{ENZOP=$PWD/bin/enzo-p}}\cursor{3}
+\uncover<4->{\prompt \redcode{$CHARMRUN +p4 $ENZOP input/test_implosion.in}}\cursor{4}
+\uncover<5->{Charmrun> started all node programs in 1.298 seconds.
 Converse/Charm++ Commit ID: 
 Charm++> scheduler running in netpoll mode.
 CharmLB> Load balancer assumes all CPUs are same.

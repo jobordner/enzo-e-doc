@@ -39,8 +39,10 @@ You will likely have to download and install Charm++ yourself
 \uncover<6->{\prompt\redcode{ cd charm}\cursor{6}}  \\
 \uncover<7->{\bluecode{\# To build directly (recommended for Mac's)}} \\
 \uncover<7->{\prompt\redcode{ ./build charm++ netlrts-darwin-x86\_64 gcc gfortran -j4 --with-production}\cursor{7}} \\
-\uncover<8->{\bluecode{\# To run the interactive build script:}} \\
-\uncover<8->{\prompt\redcode{ ./smart-build.pl}\cursor{8}} \\
+\uncover<8->{\bluecode{\# To build directly (recommended for Linux)}} \\
+\uncover<8->{\prompt\redcode{ ./build charm++ netlrts-linux-x86\_64   -j4  --with-production}\cursor{8}} \\
+\uncover<9->{\bluecode{\# To run the interactive build script:}} \\
+\uncover<9->{\prompt\redcode{ ./smart-build.pl}\cursor{9}} \\
 %\end{block}
 %\end{minipage}
 %\end{center}
@@ -170,34 +172,34 @@ You will likely have to download and install Charm++ yourself
 
 %----------------------------------------------------------------------
 
-\begin{frame}[fragile] 
-\secframetitle{\ssInstallCharm}
-\framesubtitle{Running a \charm\ test problem}
-\color{black}
-\footnotesize
-
-\prompt\redcode{ cd examples/charm++/hello/1darray}\cursor{1}\\\pause
-\prompt\redcode{ make test}\cursor{2}\\\pause
-
-\color{blue}
-\verb@ ./charmrun +p4 hello 10@ \\
-\color{black}
-\verb@	Charmrun> started all node programs in 1.296 seconds. @ \\
-\verb@	Converse/Charm++ Commit ID:  @ \\
-\verb@	Trace: traceroot: /home/bordner/Charm/682/gnu/net/charm-6.8.2/examples/charm++/hello/1darray/hello @ \\
-\verb@	Charm++> scheduler running in netpoll mode. @ \\
-\verb@	CharmLB> Load balancer assumes all CPUs are same. @ \\
-\verb@	Charm++> Running on 1 unique compute nodes (8-way SMP). @ \\
-\verb@	Charm++> cpu topology info is gathered in 0.001 seconds. @ \\
-\verb@	Running Hello on 4 processors for 10 elements @ \\
-\verb@	Hello 0 created @ \\
-\verb@	Hello 1 created @ \\
-\verb@	Hello 2 created @ \\
-\verb@	Hi[17] from element 0 @ \\
-\verb@	Hi[18] from element 1 @ \\
-\verb@	Hi[19] from element 2 @ \\
-\verb@	Hello 6 created @ \ldots
-\end{frame}
+% \begin{frame}[fragile] 
+% \secframetitle{\ssInstallCharm}
+% \framesubtitle{Running a \charm\ test problem}
+% \color{black}
+% \footnotesize
+% 
+% \prompt\redcode{ cd examples/charm++/hello/1darray}\cursor{1}\\\pause
+% \prompt\redcode{ make test}\cursor{2}\\\pause
+% 
+% \color{blue}
+% \verb@ ./charmrun +p4 hello 10@ \\
+% \color{black}
+% \verb@	Charmrun> started all node programs in 1.296 seconds. @ \\
+% \verb@	Converse/Charm++ Commit ID:  @ \\
+% \verb@	Trace: traceroot: /home/bordner/Charm/682/gnu/net/charm-6.8.2/examples/charm++/hello/1darray/hello @ \\
+% \verb@	Charm++> scheduler running in netpoll mode. @ \\
+% \verb@	CharmLB> Load balancer assumes all CPUs are same. @ \\
+% \verb@	Charm++> Running on 1 unique compute nodes (8-way SMP). @ \\
+% \verb@	Charm++> cpu topology info is gathered in 0.001 seconds. @ \\
+% \verb@	Running Hello on 4 processors for 10 elements @ \\
+% \verb@	Hello 0 created @ \\
+% \verb@	Hello 1 created @ \\
+% \verb@	Hello 2 created @ \\
+% \verb@	Hi[17] from element 0 @ \\
+% \verb@	Hi[18] from element 1 @ \\
+% \verb@	Hi[19] from element 2 @ \\
+% \verb@	Hello 6 created @ \ldots
+% \end{frame}
 
 \usebackgroundtemplate
 {}

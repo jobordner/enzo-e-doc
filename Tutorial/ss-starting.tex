@@ -10,11 +10,14 @@
 Enzo-P requires several steps to download and compile
 
 \begin{enumerate}
-\item \bluetext{download and install Charm++}
 \item \bluetext{download and install dependent libraries}
 \begin{itemize}
-\item (\redcode{hdf5, libpng, libboost})
+\item \bluecode{hdf5}: e.g.~\redcode{libhdf5-serial-dev}
+\item \bluecode{libpng}: e.g.~\redcode{libpng12-dev}
+\item \bluecode{libboost}: e.g.~\redcode{libboost-all-dev}
 \end{itemize}
+\pause
+\item \bluetext{download and install Charm++}
 \item \bluetext{download Enzo-P / Cello}
 \item \bluetext{configure and compile \code{bin/enzo-p}}
 \item \bluetext{run a test problem}
