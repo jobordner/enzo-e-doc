@@ -219,7 +219,7 @@ xxxxxxx\=xxxxxx\=\kill
 
      \keyword{const} \type{int} \variable{id_temp} = \variable{field}.\function{field_id} (\valuetext{"temperature"});
 
-     \type{enzo_float} * \variable{U_new} = \variable{field}.\function{values} (\variable{id_temp});
+     \type{enzo_float} * \variable{Unew} = \variable{field}.\function{values} (\variable{id_temp});
      
      \type{field}.\function{dimensions}  (\variable{id_temp},&\variable{mx},&\variable{my},&\variable{mz});
      \type{field}.\function{ghost_depth} (\variable{id_temp},&\variable{gx},&\variable{gy},&\variable{gz});
@@ -296,7 +296,7 @@ xxxxxxx\=xxxxxx\=\kill
       \} \keyword{else if} (\variable{type} == \valuetext{"heat"}) \{
           \variable{method} = \keyword{new} \type{EnzoMethodHeat}
              (\variable{enzo_config->method_heat_alpha,}
-              \variable{enzo_config->field_courant});
+              \variable{enzo_config->method_courant});
       \} else if
          \vdots
    \}
@@ -390,11 +390,11 @@ xxxxxxx\=xxxxxx\=\kill
    \group{Method} \{
      \parameter{list} = [\valuetext{"heat"}]; 
      \subgroup{heat} \{ \parameter{alpha} = \valuetext{1.0}; \} 
+     \parameter{courant} = \valuetext{0.5};
    \}
 \pause
    \group{Field} \{
       \parameter{list} = [\valuetext{"temperature"}];
-      \parameter{courant} = \valuetext{0.5};
    \}
 \pause
    \group{Adapt} \{

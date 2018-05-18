@@ -77,7 +77,7 @@ Complex initial conditions can be specified directly.
 \group{Initial} \{
     \subgroup{density} \{
         \parameter{value} = [\valuetext{8.0}, \valuetext{(x <= 0.16667 + 0.57735*y)}, 
-                 \valuetext{1.4}];  \};
+                 \valuetext{1.4}];  \}
 \}
 \end{semiverbatim}
 \item Repeat with \subgroup{velocity\_x}, \subgroup{velocity\_y}, \subgroup{total\_energy}
@@ -97,15 +97,15 @@ Complex initial conditions can be specified directly.
     \subgroup{velocity_x} \{
        \parameter{value} = [ \valuetext{8.25*0.8660253},
                         \valuetext{(x <= 0.16667 + 0.57735*y)},
-                 \valuetext{0.0} ]; \};
+                 \valuetext{0.0} ]; \}
     \subgroup{velocity_y} \{
        \parameter{value} = [\valuetext{-8.25*0.5},
                         \valuetext{(x <= 0.16667 + 0.57735*y)},
-                 \valuetext{0.0}]; \};
+                 \valuetext{0.0}]; \}
     \subgroup{total_energy} \{
        \parameter{value} = [\valuetext{116.5 / (0.4 * 8.0) + 34.03125},
                         \valuetext{(x <= 0.16667 + 0.57735*y)}, 
-                  \valuetext{1.0 / (0.4 * 1.4)}]; \};
+                  \valuetext{1.0 / (0.4 * 1.4)}]; \}
  \}
 \end{semiverbatim}
 \end{itemize}
@@ -133,7 +133,7 @@ xxx\=xxx\=\kill
 \>\>      \parameter{face} = \textit{\{} \valuetext{"lower"}, \valuetext{"upper"}  \textit{\}} \\
 \>\>      \parameter{field\_list} = [ \valuetext{velocity\_x} ]; \\
 \>\>      \parameter{value} = \valuetext{M(x,y,z,t)}; \comment{\# (floating-point expression, inflow only)} \\
-\>   \}; \\
+\>   \} \\
 \>   \subgroup{bc\_2} \{ \ldots \} \\
 \}
 \end{tabbing}
@@ -177,13 +177,13 @@ xxx\=xxx\=\kill
        \variable{type} = \valuetext{"outflow"};
        \variable{mask} = [ (\variable{x} >= \valuetext{4.0}) || 
                 (\variable{y} >= \valuetext{1.0} && (\variable{x} >= \valuetext{0.744017} + \valuetext{11.547}* \variable{t}))];
-    \};
+    \}
     \subgroup{REFLECT} \{
        \variable{type} = \valuetext{"reflecting"};
        \variable{axis} = \valuetext{"y"};
        \variable{face} = \valuetext{"lower"};
        \variable{mask} = (\variable{x} >= \valuetext{0.166667});
-    \};
+    \}
 \} 
 \end{semiverbatim}
 \end{frame}
@@ -204,7 +204,7 @@ xxx\=xxx\=\kill
                     (\variable{x} <= \valuetext{0.0}) ||
                    ((\variable{x} <= \valuetext{0.744017} + \valuetext{11.547}*\variable{t)} && (\variable{y} >= \valuetext{1.0}))
                ];
-    \};
+    \}
 \} 
 \end{semiverbatim}
 \end{frame}
@@ -225,7 +225,7 @@ xxx\=xxx\=\kill
                     (\variable{x} <= \valuetext{0.0}) ||
                    ((\variable{x} <= \valuetext{0.744017} + \valuetext{11.547}*\variable{t)} && (\variable{y} >= \valuetext{1.0}))
                ];
-    \};
+    \}
 \}
 \end{semiverbatim}
 \end{frame}
@@ -246,7 +246,7 @@ xxx\=xxx\=\kill
                     (\variable{x} <= \valuetext{0.0}) ||
                    ((\variable{x} <= \valuetext{0.744017} + \valuetext{11.547}*\variable{t}) && (\variable{y} >= \valuetext{1.0}))
                ];
-    \};
+    \}
 \}
 \end{semiverbatim}
 \end{frame}
@@ -267,7 +267,7 @@ xxx\=xxx\=\kill
                     (\variable{x} <= \valuetext{0.0}) ||
                    ((\variable{x} <= \valuetext{0.744017} + \valuetext{11.547}*\variable{t)} && (\variable{y} >= \valuetext{1.0}))
                ];
-    \};
+    \}
 \}
 \end{semiverbatim}
 \end{frame}
@@ -320,7 +320,6 @@ xxx\=xxx\=\kill
       \valuetext{"internal_energy"},
       \valuetext{"pressure"} ];
    \variable{ghost_depth} = \valuetext{4}; \comment{\# currently required by interpolation}
-   \variable{courant}   = \valuetext{0.8};
 \}
 \end{semiverbatim}
 \end{frame}
@@ -340,7 +339,8 @@ xxx\=xxx\=\kill
       \variable{flattening}  = \valuetext{3};
       \variable{steepening}  = \valuetext{true};
       \variable{dual_energy} = \valuetext{false};
-  \}
+   \}
+   \variable{courant}   = \valuetext{0.8};
 \}
 \end{semiverbatim}
 \end{frame}
@@ -377,7 +377,7 @@ We wish to output
       \variable{type} = \valuetext{"data"};
       \variable{name} = [\valuetext{"doublemach-p%02d-c%04d.h5"}, \valuetext{"proc"},\valuetext{"count"}]; 
       \keyword{include} \valuetext{"input/schedule_cycle_25.incl"}
-   \};
+   \}
 \}
 \end{semiverbatim}
 \end{frame}
@@ -397,7 +397,7 @@ We wish to output
       \variable{image_size} = [\valuetext{1024},\valuetext{256}];
       \keyword{include} \valuetext{"input/schedule_cycle_25.incl"}
       \keyword{include} \valuetext{"input/colormap_blackbody.incl"}
-   \};
+   \}
 \}
 \end{semiverbatim}
 \end{frame}
@@ -422,7 +422,7 @@ We wish to output
         \variable{image_min} = \valuetext{0.0};
         \variable{image_max} = \valuetext{6.0};
         \keyword{include} \valuetext{"input/colormap_rainbow.incl"}
-      \};
+      \}
 \}
 \end{semiverbatim}
 \end{frame}

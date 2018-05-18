@@ -30,8 +30,8 @@
  \uncover<3->{\greencode{davros_gnu.py         gordon_intel.py  linux_mpe.py}}
  \uncover<3->{\greencode{faraday_gnu_debug.py  gordon_pgi.py    mf_gnu_debug.py}}
  \uncover<3->{\greencode{faraday_gnu.py        linux_gnu.py     mf_gnu.py}}
- \uncover<4->{\prompt \redcode{CELLO_ARCH=linux_gnu; export CELLO_ARCH}}\cursor{4}  
- \uncover<5->{\prompt \redcode{CELLO_PREC=double; export CELLO_PREC}}\cursor{5}  
+ \uncover<4->{\prompt \redcode{export CELLO_ARCH=linux_gnu}}\cursor{4}  
+ \uncover<5->{\prompt \redcode{export CELLO_PREC=single}}\cursor{5}  
  \uncover<6->{\prompt \redcode{cat config/linux_gnu.py}}\cursor{6}  
 \end{semiverbatim}
 \end{frame}
@@ -53,15 +53,19 @@
  \uncover<2->{cc  = 'gcc '}
  \uncover<2->{f90 = 'gfortran'}
  \uncover<2->{}
- \uncover<2->{flags_prec_single = '-fdefault-real-4 -fdefault-double-8'}
+ \uncover<2->{flags_prec_single = ''}
  \uncover<2->{flags_prec_double = '-fdefault-real-8 -fdefault-double-8'}
  \uncover<2->{}
  \uncover<2->{libpath_fortran = '.'}
  \uncover<2->{libs_fortran    = ['gfortran']}
  \uncover<2->{}
- \uncover<2->{papi_path    = '/usr/local'}
- \uncover<2->{hdf5_path    = '/usr'}
+ \uncover<2->{use_papi=1}
+ \uncover<2->{papi_inc = '/usr/local/include'}
+ \uncover<2->{papi_lib = '/usr/local/lib'}
+ \uncover<2->{hdf5_inc     = '/usr/include'}
+ \uncover<2->{hdf5_lib     = '/usr/lib'}
  \uncover<2->{png_path     = '/lib/x86_64-linux-gnu'}
+ \uncover<2->{}
  \uncover<2->{home = os.environ['HOME']}
  \uncover<2->{charm_path   = home + '/Charm/charm'}
  \uncover<2->{grackle_path = home + '/Software/Grackle/src/clib'}

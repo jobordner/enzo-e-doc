@@ -17,8 +17,9 @@
 \vspace{0.1in}
 \begin{semiverbatim}
 \group{Initial} \{
-    \subgroup{velocity_x} \{
-       \parameter{value = 0.0};
+    list = ["value"];
+    \subgroup{value} \{
+       \parameter{velocity_x = 1.0};
    \}
 \}
 \end{semiverbatim}
@@ -63,10 +64,11 @@ xxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
 \end{semiverbatim}
 \uncover<+->{\item Multiple parameter assignments use last value}
 \begin{semiverbatim}
-\uncover<+->{\parameter{list} = \valuetext{["ppm", "gravity_cg"];}}
-\uncover<+->{\parameter{list} = \valuetext{["gravity_cg","ppm"];} \textsf{\comment{\# this value used}}}
+\uncover<+->{\parameter{list} = \valuetext{["ppm", "gravity"];}}
+\uncover<+->{\parameter{list} = \valuetext{["gravity","ppm"];} \textsf{\comment{\# this value used}}}
+\uncover<+->{\parameter{list} += \valuetext{["pm_update"];} \textsf{\comment{\# lists can be appended to}}}
 \end{semiverbatim}
-\uncover<+->{\item \comment{\# P.S. I'm a comment!}}
+\uncover<+->{\item \comment{\# Hi! I'm a comment.}}
 \end{itemize}
 \end{frame}
 
@@ -100,31 +102,34 @@ xxxxxxxxxxxxxxxxx\=xxxxxxxxxxxxxxxxxx\=\kill
 %======================================================================
 
 
-
-\begin{frame}[fragile] 
+\begin{frame}[fragile]
 \secframetitle{\ssParamIntro}
-\framesubtitle{Parameter syntax peculiarities}
-\footnotesize
+\framesubtitle{Parameter file issues}
+% Review ss-bugs.tex / http://client64-249.sdsc.edu/cello-bug
+
 \begin{itemize}
-  \item Semicolon \redcode{';'} required between subgroups
-\begin{semiverbatim}
-\group{Initial} \{
-   \subgroup{density}      \{ \parameter{value} = 1.0; \};
-   \subgroup{total_energy} \{ \parameter{value} = 0.1; \}
-\}
-\end{semiverbatim}\vspace{-0.1in}
-   \item Cannot mix floating-point and integers
+   \item Floats and integers cannot be mixed
    \cornersize{0.9}
    \begin{itemize}
-     \item[\bad] \parameter{velocity\_x} \code{= 8.0 + 2*x; }  \comment{\# WRONG!}
-     \item[\good] \parameter{velocity\_x} \code{= 8.0 + 2.0*x;}\comment{\# good.}
+     \item[\frownie] \textcolor{red}{\code{velocity\_x = 8.0 + 2*x }}
+     \item[\smiley] \textcolor{green!50!black}{\code{velocity\_x = 8.0 + 2.0*x}}
    \end{itemize}
 
    \item Need space after subtraction minus sign
    \begin{itemize}
-     \item[\bad] \parameter{density} \code{ = x -2.0;}  \comment{\# WRONG!}
-     \item[\good] \parameter{density} \code{ = x - 2.0;} \comment{\# good.}
+     \item[\frownie] \textcolor{red}{\code{density = x -2.0;}}
+     \item[\smiley] \textcolor{green!50!black}{\code{density = x - 2.0;}}
    \end{itemize}
+  \item Need at least as many root blocks as processors $P$
+  \begin{itemize}
+    \item \code{Mesh \{ root\_blocks = [4,4,4]; \} }
+    \item[\frownie] \textcolor{red}{\code{\$ charmrun +p72} \code{bin/enzo-p \ldots}}
+    \item[\smiley]\textcolor{green!50!black}{\code{\$ charmrun +p64} \code{bin/enzo-p \ldots}}
+  \end{itemize}
+  \item AMR requires ghost zone depth of $\ge 4$
 \end{itemize}
+
+\link{ss-bugs}{Other issues: see bug tracking website}
+
 \end{frame}
 

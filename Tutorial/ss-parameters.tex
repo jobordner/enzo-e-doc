@@ -27,7 +27,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \textcolor{blue}{\code{Boundary}} \> \blueit{boundary conditions}
 \end{tabbing}
-\pause
   \item \begin{tabbing}
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \textcolor{blue}{\code{Stopping}} \> \blueit{stopping criteria}
@@ -35,6 +34,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \end{itemize}
 \pause
 \item \textcolor{green!50!black}{Discretization}
+\pause
   \begin{itemize}
   \item \begin{tabbing}
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
@@ -44,7 +44,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \textcolor{green!50!black}{\code{Adapt}} \> \greenit{adaptive mesh refinement}
    \end{tabbing}
-\pause
   \item \begin{tabbing}
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \textcolor{green!50!black}{\code{Field}} \> \greenit{field data}
@@ -55,9 +54,9 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
    \end{tabbing}
   \end{itemize}
 \pause
-\item \textcolor{red!50!black}{Parallel computation}
-  \begin{itemize}
+\item \textcolor{red!50!black}{Computation}
 \pause
+  \begin{itemize}
   \item \begin{tabbing}
 xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \textcolor{red!50!black}{\code{Method}} \> \redit{computational methods}
@@ -99,7 +98,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 %   \item \textcolor<1>{green!50!black}{\code{Field}}
 %   \item \textcolor<1>{green!50!black}{\code{Particle}}
 %   \end{itemize}
-% \item \textcolor<1>{red!50!black}{Parallel computation}
+% \item \textcolor<1>{red!50!black}{Computation}
 %   \begin{itemize}
 %   \item \textcolor<1>{red!50!black}{\code{Method}}
 %   \end{itemize}
@@ -133,9 +132,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -182,9 +182,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -204,12 +205,12 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
    \subgroup{density} \{
       \variable{value} = [ \valuetext{0.125},   \variable{x} +  \variable{y} <  \valuetext{0.15}, 
                 \valuetext{1.0} ];
-   \};
+   \}
    \subgroup{total_energy} \{
         \variable{value} = [  \valuetext{0.14} / ( \valuetext{0.4} *  \valuetext{0.125}),
                      \variable{x} +  \variable{y} <  \valuetext{0.15},
                   \valuetext{1.00} / ( \valuetext{0.4} *  \valuetext{1.000}) ];
-   \};
+   \}
 \}
 \end{semiverbatim}
 \end{block}
@@ -222,7 +223,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 \vspace{-0.2in}
 \begin{minipage}[t]{1.7in}
 \begin{itemize}
-\item \bfat{1}{\textcolor{blue}{Problem definition}}
+\item \bfat{1-2}{\textcolor{blue}{Problem definition}}
   \begin{itemize}
   \item \textcolor{blue}{\code{Domain}}
   \item \textcolor{blue}{\code{Initial}}
@@ -236,9 +237,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -255,8 +257,8 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \begin{semiverbatim}
 \group{Boundary} \{
    \variable{list} = [\valuetext{"x_bc"}, \valuetext{"y_bc"}];
-   \subgroup{x_bc} \{ \variable{axis} = \valuetext{"x"}; \variable{type} = \valuetext{"reflecting"}; \};
-   \subgroup{y_bc} \{ \variable{axis} = \valuetext{"y"}; \variable{type} = \valuetext{"periodic"}; \};
+   \subgroup{x_bc} \{ \variable{axis} = \valuetext{"x"}; \variable{type} = \valuetext{"reflecting"}; \}
+   \subgroup{y_bc} \{ \variable{axis} = \valuetext{"y"}; \variable{type} = \valuetext{"periodic"}; \}
 \}
  \end{semiverbatim}
  \end{block}
@@ -291,9 +293,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \textcolor{green!50!black}{\code{Field}}
   \item \textcolor{green!50!black}{\code{Particle}}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -351,9 +354,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \bfat{1}{\textcolor{green!50!black}{\code{Field}}}
   \item \bfat{1}{\textcolor{green!50!black}{\code{Particle}}}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -374,8 +378,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
            \valuetext{"velocity_y"},
            \valuetext{"total_energy"},
            \valuetext{"pressure"}];
-   \variable{courant}   = \valuetext{0.8};
-   \variable{ghosts}    = \valuetext{3};
+   \variable{ghost_depth} = \valuetext{4};
    \variable{alignment} = \valuetext{8};    
 \}
 \end{semiverbatim}
@@ -388,7 +391,67 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 
 \begin{frame}[fragile] 
 \secframetitle{\ssParameters}
- \framesubtitle{Parallel computation parameters}
+\framesubtitle{Discretization parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.7in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item \bfat{1}{\textcolor{green!50!black}{Discretization}}
+  \begin{itemize}
+  \item \textcolor{green!50!black}{\code{Mesh}}
+  \item \textcolor{green!50!black}{\code{Adapt}}
+  \item \bfat{1}{\textcolor{green!50!black}{\code{Field}}}
+  \item \bfat{1}{\textcolor{green!50!black}{\code{Particle}}}
+  \end{itemize}
+\item Computation
+  \begin{itemize}
+  \item \code{Method}
+  \item \code{Solver}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.6in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=green!30,fg=black}
+  \begin{block}<+->{\textbf{Particles}}
+  \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Particle} \{
+   \variable{list} = [ \valuetext{"dark"} ];
+
+   \subgroup{dark} \{
+      \variable{attributes} = [ \valuetext{"x"}, \valuetext{"single"},
+                     \valuetext{"y"}, \valuetext{"single"},
+                     \valuetext{"z"}, \valuetext{"single"},
+                     \valuetext{"vx"}, \valuetext{"single"},
+                     \valuetext{"vy"}, \valuetext{"single"},
+                     \valuetext{"vz"}, \valuetext{"single"} ];
+      \variable{position} = [ \valuetext{"x"},  \valuetext{"y"},  \valuetext{"z"} ];
+      \variable{velocity} = [ \valuetext{"vx"}, \valuetext{"vy"}, \valuetext{"vz"} ];
+   \}
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+  
+
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+ \framesubtitle{Computation parameters}
 \vspace{-0.2in}
 \begin{minipage}[t]{1.80in}
 \begin{itemize}
@@ -406,9 +469,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item \bfat{1}{\textcolor{red!50!black}{Parallel computation}}
+\item \bfat{1}{\textcolor{red!50!black}{Computation}}
   \begin{itemize}
   \item \bfat{1}{\textcolor{red!50!black}{\code{Method}}}
+  \item \textcolor{red!50!black}{\code{Solver}}
   \end{itemize}
 \item Output
   \begin{itemize}
@@ -425,14 +489,66 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
  \footnotesize \vspace{-0.1in}
 \begin{semiverbatim}
 \group{Method} \{
-   \variable{list} = [\valuetext{"ppm"},\valuetext{"gravity_bicgstab"}];
+   \variable{list} = [\valuetext{"gravity"},\valuetext{"ppm"}];
    \subgroup{ppm} \{
       \variable{diffusion}   = \valuetext{true};
       \variable{steepening}  = \valuetext{true};
-   \};
-   \subgroup{gravity_bicgstab} \{
-      \variable{iter_max} = \valuetext{100};
-      \variable{res_tol}  = \valuetext{0.001};
+   \}
+   \subgroup{gravity} \{
+      \variable{solver} = \valuetext{"bcg"};
+   \}
+\}
+\end{semiverbatim}
+\end{block}
+\end{minipage}
+\end{frame}
+%----------------------------------------------------------------------
+
+\begin{frame}[fragile] 
+\secframetitle{\ssParameters}
+ \framesubtitle{Computation parameters}
+\vspace{-0.2in}
+\begin{minipage}[t]{1.80in}
+\begin{itemize}
+\item Problem definition
+  \begin{itemize}
+  \item \code{Domain}
+  \item \code{Initial}
+  \item \code{Boundary}
+  \item \code{Stopping}
+  \end{itemize}
+\item Discretization
+  \begin{itemize}
+  \item \code{Mesh}
+  \item \code{Adapt}
+  \item \code{Field}
+  \item \code{Particle}
+  \end{itemize}
+\item \bfat{1}{\textcolor{red!50!black}{Computation}}
+  \begin{itemize}
+  \item \bfat{1}{\textcolor{red!50!black}{\code{Method}}}
+  \item \textcolor{red!50!black}{\code{Solver}}
+  \end{itemize}
+\item Output
+  \begin{itemize}
+    \item \code{Output}
+  \end{itemize}
+\end{itemize}
+\end{minipage} \
+%- - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - -
+\begin{minipage}[t]{2.50in}
+\vspace{-0.2in}
+\setbeamercolor{block title}{bg=red!30,fg=black}
+ \begin{block}<+->{\textbf{Solver list}}
+ \footnotesize \vspace{-0.1in}
+\begin{semiverbatim}
+\group{Solver} \{
+   \variable{list} = [\valuetext{"bcg"}];
+   \subgroup{bcg} \{
+      \variable{type}     = \valuetext{"bicgstab"};
+      \variable{res\_tol}  = \valuetext{0.01}; 
+      \variable{iter\_max} = \valuetext{100};
    \}
 \}
 \end{semiverbatim}
@@ -444,7 +560,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 
 % \begin{frame}[fragile] 
 % \secframetitle{\ssParameters}
-%  \framesubtitle{Parallel computation parameters}
+%  \framesubtitle{Computation parameters}
 % \vspace{-0.2in}
 % \begin{minipage}[t]{1.80in}
 % \begin{itemize}
@@ -462,9 +578,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 %   \item \code{Field}
 %   \item \code{Particle}
 %   \end{itemize}
-% \item \bfat{1}{\textcolor{red!50!black}{Parallel computation}}
+% \item \bfat{1}{\textcolor{red!50!black}{Computation}}
 %   \begin{itemize}
 %   \item \code{Method}
+%   \item \code{Solver}
 %   \end{itemize}
 % \item Output
 %   \begin{itemize}
@@ -514,9 +631,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item \bfat{1}{\textcolor{cyan!50!black}{Output}}
   \begin{itemize}
@@ -536,7 +654,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
    \variable{list} = [ \valuetext{"de_hdf5"}, \valuetext{"de_png"} ];
    \subgroup{de_hdf5} \{
       \comment{\# HDF5 data file group}
-   \};
+   \}
    \subgroup{de_png} \{
       \comment{\# PNG image file group}
    \}
@@ -568,9 +686,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item \bfat{1}{\textcolor{cyan!50!black}{Output}}
   \begin{itemize}
@@ -589,7 +708,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
 \group{Output} \{
    \subgroup{de_hdf5} \{
       \variable{type} = \valuetext{"data"};
-      \variable{name} = [\valuetext{"implosion-%5.2f.png"},
+      \variable{name} = [\valuetext{"implosion-%05.2f.h5"},
               \valuetext{"time"}];
       \variable{field_list} = [\valuetext{"density"}];
       \subgroup{schedule} \{
@@ -625,9 +744,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxx\=\kill
   \item \code{Field}
   \item \code{Particle}
   \end{itemize}
-\item Parallel computation
+\item Computation
   \begin{itemize}
   \item \code{Method}
+  \item \code{Solver}
   \end{itemize}
 \item \bfat{1}{\textcolor{cyan!50!black}{Output}}
   \begin{itemize}

@@ -37,7 +37,10 @@ You will likely have to download and install Charm++ yourself
 \uncover<4->{\prompt\redcode{ tar zxf charm-6.8.2.tar.gz}\cursor{4}}  \\
 \uncover<5->{\prompt\redcode{ ln -s charm-6.8.2 charm}\cursor{5}}  \\
 \uncover<6->{\prompt\redcode{ cd charm}\cursor{6}}  \\
-\uncover<7->{\prompt\redcode{ ./smart-build.pl}\cursor{7}}
+\uncover<7->{\bluecode{\# To build directly (recommended for Mac's)}} \\
+\uncover<7->{\prompt\redcode{ ./build charm++ netlrts-darwin-x86\_64 gcc gfortran -j4 --with-production}\cursor{7}} \\
+\uncover<8->{\bluecode{\# To run the interactive build script:}} \\
+\uncover<8->{\prompt\redcode{ ./smart-build.pl}\cursor{8}} \\
 %\end{block}
 %\end{minipage}
 %\end{center}
